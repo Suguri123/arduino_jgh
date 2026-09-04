@@ -1958,10 +1958,10 @@ void loop() {
                         </div>
                     </div>
 
-                    <!-- 실습 1: 모터 구동 기초 테스트 (rccar_motor_5s.ino) -->
+                    <!-- 실습 1-1: 모터 구동 기초 테스트 (rccar_motor_5s.ino) -->
                     <div class="bg-white border rounded-xl overflow-hidden shadow-sm space-y-4 p-5 text-base sm:text-lg">
                         <div class="border-b pb-2 flex justify-between items-center">
-                            <h3 class="font-bold text-slate-800 text-lg">🚩 중급 실습1 : RC카 모터 구동 기초 테스트</h3>
+                            <h3 class="font-bold text-slate-800 text-lg">🚩 중급 실습1-1 : RC카 모터 구동 기초 테스트</h3>
 
                         </div>
                         <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 text-base sm:text-lg">
@@ -1980,12 +1980,12 @@ void loop() {
                             <div class="lg:col-span-7 space-y-2">
                                 <div class="flex justify-between items-center text-xs sm:text-sm">
                                     <span class="font-semibold text-slate-500">rccar_motor_5s.ino</span>
-                                    <button onclick="copyCode('code-rc-manual')" class="text-indigo-600 font-bold hover:underline flex items-center space-x-1">
+                                    <button onclick="copyCode('code-rc-5s')" class="text-indigo-600 font-bold hover:underline flex items-center space-x-1">
                                         <i class="fa-regular fa-copy"></i>
                                         <span>코드 복사</span>
                                     </button>
                                 </div>
-                                <pre class="code-block p-4 rounded-lg overflow-x-auto leading-relaxed max-h-[460px]"><code id="code-rc-manual">// ==========================================
+                                <pre class="code-block p-4 rounded-lg overflow-x-auto leading-relaxed max-h-[460px]"><code id="code-rc-5s">// ==========================================
 // L9110S Motor Driver
 // ==========================================
 
@@ -2066,6 +2066,189 @@ void stopMotors() {
                             </div>
                         </div>
                     </div>
+
+                    <!-- 실습 1-2: 블루투스 연결 모터 구동 테스트 (rccar_motor_bluetooth.ino) -->
+                    <div class="bg-white border rounded-xl overflow-hidden shadow-sm space-y-4 p-5 text-base sm:text-lg">
+                        <div class="border-b pb-2 flex justify-between items-center">
+                            <h3 class="font-bold text-slate-800 text-lg">🚩 중급 실습1-2 : 블루투스 연결 모터 구동 테스트</h3>
+
+                        </div>
+                        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 text-base sm:text-lg">
+                            <div class="lg:col-span-5 space-y-3 text-sm sm:text-base text-slate-600 leading-relaxed">
+                                <p><strong>테스트 명령 규칙:</strong></p>
+                                <p class="text-slate-600 leading-relaxed">모터 드라이버(L9110S)와 블루투스(HM-10) 통신 연결을 확인하고 바퀴가 정상 회전하는지 점검하는 기초 코드입니다.</p>
+                                <ul class="list-disc list-inside space-y-1.5 text-slate-700">
+                                    <li><code class="bg-slate-100 text-cyan-700 px-1.5 py-0.5 rounded font-bold font-mono">1</code> : 전진 (Forward, 좌우 모터 전진 회전)</li>
+                                    <li><code class="bg-slate-100 text-cyan-700 px-1.5 py-0.5 rounded font-bold font-mono">0</code> : 정지 (Stop, 모든 모터 정지)</li>
+                                </ul>
+                                <p class="text-xs sm:text-sm text-slate-500">
+                                    * 스마트폰 블루투스 앱 또는 아두이노 IDE 시리얼 모니터(9600 Baud)에서 <code class="font-mono text-cyan-700 font-bold">1</code>과 <code class="font-mono text-cyan-700 font-bold">0</code>을 전송해 테스트할 수 있습니다.
+                                </p>
+                                <div class="bg-amber-50 border border-amber-200 rounded-lg p-3 text-xs sm:text-sm text-amber-800">
+                                    <i class="fa-solid fa-triangle-exclamation mr-1"></i>
+                                    <strong>팁:</strong> 만약 한쪽 바퀴가 반대로 회전한다면 해당 모터의 결선(A-IA, A-IB 또는 B-IA, B-IB) 핀을 서로 맞바꿔 꽂으면 정방향으로 회전합니다.
+                                </div>
+                            </div>
+                            <div class="lg:col-span-7 space-y-2">
+                                <div class="flex justify-between items-center text-xs sm:text-sm">
+                                    <span class="font-semibold text-slate-500">rccar_motor_bluetooth.ino</span>
+                                    <button onclick="copyCode('code-rc-manual')" class="text-indigo-600 font-bold hover:underline flex items-center space-x-1">
+                                        <i class="fa-regular fa-copy"></i>
+                                        <span>코드 복사</span>
+                                    </button>
+                                </div>
+                                <pre class="code-block p-4 rounded-lg overflow-x-auto leading-relaxed max-h-[460px]"><code id="code-rc-manual">#include &lt;SoftwareSerial.h&gt;
+
+// ==========================================
+// HM-10 Bluetooth
+// Arduino D3(TX) -&gt; HM-10 RX
+// Arduino D2(RX) &lt;- HM-10 TX
+// ==========================================
+SoftwareSerial bluetooth(3, 2);
+
+// ==========================================
+// L9110S Motor
+// ==========================================
+
+// A Motor
+const int motorA_IA = 9;
+const int motorA_IB = 8;
+
+// B Motor
+const int motorB_IA = 5;
+const int motorB_IB = 4;
+
+// Motor speed (0~255)
+const int driveSpeed = 200;
+
+
+void setup() {
+
+  // Motor pin setting
+  pinMode(motorA_IA, OUTPUT);
+  pinMode(motorA_IB, OUTPUT);
+
+  pinMode(motorB_IA, OUTPUT);
+  pinMode(motorB_IB, OUTPUT);
+
+  // Motor stop
+  stopMotors();
+
+  // USB Serial Monitor
+  Serial.begin(9600);
+
+  // HM-10
+  bluetooth.begin(9600);
+
+  Serial.println("============================");
+  Serial.println("HM-10 Bluetooth Test");
+  Serial.println("============================");
+  Serial.println("Bluetooth : 1 = Forward");
+  Serial.println("Bluetooth : 0 = Stop");
+  Serial.println("");
+  Serial.println("You can also type 1 or 0");
+  Serial.println("in Serial Monitor.");
+  Serial.println("============================");
+}
+
+
+void loop() {
+
+  // ======================================
+  // 1. HM-10 Bluetooth receive
+  // ======================================
+  if (bluetooth.available()) {
+
+    char command = bluetooth.read();
+
+    Serial.print("[Bluetooth RX] ");
+    Serial.print("Character = ");
+    Serial.print(command);
+
+    Serial.print(" / ASCII = ");
+    Serial.println((int)command);
+
+    controlMotor(command);
+  }
+
+
+  // ======================================
+  // 2. Serial Monitor receive
+  // ======================================
+  if (Serial.available()) {
+
+    char command = Serial.read();
+
+    // Ignore Enter and Line Feed
+    if (command == '\r' || command == '\n') {
+      return;
+    }
+
+    Serial.print("[Serial Monitor RX] ");
+    Serial.println(command);
+
+    controlMotor(command);
+  }
+}
+
+
+// ==========================================
+// Command
+// ==========================================
+void controlMotor(char command) {
+
+  if (command == '1') {
+
+    Serial.println(">>> FORWARD");
+
+    forward();
+  }
+
+  else if (command == '0') {
+
+    Serial.println(">>> STOP");
+
+    stopMotors();
+  }
+
+  else {
+
+    Serial.print(">>> Unknown command : ");
+    Serial.println(command);
+  }
+}
+
+
+// ==========================================
+// Forward
+// ==========================================
+void forward() {
+
+  // Motor A
+  analogWrite(motorA_IA, driveSpeed);
+  digitalWrite(motorA_IB, LOW);
+
+  // Motor B
+  analogWrite(motorB_IA, driveSpeed);
+  digitalWrite(motorB_IB, LOW);
+}
+
+
+// ==========================================
+// Stop
+// ==========================================
+void stopMotors() {
+
+  digitalWrite(motorA_IA, LOW);
+  digitalWrite(motorA_IB, LOW);
+
+  digitalWrite(motorB_IA, LOW);
+  digitalWrite(motorB_IB, LOW);
+}</code></pre>
+                            </div>
+                        </div>
+                    </div>
+
 
                     <!-- 실습 2: 자율주행 라인트레이싱 알고리즘 코딩 -->
                     <div class="bg-white border rounded-xl overflow-hidden shadow-sm space-y-4 p-5 text-base sm:text-lg">
