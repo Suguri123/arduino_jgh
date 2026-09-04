@@ -1,0 +1,201 @@
+[
+  {
+    "block_id": "397f907b-a140-808f-8119-dd33dac640cd",
+    "type": "file",
+    "source": "attachment:9033685b-af85-46fd-acca-c2652e04cc52:bluetooth.ino",
+    "title": "bluetooth.ino",
+    "local_path": "assets/notion/397f907b-a140-808f-8119-dd33dac640cd_bluetooth.ino",
+    "code_content": "#include <SoftwareSerial.h>\nSoftwareSerial BTSerial(2,3); //TX 2, RX 3 번 핀에 연결\n\nvoid setup(){\n  Serial.begin(9600);   //시리얼 통신 설정\n  BTSerial.begin(9600); //블루투스 통신 설정\n  Serial.println(\"AT command\");\n}\n \nvoid loop(){\n  if (BTSerial.available()) {\n    Serial.write(BTSerial.read());\n  }\n  if (Serial.available()) {\n    BTSerial.write(Serial.read());\n  }\n}\n\n/* \n시리얼 모니터에서 블루투스 이름 변경\nAT+NAME원하는이름\n예시)AT+NAMEMYLAMP\n\n시리얼 모니터에서 블루투스 비밀번호 변경\nAT+PIN원하는비밀번호\n예시)AT+PIN1234\n\n*/"
+  },
+  {
+    "block_id": "375f907b-a140-8066-8b89-d8d31f2b593e",
+    "type": "file",
+    "source": "attachment:98604268-09da-4798-9b34-6d6a44d2b317:3colorLED.ino",
+    "title": "3colorLED.ino",
+    "local_path": "assets/notion/375f907b-a140-8066-8b89-d8d31f2b593e_3colorLED.ino",
+    "code_content": "void setup()\n{\n  pinMode(5, OUTPUT);\n  pinMode(6, OUTPUT);\n  pinMode(7, OUTPUT);\n\n  digitalWrite(5, HIGH);\n  digitalWrite(6, HIGH);\n  digitalWrite(7, HIGH);\n}\n\nvoid loop()\n{\n  \n}"
+  },
+  {
+    "block_id": "375f907b-a140-8057-bd8d-fe6cf2bf0319",
+    "type": "file",
+    "source": "attachment:97f91a60-de2f-43b3-a5bf-96d54ebdff1b:bluetooth_LED_control_RYG.ino",
+    "title": "bluetooth_LED_control_RYG.ino",
+    "local_path": "assets/notion/375f907b-a140-8057-bd8d-fe6cf2bf0319_bluetooth_LED_control_RYG.ino",
+    "code_content": "#include <SoftwareSerial.h>\n\nSoftwareSerial BTSerial(2, 3); // RX 2, TX 3\n\nString inputString = \"\"; // 전역 변수로 선언\n\nvoid setup() {\n  Serial.begin(9600);\n  BTSerial.begin(9600);\n\n  Serial.println(\"Bluetooth LED Control Ready\");\n\n  pinMode(5, OUTPUT); // 빨강 LED\n  pinMode(6, OUTPUT); // 노랑 LED\n  pinMode(7, OUTPUT); // 초록 LED\n\n  digitalWrite(5, LOW);\n  digitalWrite(6, LOW);\n  digitalWrite(7, LOW);\n}\n\nvoid loop() {\n  if (BTSerial.available()) {\n    inputString = BTSerial.readString();\n    inputString.trim(); // 줄바꿈, 공백 제거\n\n    Serial.print(\"받은 값: \");\n    Serial.println(inputString);\n\n    if (inputString == \"R\") {\n      digitalWrite(5, HIGH);\n      digitalWrite(6, LOW);\n      digitalWrite(7, LOW);\n    }\n    else if (inputString == \"Y\") {\n      digitalWrite(5, LOW);\n      digitalWrite(6, HIGH);\n      digitalWrite(7, LOW);\n    }\n    else if (inputString == \"G\") {\n      digitalWrite(5, LOW);\n      digitalWrite(6, LOW);\n      digitalWrite(7, HIGH);\n    }\n    else if (inputString == \"off\") {\n      digitalWrite(5, LOW);\n      digitalWrite(6, LOW);\n      digitalWrite(7, LOW);\n    }\n    else if (inputString == \"on\") {\n      digitalWrite(5, HIGH);\n      digitalWrite(6, HIGH);\n      digitalWrite(7, LOW);\n    }\n  }\n\n  if (Serial.available()) {\n    BTSerial.write(Serial.read());\n  }\n}"
+  },
+  {
+    "block_id": "375f907b-a140-80c9-b9dd-ff693def6b93",
+    "type": "file",
+    "source": "attachment:117b2194-fd39-4862-96c7-aa8e812cd834:bluetooth_LED_control_kor.ino",
+    "title": "bluetooth_LED_control_kor.ino",
+    "local_path": "assets/notion/375f907b-a140-80c9-b9dd-ff693def6b93_bluetooth_LED_control_kor.ino",
+    "code_content": "#include <SoftwareSerial.h>\n\nSoftwareSerial BTSerial(2, 3); // RX 2, TX 3\n\nString inputString = \"\"; // 전역 변수로 선언\n\nvoid setup() {\n  Serial.begin(9600);\n  BTSerial.begin(9600);\n\n  Serial.println(\"Bluetooth LED Control Ready\");\n\n  pinMode(5, OUTPUT); // 빨강 LED\n  pinMode(6, OUTPUT); // 노랑 LED\n  pinMode(7, OUTPUT); // 초록 LED\n\n  digitalWrite(5, LOW);\n  digitalWrite(6, LOW);\n  digitalWrite(7, LOW);\n}\n\nvoid loop() {\n  if (BTSerial.available()) {\n    inputString = BTSerial.readString();\n    inputString.trim(); // 줄바꿈, 공백 제거\n\n    Serial.print(\"받은 값: \");\n    Serial.println(inputString);\n\n    if (inputString == \"빨강\") {\n      digitalWrite(5, HIGH);\n      digitalWrite(6, LOW);\n      digitalWrite(7, LOW);\n    }\n    else if (inputString == \"노랑\") {\n      digitalWrite(5, LOW);\n      digitalWrite(6, HIGH);\n      digitalWrite(7, LOW);\n    }\n    else if (inputString == \"초록\") {\n      digitalWrite(5, LOW);\n      digitalWrite(6, LOW);\n      digitalWrite(7, HIGH);\n    }\n    else if (inputString == \"불 꺼\") {\n      digitalWrite(5, LOW);\n      digitalWrite(6, LOW);\n      digitalWrite(7, LOW);\n    }\n    else if (inputString == \"다 켜\") {\n      digitalWrite(5, HIGH);\n      digitalWrite(6, HIGH);\n      digitalWrite(7, LOW);\n    }\n  }\n\n  if (Serial.available()) {\n    BTSerial.write(Serial.read());\n  }\n}"
+  },
+  {
+    "block_id": "375f907b-a140-8044-a87b-e64cca11f622",
+    "type": "file",
+    "source": "attachment:d6f2d623-6031-4722-842b-b6a0fe750134:servo.ino",
+    "title": "servo.ino",
+    "local_path": "assets/notion/375f907b-a140-8044-a87b-e64cca11f622_servo.ino",
+    "code_content": "#include <Servo.h>\nServo myservo;\n\nvoid setup() {\n\n  myservo.attach(3);\n  myservo.write(90);\n\n}\n\nvoid loop() {\n  // put your main code here, to run repeatedly:\n\n}"
+  },
+  {
+    "block_id": "375f907b-a140-80de-a5ae-dd40e3989a59",
+    "type": "file",
+    "source": "attachment:c9604190-fab7-4583-9d8a-25894e990a66:bluetooth_servo_control.ino",
+    "title": "bluetooth_servo_control.ino",
+    "local_path": "assets/notion/375f907b-a140-80de-a5ae-dd40e3989a59_bluetooth_servo_control.ino",
+    "code_content": "#include <SoftwareSerial.h>\n#include <Servo.h>\nServo myservo;\n\nSoftwareSerial BTSerial(2, 3); // RX 2, TX 3\n\nString inputString = \"\"; // 전역 변수로 선언\n\nvoid setup() {\n  Serial.begin(9600);\n  BTSerial.begin(9600);\n\n  Serial.println(\"Bluetooth Servo Control Ready\");\n\n  myservo.attach(9);\n  myservo.write(90);\n}\n\nvoid loop() {\n  if (BTSerial.available()) {\n    inputString = BTSerial.readString();\n    inputString.trim(); // 줄바꿈, 공백 제거\n\n    Serial.print(\"받은 값: \");\n    Serial.println(inputString);\n\n    if (inputString == \"0\") {\n    myservo.write(0);\n    }\n    else if (inputString == \"90\") {\n    myservo.write(90);\n    }\n    else if (inputString == \"180\") {\n    myservo.write(180);\n    }\n  }\n\n  if (Serial.available()) {\n    BTSerial.write(Serial.read());\n  }\n}"
+  },
+  {
+    "block_id": "359f907b-a140-8048-a464-ffbd93f855b7",
+    "type": "image",
+    "source": "attachment:7efc5a17-a0ba-412b-a85c-06b399493d48:image.png",
+    "title": "image.png",
+    "local_path": "assets/notion/359f907b-a140-8048-a464-ffbd93f855b7_image.png"
+  },
+  {
+    "block_id": "359f907b-a140-8021-8bf1-f03794d6eadf",
+    "type": "file",
+    "source": "attachment:a923141e-8ea7-4608-84dd-b55a5437e2ef:Ultrasonic.ino",
+    "title": "Ultrasonic.ino",
+    "local_path": "assets/notion/359f907b-a140-8021-8bf1-f03794d6eadf_Ultrasonic.ino",
+    "code_content": "void setup() {\n  Serial.begin(9600);    // 시리얼 통신 속도 설정 (9600bps)\n  pinMode(6, OUTPUT);    // Trig 핀 (초음파 발사) → 출력 설정\n  pinMode(5, INPUT);     // Echo 핀 (초음파 수신) → 입력 설정\n}\n\nvoid loop() {\n  // 초음파 발사\n  digitalWrite(6, LOW);   // Trig 핀 초기화\n  delayMicroseconds(2);\n  digitalWrite(6, HIGH);  // Trig 핀 HIGH → 초음파 발사\n  delayMicroseconds(10);\n  digitalWrite(6, LOW);   // 트리거 신호 종료\n\n  // Echo 핀으로부터 초음파 반사 시간 측정\n  float duration = pulseIn(5, HIGH);  \n\n  // 거리 계산 (단위: cm)\n  float distance = ((340.0 * duration) / 2.0) / 10000.0;\n\n  // 시리얼 모니터에 거리 출력\n  Serial.println(distance);\n\n  delay(500); // 0.5초마다 반복\n}\n\n\n"
+  },
+  {
+    "block_id": "359f907b-a140-80de-ab03-e0f129c760f3",
+    "type": "image",
+    "source": "attachment:e6f52419-1acb-4864-a3a8-b21e98fd1a1a:image.png",
+    "title": "image.png",
+    "local_path": "assets/notion/359f907b-a140-80de-ab03-e0f129c760f3_image.png"
+  },
+  {
+    "block_id": "359f907b-a140-8052-9be8-e48a4efcedbf",
+    "type": "file",
+    "source": "attachment:1e319a0a-0c77-4e2f-9102-c1d565894dc2:servo.ino",
+    "title": "servo.ino",
+    "local_path": "assets/notion/359f907b-a140-8052-9be8-e48a4efcedbf_servo.ino",
+    "code_content": "#include <Servo.h>\nServo myservo;\n\nvoid setup() {\n\n  myservo.attach(3);\n  myservo.write(90);\n\n}\n\nvoid loop() {\n  // put your main code here, to run repeatedly:\n\n}\n"
+  },
+  {
+    "block_id": "359f907b-a140-80f5-b8d5-f34248786603",
+    "type": "file",
+    "source": "attachment:920b33f0-c7b8-40c5-af68-01ab595b6bb9:servo_sweep.ino",
+    "title": "servo_sweep.ino",
+    "local_path": "assets/notion/359f907b-a140-80f5-b8d5-f34248786603_servo_sweep.ino",
+    "code_content": "#include <Servo.h>\n\nServo myservo;\n\nvoid setup() {\n  myservo.attach(3);     // 서보모터를 3번 핀에 연결\n}\n\nvoid loop() {\n  myservo.write(0);      // 0도\n  delay(1000);           // 1초 대기\n\n  myservo.write(90);     // 90도\n  delay(1000);\n\n  myservo.write(180);    // 180도\n  delay(1000);\n\n  myservo.write(90);     // 90도\n  delay(1000);\n\n}\n\n"
+  },
+  {
+    "block_id": "35af907b-a140-807b-8bc5-f61f7dd5e649",
+    "type": "file",
+    "source": "attachment:2435c3ca-45e1-4936-b6f2-ce0c343eecb8:parking_barrier_servo.ino",
+    "title": "parking_barrier_servo.ino",
+    "local_path": "assets/notion/35af907b-a140-807b-8bc5-f61f7dd5e649_parking_barrier_servo.ino",
+    "code_content": "#include <Servo.h>\n\nServo myservo;\n\nvoid setup() {\n  Serial.begin(9600);       // 시리얼 통신 시작\n  pinMode(6, OUTPUT);       // Trig 핀\n  pinMode(5, INPUT);        // Echo 핀\n\n  myservo.attach(3);        // 서보모터 3번 핀에 연결\n  myservo.write(90);         // 차단기 초기 위치 (내려감)\n}\n\nvoid loop() {\n  // 초음파 신호 보내기\n  digitalWrite(6, LOW);\n  delayMicroseconds(2);\n  digitalWrite(6, HIGH);\n  delayMicroseconds(10);\n  digitalWrite(6, LOW);\n\n  // 반사 시간 측정\n  float duration = pulseIn(5, HIGH);\n  float distance = (340.0 * duration) / 2.0 / 10000.0;  // 단위: cm\n\n  Serial.print(\"Distance: \");\n  Serial.println(distance);\n\n  // 거리가 10cm 이내이면 차단기 열기\n  if (distance > 0 && distance < 10) {    //&& : and와 동일한 논리연산자\n    myservo.write(180);    // 차단기 올림\n  } else {\n    myservo.write(90);     // 차단기 내림\n  }\n\n  delay(300);  // 측정 간격 0.3초\n}\n\n"
+  },
+  {
+    "block_id": "359f907b-a140-80dd-89a4-f57e6b346f15",
+    "type": "image",
+    "source": "attachment:41727e6d-f5b3-4697-9237-995bfc21cf45:image.png",
+    "title": "image.png",
+    "local_path": "assets/notion/359f907b-a140-80dd-89a4-f57e6b346f15_image.png"
+  },
+  {
+    "block_id": "359f907b-a140-8099-9f09-e1a9a5231db5",
+    "type": "file",
+    "source": "attachment:4622cd8a-ba07-4119-8adf-b1201fc0667f:dcmotor.ino",
+    "title": "dcmotor.ino",
+    "local_path": "assets/notion/359f907b-a140-8099-9f09-e1a9a5231db5_dcmotor.ino",
+    "code_content": "void setup() {\n  pinMode(9, OUTPUT); \n  pinMode(10, OUTPUT);\n}\n\nvoid loop() {\n  digitalWrite(9, HIGH); \n  digitalWrite(10, LOW); \n}\n\n\n"
+  },
+  {
+    "block_id": "358f907b-a140-80d8-b5cc-d69653345bc0",
+    "type": "image",
+    "source": "attachment:b68404f6-f347-4d36-9d3a-28d2da48a688:image.png",
+    "title": "image.png",
+    "local_path": "assets/notion/358f907b-a140-80d8-b5cc-d69653345bc0_image.png"
+  },
+  {
+    "block_id": "33df907b-a140-8077-9ad5-ca3728bfe97d",
+    "type": "file",
+    "source": "attachment:f4d6afd6-416b-47e6-94a5-e1a61d4dfc8f:LED3.ino",
+    "title": "LED3.ino",
+    "local_path": "assets/notion/33df907b-a140-8077-9ad5-ca3728bfe97d_LED3.ino",
+    "code_content": "void setup()\n{\n  pinMode(7, OUTPUT);\n  pinMode(8, OUTPUT);\n  pinMode(9, OUTPUT);\n  digitalWrite(7, HIGH);\n  digitalWrite(8, HIGH);\n  digitalWrite(9, HIGH);\n}\n\nvoid loop()\n{\ndelay(1000);\n}"
+  },
+  {
+    "block_id": "358f907b-a140-800a-abab-fdcd088ce7bd",
+    "type": "image",
+    "source": "attachment:e79670f0-86b6-4a3c-8d9e-fe1be1521da2:image.png",
+    "title": "image.png",
+    "local_path": "assets/notion/358f907b-a140-800a-abab-fdcd088ce7bd_image.png"
+  },
+  {
+    "block_id": "344f907b-a140-8000-b278-fc9e7201c906",
+    "type": "file",
+    "source": "attachment:97072e30-8b0d-49f0-9a43-e564e50fb01a:LDR1.ino",
+    "title": "LDR1.ino",
+    "local_path": "assets/notion/344f907b-a140-8000-b278-fc9e7201c906_LDR1.ino",
+    "code_content": "void setup()\n{\n  Serial.begin(9600);\n}\n\nvoid loop()\n{\n  Serial.println(analogRead(A0));\n  delay(100); \n}\n\n"
+  },
+  {
+    "block_id": "33df907b-a140-80fc-ac28-c386121666c8",
+    "type": "file",
+    "source": "attachment:f37358f0-8d30-41a5-8432-ad5888780324:Mission1.ino",
+    "title": "Mission1.ino",
+    "local_path": "assets/notion/33df907b-a140-80fc-ac28-c386121666c8_Mission1.ino",
+    "code_content": "void setup()\n{\n  pinMode(7, OUTPUT);  // 빨간 LED\n  pinMode(8, OUTPUT);  // 노란 LED\n  pinMode(9, OUTPUT);  // 초록 LED\n}\n\nvoid loop()\n{\n  // 7번 LED ON, 나머지 OFF\n  digitalWrite(7, HIGH);\n  digitalWrite(8, LOW);\n  digitalWrite(9, LOW);\n  delay(1000);\n\n  // 8번 LED ON, 나머지 OFF\n  digitalWrite(7, LOW);\n  digitalWrite(8, HIGH);\n  digitalWrite(9, LOW);\n  delay(1000);\n\n  // 9번 LED ON, 나머지 OFF\n  digitalWrite(7, LOW);\n  digitalWrite(8, LOW);\n  digitalWrite(9, HIGH);\n  delay(1000);\n}"
+  },
+  {
+    "block_id": "358f907b-a140-8084-ab07-c209e0ca37ba",
+    "type": "image",
+    "source": "attachment:791c424e-bff3-4c3f-8d69-b675c47cbdcf:image.png",
+    "title": "image.png",
+    "local_path": "assets/notion/358f907b-a140-8084-ab07-c209e0ca37ba_image.png"
+  },
+  {
+    "block_id": "344f907b-a140-80c3-9820-f527bfbddfb9",
+    "type": "file",
+    "source": "attachment:6b132538-3d73-4b67-b65e-fbb340f10905:TactSwitch.ino",
+    "title": "TactSwitch.ino",
+    "local_path": "assets/notion/344f907b-a140-80c3-9820-f527bfbddfb9_TactSwitch.ino",
+    "code_content": "void setup()\n{\n  Serial.begin(9600);\n  pinMode(2, INPUT_PULLUP);  // 버튼 입력 (내부 풀업 저항 사용)\n}\n\nvoid loop()\n{\n  int button = digitalRead(2);  // 버튼 상태 읽기\n  Serial.println(button);       // 시리얼 출력\n  delay(100);  // 노이즈 방지를 위한 짧은 딜레이\n}"
+  },
+  {
+    "block_id": "358f907b-a140-8003-9e79-ca0fe6f89552",
+    "type": "image",
+    "source": "attachment:c22f64bd-1def-4513-8ca3-a89d4efb5ba4:image.png",
+    "title": "image.png",
+    "local_path": "assets/notion/358f907b-a140-8003-9e79-ca0fe6f89552_image.png"
+  },
+  {
+    "block_id": "344f907b-a140-804d-9736-f676762251a5",
+    "type": "file",
+    "source": "attachment:6fa21136-73d2-491a-b34c-00e8c40dfc98:RGB_LED1.ino",
+    "title": "RGB_LED1.ino",
+    "local_path": "assets/notion/344f907b-a140-804d-9736-f676762251a5_RGB_LED1.ino",
+    "code_content": "void setup()\n{\n  pinMode(3, OUTPUT);\n  pinMode(5, OUTPUT);\n  pinMode(6, OUTPUT);\n}\n\nvoid loop()\n{\n  analogWrite(3,255);\n  analogWrite(5,0);\n  analogWrite(6,0);\n\n  delay(1000);\n}\n\n"
+  },
+  {
+    "block_id": "358f907b-a140-80fe-a7a6-ea60bbe4fc0a",
+    "type": "image",
+    "source": "attachment:e0b59bbc-9091-487e-b09d-a277d8460362:image.png",
+    "title": "image.png",
+    "local_path": "assets/notion/358f907b-a140-80fe-a7a6-ea60bbe4fc0a_image.png"
+  },
+  {
+    "block_id": "344f907b-a140-80b3-87f6-e73decceb823",
+    "type": "file",
+    "source": "attachment:11eee291-8130-4d98-8416-b9d766ecbb9f:Buzzer.ino",
+    "title": "Buzzer.ino",
+    "local_path": "assets/notion/344f907b-a140-80b3-87f6-e73decceb823_Buzzer.ino",
+    "code_content": "int read;\n\nvoid setup()\n{\n  Serial.begin(9600);\n  pinMode(8, OUTPUT);\n  tone(8, 523, 1000); //8번핀에서 도 음 출력(C5 = 523Hz)\n  delay(1000); \n\n}\n\nvoid loop()\n{\n  delay(10); \n}\n\n\n\n"
+  },
+  {
+    "block_id": "359f907b-a140-8011-bb9f-c458a9c90743",
+    "type": "image",
+    "source": "attachment:3c1d104f-7f3f-489e-a700-c8c5d5a4d5dd:image.png",
+    "title": "image.png",
+    "local_path": "assets/notion/359f907b-a140-8011-bb9f-c458a9c90743_image.png"
+  }
+]
