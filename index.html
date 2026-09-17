@@ -50,6 +50,20 @@
                 transform: translateX(0);
             }
         }
+
+        /* Click to enlarge image styling */
+        .section-content img {
+            cursor: zoom-in;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .section-content img:hover {
+            transform: scale(1.02);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.15);
+        }
+        #image-lightbox-modal.active {
+            opacity: 1 !important;
+            pointer-events: auto !important;
+        }
     </style>
 </head>
 <body class="overflow-x-hidden">
@@ -77,9 +91,9 @@
                     <h1 class="font-bold text-white text-lg leading-tight tracking-tight">아두이노 로봇 프로그래밍</h1>
                 </div>
                 <span class="text-xs text-indigo-400 font-semibold block tracking-wider uppercase pl-8">센서 작동 및 코딩</span>
-                <a href="https://bit.ly/로봇공학반2026" target="_blank" class="text-sm text-slate-300 hover:text-white font-medium pl-8 inline-flex items-center space-x-1.5 transition-colors mt-0.5">
+                <a href="https://suguri123.github.io/arduino_jgh/" target="_blank" class="text-sm text-slate-300 hover:text-white font-medium pl-8 inline-flex items-center space-x-1.5 transition-colors mt-0.5">
                     <i class="fa-solid fa-link text-[12px] text-yellow-400/80"></i>
-                    <span>bit.ly/로봇공학반2026</span>
+                    <span>bit.ly/로봇공학반2026A</span>
                 </a>
             </div>
 
@@ -132,9 +146,9 @@
                     <span class="bg-cyan-600 text-slate-900 text-xs px-2 py-0.5 rounded font-black">2차시</span>
                     <span class="truncate">무선 조종 RC카</span>
                 </button>
-                <button class="nav-item disabled w-full flex items-center space-x-3 px-3 py-2 rounded-lg text-left" id="btn-inter3">
-                    <span class="bg-slate-700 text-slate-500 text-xs px-2 py-0.5 rounded font-black">3차시</span>
-                    <span class="truncate text-slate-600">로봇팔 각도교정 (잠김)</span>
+                <button onclick="switchSection('inter3')" class="nav-item w-full flex items-center space-x-3 px-3 py-2 rounded-lg text-left transition-all hover:bg-slate-800 hover:text-white" id="btn-inter3">
+                    <span class="bg-cyan-600 text-slate-900 text-xs px-2 py-0.5 rounded font-black">3차시</span>
+                    <span class="truncate">4휠 스마트 RC카 조립</span>
                 </button>
                 <button class="nav-item disabled w-full flex items-center space-x-3 px-3 py-2 rounded-lg text-left" id="btn-inter4">
                     <span class="bg-slate-700 text-slate-500 text-xs px-2 py-0.5 rounded font-black">4차시</span>
@@ -736,7 +750,7 @@ void loop()
                         </div>
                         <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
                             <div class="lg:col-span-5 space-y-3">
-                                <img src="assets/notion/359f9048-a140-8048-a464-ffbd93f855b7_image.png" alt="초음파센서 회로" class="rounded-lg border max-w-full h-auto">
+                                <img src="assets/notion/359f907b-a140-8048-a464-ffbd93f855b7_image.png" alt="초음파센서 회로" class="rounded-lg border max-w-full h-auto">
                                 <p class="text-sm sm:text-base text-slate-500 leading-relaxed">회로 설명: VCC &rarr; 5V, GND &rarr; GND, Trig &rarr; 6번 디지털 핀(출력), Echo &rarr; 5번 디지털 핀(입력)</p>
                             </div>
                             <div class="lg:col-span-7 space-y-2">
@@ -784,7 +798,7 @@ void loop() {
                         </div>
                         <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
                             <div class="lg:col-span-5 space-y-3">
-                                <img src="assets/notion/359f90de-ab03-e0f1-29c7-c5675afbc872_image.png" alt="서보모터 회로" class="rounded-lg border max-w-full h-auto">
+                                <img src="assets/notion/359f907b-a140-80de-ab03-e0f129c760f3_image.png" alt="서보모터 회로" class="rounded-lg border max-w-full h-auto">
                                 <p class="text-sm sm:text-base text-slate-500 leading-relaxed">회로 설명: 주황색(신호선) &rarr; 3번 디지털 핀, 빨간색(VCC) &rarr; 5V, 갈색(GND) &rarr; GND</p>
                             </div>
                             <div class="lg:col-span-7 space-y-2">
@@ -922,7 +936,7 @@ void loop() {
                         </div>
                         <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 text-base sm:text-lg">
                             <div class="lg:col-span-5 space-y-3">
-                                <img src="assets/notion/359f90dd-89a4-f57e6b346f15_image.png" alt="DC모터 회로구성" class="rounded-lg border max-w-full h-auto">
+                                <img src="assets/notion/359f907b-a140-80dd-89a4-f57e6b346f15_image.png" alt="DC모터 회로구성" class="rounded-lg border max-w-full h-auto">
                                 <p class="text-sm sm:text-base text-slate-500 leading-relaxed">회로 설명: 9번 핀과 10번 핀을 모터 구동단자에 직접 할당하여 기본 정방향 회전을 구현합니다.</p>
                             </div>
                             <div class="lg:col-span-7 space-y-2">
@@ -1699,15 +1713,15 @@ void loop() {
                             <span class="text-xs bg-cyan-100 text-cyan-800 border px-3.5 py-1 rounded-full self-start md:self-auto font-medium whitespace-nowrap">학습 가능</span>
                         </div>
 
-                        <div class="bg-white p-5 rounded-xl border flex flex-col md:flex-row md:items-center justify-between gap-4 opacity-60">
+                        <div onclick="switchSection('inter3')" class="bg-white p-5 rounded-xl border flex flex-col md:flex-row md:items-center justify-between gap-4 cursor-pointer hover:shadow-md transition">
                             <div class="flex items-start space-x-4">
-                                <span class="bg-slate-100 text-slate-500 text-base font-black px-3 py-1.5 rounded-lg flex-shrink-0">3차시</span>
+                                <span class="bg-cyan-100 text-cyan-800 text-base font-black px-3 py-1.5 rounded-lg flex-shrink-0">3차시</span>
                                 <div class="space-y-1">
-                                    <h4 class="font-bold text-slate-700 text-lg">다관절 로봇팔 하드웨어 결선 및 기본 각도 교정 (비활성화)</h4>
-                                    <p class="text-sm sm:text-base text-slate-400">서보모터 4개의 기계 결합 및 과부하 방지를 위한 초기 위치 캘리브레이션 설정.</p>
+                                    <h4 class="font-bold text-slate-800 text-lg">중급 3차시: 4휠 스마트 RC카 조립 & L298N 모터 드라이버 제어</h4>
+                                    <p class="text-sm sm:text-base text-slate-500">4WD 스마트카 하부·상부 바디 결합, 서보모터 영점 설정, 초음파·라인트레이서 쉴드 결선 및 L298N H-Bridge 주행 코딩.</p>
                                 </div>
                             </div>
-                            <span class="text-xs bg-slate-100 text-slate-400 border px-3.5 py-1 rounded-full self-start md:self-auto font-medium whitespace-nowrap">대기 중</span>
+                            <span class="text-xs bg-cyan-100 text-cyan-800 border px-3.5 py-1 rounded-full self-start md:self-auto font-medium whitespace-nowrap">학습 가능</span>
                         </div>
 
                         <div class="bg-white p-5 rounded-xl border flex flex-col md:flex-row md:items-center justify-between gap-4 opacity-60">
@@ -2939,6 +2953,876 @@ void stopMotors() {
                     </div>
                 </section>
 
+                
+                <!-- SECTION: INTERMEDIATE 3 (4휠 스마트 RC카 조립 및 모터드라이버 실습) -->
+                <section id="sect-inter3" class="section-content hidden space-y-8">
+                    <!-- Title Banner -->
+                    <div class="border-b border-slate-200 pb-4">
+                        <div class="flex flex-wrap items-center justify-between gap-2">
+                            <h2 class="text-3xl font-bold text-slate-800 flex items-center space-x-2">
+                                <span class="bg-cyan-600 text-slate-900 text-sm px-2.5 py-1 rounded font-black">중급 3차시</span>
+                                <span>4휠 스마트 RC카 조립 및 L298N 모터 제어</span>
+                            </h2>
+                        </div>
+                        <p class="text-slate-500 mt-2 text-base">에듀이노 4휠 스마트 RC카 하부/상부 바디 프레임 조립, 센서 확장 쉴드 종합 배선 및 L298N 모터 드라이버 구동 코딩 실습</p>
+                    </div>
+
+                    <!-- Course Overview Card -->
+                    <div class="bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-900 text-white rounded-2xl p-6 sm:p-8 shadow-xl relative overflow-hidden border border-slate-700">
+                        <div class="relative z-10 max-w-4xl space-y-4">
+                            <p class="text-slate-300 text-base sm:text-lg leading-relaxed">
+                                본 차시는 에듀이노 교재의 <strong>[3강] 하부 바디 프레임 조립</strong>(DC모터 4EA, 라인트레이서 3EA, L298N 모터드라이버)과 <strong>[4강] 상부 바디 조립 & L298N 모터 실습</strong>(서보모터 90도 영점 설정, 초음파 센서, 차체 결합, 센서 확장 쉴드 결선, 모터 주행 코딩)을 한 번에 마스터하는 종합 실습 단원입니다.
+                            </p>
+                            <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2 text-center text-xs sm:text-sm font-semibold">
+                                <div class="bg-slate-800/80 p-3 rounded-lg border border-slate-700 hover:border-cyan-400 transition">
+                                    <i class="fa-solid fa-gears text-cyan-400 block text-xl mb-1.5"></i> 1. 하부 프레임 조립
+                                </div>
+                                <div class="bg-slate-800/80 p-3 rounded-lg border border-slate-700 hover:border-amber-400 transition">
+                                    <i class="fa-solid fa-arrows-up-down-left-right text-amber-400 block text-xl mb-1.5"></i> 2. 서보 영점 & 상부 결합
+                                </div>
+                                <div class="bg-slate-800/80 p-3 rounded-lg border border-slate-700 hover:border-emerald-400 transition">
+                                    <i class="fa-solid fa-network-wired text-emerald-400 block text-xl mb-1.5"></i> 3. 센서 쉴드 종합 결선
+                                </div>
+                                <div class="bg-slate-800/80 p-3 rounded-lg border border-slate-700 hover:border-rose-400 transition">
+                                    <i class="fa-solid fa-microchip text-rose-400 block text-xl mb-1.5"></i> 4. L298N 모터 주행 코딩
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Learning Goals & Components -->
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                        <!-- Goals -->
+                        <div class="bg-white rounded-xl p-6 border border-slate-200 shadow-sm space-y-3">
+                            <h4 class="font-bold text-slate-800 text-lg flex items-center space-x-2 border-b pb-2">
+                                <i class="fa-solid fa-clipboard-check text-indigo-600"></i>
+                                <span>차시별 핵심 학습 목표</span>
+                            </h4>
+                            <ul class="space-y-2.5 text-slate-700 text-base">
+                                <li class="flex items-start space-x-2">
+                                    <span class="text-indigo-600 font-bold mt-0.5">✓</span>
+                                    <span><strong>하부 바디 조립:</strong> DC모터 4개와 브라켓의 정확한 나사산 방향을 파악하고, 라인트레이서 3개와 L298N 모터 드라이버를 단단히 고정할 수 있다.</span>
+                                </li>
+                                <li class="flex items-start space-x-2">
+                                    <span class="text-indigo-600 font-bold mt-0.5">✓</span>
+                                    <span><strong>서보 영점 및 상부 조립:</strong> 코드로 서보모터를 90도 중앙(Zero)으로 회전시킨 후 초음파 브라켓을 결합하고, 케이블 15가닥을 인출하여 상·하부를 조립할 수 있다.</span>
+                                </li>
+                                <li class="flex items-start space-x-2">
+                                    <span class="text-indigo-600 font-bold mt-0.5">✓</span>
+                                    <span><strong>센서 확장 쉴드 결선:</strong> 모터 드라이버(ENA, ENB, IN1~IN4), 서보, 초음파, 적외선 수신부, 라인트레이서 3채널의 핀맵을 정확히 연결할 수 있다.</span>
+                                </li>
+                                <li class="flex items-start space-x-2">
+                                    <span class="text-indigo-600 font-bold mt-0.5">✓</span>
+                                    <span><strong>L298N H-Bridge 제어:</strong> 모터 구동 원리를 이해하고, <code class="text-xs bg-slate-100 px-1 py-0.5 rounded font-mono">6_Motor_driver.ino</code> 코드로 전/후진 3초 구동 및 좌우 속도 편향을 보정할 수 있다.</span>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <!-- Parts Kit -->
+                        <div class="bg-white rounded-xl p-6 border border-slate-200 shadow-sm space-y-3">
+                            <h4 class="font-bold text-slate-800 text-lg flex items-center space-x-2 border-b pb-2">
+                                <i class="fa-solid fa-toolbox text-amber-500"></i>
+                                <span>실습 준비물 및 부품 구성</span>
+                            </h4>
+                            <div class="grid grid-cols-2 gap-2.5 text-sm">
+                                <div class="bg-slate-50 p-2.5 rounded-lg border border-slate-200">
+                                    <span class="font-bold text-slate-800 block">🧠 메인 컨트롤러</span>
+                                    아두이노 우노 R3 + 센서 확장 쉴드 V5.0
+                                </div>
+                                <div class="bg-slate-50 p-2.5 rounded-lg border border-slate-200">
+                                    <span class="font-bold text-slate-800 block">⚡ 동력 및 구동계</span>
+                                    DC 기어드 모터 4EA + 4휠 고무 바퀴 4EA
+                                </div>
+                                <div class="bg-slate-50 p-2.5 rounded-lg border border-slate-200">
+                                    <span class="font-bold text-slate-800 block">🎮 모터 드라이버</span>
+                                    L298N 듀얼 H-Bridge 모터 드라이버 모듈
+                                </div>
+                                <div class="bg-slate-50 p-2.5 rounded-lg border border-slate-200">
+                                    <span class="font-bold text-slate-800 block">👁️ 감각 센서</span>
+                                    HC-SR04 초음파 + SG90 서보 + TCRT5000 3EA
+                                </div>
+                                <div class="bg-slate-50 p-2.5 rounded-lg border border-slate-200">
+                                    <span class="font-bold text-slate-800 block">📡 통신 및 수신</span>
+                                    적외선(IR) 수신 모듈 (VS1838B) + 미니 브레드보드
+                                </div>
+                                <div class="bg-slate-50 p-2.5 rounded-lg border border-slate-200">
+                                    <span class="font-bold text-slate-800 block">🔋 전원 & 프레임</span>
+                                    6구 AA 배터리 홀더, 아크릴 상·하부 바디, 볼트/너트/서포터
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- YOUTUBE VIDEO SECTION -->
+                    <div class="bg-white rounded-xl p-6 border border-slate-200 shadow-sm space-y-6">
+                        <div class="flex flex-wrap items-center justify-between gap-2 border-b pb-3">
+                            <h3 class="text-xl font-bold text-slate-800 flex items-center space-x-2">
+                                <i class="fa-brands fa-youtube text-red-600 text-2xl"></i>
+                                <span>3-4강 핵심 동영상 강의 & 유튜브 링크 모음</span>
+                            </h3>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <!-- Video 1: Assembly -->
+                            <div class="bg-slate-50 rounded-xl overflow-hidden border border-slate-200 shadow-sm flex flex-col">
+                                <div class="aspect-video w-full bg-black relative">
+                                    <iframe class="w-full h-full" src="https://www.youtube.com/embed/esiRhYt8oYE" title="4휠 스마트 RC카 조립 가이드 영상" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                </div>
+                                <div class="p-4 flex-1 flex flex-col justify-between space-y-3">
+                                    <div>
+                                        <div class="flex items-center justify-between text-xs text-slate-500 mb-1">
+                                            <span class="font-bold text-indigo-600">3-4강 필수 시청</span>
+                                            <span>에듀이노 제작</span>
+                                        </div>
+                                        <h4 class="font-bold text-slate-800 text-base">4휠 스마트 RC카 전체 조립 가이드</h4>
+                                        <p class="text-slate-600 text-xs sm:text-sm mt-1">하부 DC모터 장착부터 상부 서보모터 결합, 바디 체결 및 센서 쉴드 배선까지 전 과정을 영상으로 확인하세요.</p>
+                                    </div>
+                                    <a href="https://youtu.be/esiRhYt8oYE" target="_blank" class="w-full text-center bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-3 rounded-lg text-xs sm:text-sm transition flex items-center justify-center gap-1.5">
+                                        <i class="fa-solid fa-arrow-up-right-from-square"></i> 유튜브에서 큰 화면으로 보기 (새 창)
+                                    </a>
+                                </div>
+                            </div>
+
+                            <!-- Video 2: Motor Driver -->
+                            <div class="bg-slate-50 rounded-xl overflow-hidden border border-slate-200 shadow-sm flex flex-col">
+                                <div class="aspect-video w-full bg-black relative">
+                                    <iframe class="w-full h-full" src="https://www.youtube.com/embed/ros94jU2GIQ" title="L298N 모터드라이버 실습 영상" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                </div>
+                                <div class="p-4 flex-1 flex flex-col justify-between space-y-3">
+                                    <div>
+                                        <div class="flex items-center justify-between text-xs text-slate-500 mb-1">
+                                            <span class="font-bold text-emerald-600">4강 모터 실습</span>
+                                            <span>에듀이노 제작</span>
+                                        </div>
+                                        <h4 class="font-bold text-slate-800 text-base">모터 드라이버(L298N) 주행 실습 영상</h4>
+                                        <p class="text-slate-600 text-xs sm:text-sm mt-1">L298N 모터드라이버를 이용해 4개 바퀴의 정방향 3초, 역방향 3초 회전 및 속도 제어 동작을 직접 확인합니다.</p>
+                                    </div>
+                                    <a href="https://youtu.be/ros94jU2GIQ" target="_blank" class="w-full text-center bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-2 px-3 rounded-lg text-xs sm:text-sm transition flex items-center justify-center gap-1.5">
+                                        <i class="fa-solid fa-arrow-up-right-from-square"></i> 유튜브에서 큰 화면으로 보기 (새 창)
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Extra Video Link Card -->
+                        <div class="bg-indigo-50 border border-indigo-200 rounded-lg p-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+                            <div class="flex items-center space-x-3">
+                                <i class="fa-solid fa-circle-play text-indigo-600 text-2xl flex-shrink-0"></i>
+                                <div>
+                                    <span class="font-bold text-indigo-950 text-sm sm:text-base">보충 영상: 서보모터 동작 원리 및 90도 회전 실습</span>
+                                    <p class="text-slate-600 text-xs">서보모터 조립 전 영점(90도) 세팅 과정이 헷갈린다면 서보모터 기초 실습 영상을 참고하세요.</p>
+                                </div>
+                            </div>
+                            <a href="https://www.youtube.com/watch?v=2HgY1NRZCGM" target="_blank" class="text-xs bg-white text-indigo-700 hover:bg-indigo-100 font-bold px-3 py-1.5 rounded-md border border-indigo-300 whitespace-nowrap transition">
+                                <i class="fa-solid fa-play mr-1"></i> 서보 영상 시청하기
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- STEP 1: LOWER BODY ASSEMBLY (3강 내용) -->
+                    <div class="bg-white rounded-xl p-6 border border-slate-200 shadow-sm space-y-6">
+                        <div class="border-b pb-3 flex items-center justify-between flex-wrap gap-2">
+                            <h3 class="text-xl font-bold text-slate-800 flex items-center space-x-2">
+                                <span class="bg-indigo-600 text-white text-xs px-2.5 py-1 rounded font-black">3강 STEP 1</span>
+                                <span>4휠 스마트 RC카 하부 바디 프레임(Lower Body) 조립</span>
+                            </h3>
+                            <span class="text-xs text-slate-500 font-medium">PDF 75p ~ 105p 핵심 가이드</span>
+                        </div>
+
+                        <!-- Step 1 Cards Grid -->
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <!-- 1-1 -->
+                            <div class="border rounded-xl p-4 bg-slate-50 space-y-3">
+                                <div class="flex items-center justify-between">
+                                    <span class="font-bold text-slate-800 text-base flex items-center gap-2">
+                                        <span class="w-6 h-6 bg-indigo-600 text-white rounded-full flex items-center justify-center text-xs font-bold">1</span>
+                                        DC모터 4개 + 모터 브라켓 조립
+                                    </span>
+                                    <span class="text-xs bg-slate-200 text-slate-700 px-2 py-0.5 rounded font-mono">No.8 ~ 11</span>
+                                </div>
+                                <div class="rounded-lg overflow-hidden border border-slate-200 bg-white">
+                                    <img src="assets/4wd/p81_motor_bracket.png" alt="DC모터 브라켓 조립" class="w-full h-auto object-cover max-h-56">
+                                </div>
+                                <div class="text-sm text-slate-600 space-y-1">
+                                    <p>• <strong>나사산 방향 확인:</strong> 브라켓의 나사산이 있는 구멍이 <strong>위로 향하도록</strong> 결합합니다.</p>
+                                    <p>• <strong>돌출부 방향:</strong> 브라켓이 모터 돌출부와 <strong>반대 방향</strong>에 결합되었는지 반드시 확인합니다.</p>
+                                    <p>• 4개의 DC 모터를 동일한 방법으로 모두 조립합니다.</p>
+                                </div>
+                            </div>
+
+                            <!-- 1-2 -->
+                            <div class="border rounded-xl p-4 bg-slate-50 space-y-3">
+                                <div class="flex items-center justify-between">
+                                    <span class="font-bold text-slate-800 text-base flex items-center gap-2">
+                                        <span class="w-6 h-6 bg-indigo-600 text-white rounded-full flex items-center justify-center text-xs font-bold">2</span>
+                                        하부 프레임에 DC모터 4개 결합
+                                    </span>
+                                    <span class="text-xs bg-slate-200 text-slate-700 px-2 py-0.5 rounded font-mono">No.12 ~ 15</span>
+                                </div>
+                                <div class="rounded-lg overflow-hidden border border-slate-200 bg-white">
+                                    <img src="assets/4wd/p87_motor_chassis.png" alt="하부 바디 모터 결합" class="w-full h-auto object-cover max-h-56">
+                                </div>
+                                <div class="text-sm text-slate-600 space-y-1">
+                                    <p>• <strong>보호필름 제거:</strong> 하부 바디 프레임 아크릴에 부착된 양면 보호 커버를 떼어냅니다.</p>
+                                    <p>• <strong>M3 10mm 볼트 8개</strong>를 사용하여 조립한 모터 4개를 하부 바디 프레임 네 모퉁이에 단단히 고정합니다.</p>
+                                </div>
+                            </div>
+
+                            <!-- 1-3 -->
+                            <div class="border rounded-xl p-4 bg-slate-50 space-y-3">
+                                <div class="flex items-center justify-between">
+                                    <span class="font-bold text-slate-800 text-base flex items-center gap-2">
+                                        <span class="w-6 h-6 bg-indigo-600 text-white rounded-full flex items-center justify-center text-xs font-bold">3</span>
+                                        라인트레이서 3개 + 황동서포터 결합
+                                    </span>
+                                    <span class="text-xs bg-slate-200 text-slate-700 px-2 py-0.5 rounded font-mono">No.16 ~ 20</span>
+                                </div>
+                                <div class="rounded-lg overflow-hidden border border-slate-200 bg-white">
+                                    <img src="assets/4wd/p91_linetracer_mount.png" alt="라인트레이서 결합" class="w-full h-auto object-cover max-h-56">
+                                </div>
+                                <div class="text-sm text-slate-600 space-y-1">
+                                    <p>• <strong>M3 5mm 볼트 + 황동서포터 30mm</strong>로 3개의 라인트레이서(TCRT5000)를 각각 결합합니다.</p>
+                                    <p>• 프레임을 뒤집어(모터가 위를 향함) 하부 전면의 지정된 3개 구멍에 라인트레이서를 조립합니다.</p>
+                                    <p>• <strong>점퍼 케이블(암-암 20cm)</strong> 3묶음(총 9가닥)을 미리 꽂아둡니다.</p>
+                                </div>
+                            </div>
+
+                            <!-- 1-4 -->
+                            <div class="border rounded-xl p-4 bg-slate-50 space-y-3">
+                                <div class="flex items-center justify-between">
+                                    <span class="font-bold text-slate-800 text-base flex items-center gap-2">
+                                        <span class="w-6 h-6 bg-indigo-600 text-white rounded-full flex items-center justify-center text-xs font-bold">4</span>
+                                        L298N 모터드라이버 부착 & 모터 결선
+                                    </span>
+                                    <span class="text-xs bg-slate-200 text-slate-700 px-2 py-0.5 rounded font-mono">No.21 ~ 25</span>
+                                </div>
+                                <div class="rounded-lg overflow-hidden border border-slate-200 bg-white">
+                                    <img src="assets/4wd/p97_driver_motor_wire.png" alt="모터드라이버 결선" class="w-full h-auto object-cover max-h-56">
+                                </div>
+                                <div class="text-sm text-slate-600 space-y-1">
+                                    <p>• <strong>벨크로 부착:</strong> 벨크로 테이프로 하부 프레임 중앙에 L298N 모터드라이버를 단단히 붙입니다.</p>
+                                    <p>• <strong>오른쪽 모터(MOTOR A):</strong> 빨간선 2개를 묶어 터미널에 밀어 넣고 조이고, 검은선 2개를 묶어 접지 단자에 조입니다.</p>
+                                    <p>• <strong>왼쪽 모터(MOTOR B):</strong> 동일하게 빨간선 2개, 검은선 2개를 각각 묶어서 결선합니다.</p>
+                                </div>
+                            </div>
+
+                            <!-- 1-5 -->
+                            <div class="border rounded-xl p-4 bg-slate-50 space-y-3">
+                                <div class="flex items-center justify-between">
+                                    <span class="font-bold text-slate-800 text-base flex items-center gap-2">
+                                        <span class="w-6 h-6 bg-indigo-600 text-white rounded-full flex items-center justify-center text-xs font-bold">5</span>
+                                        배터리 전원선 & 모터 제어선 결선
+                                    </span>
+                                    <span class="text-xs bg-slate-200 text-slate-700 px-2 py-0.5 rounded font-mono">No.26 ~ 28</span>
+                                </div>
+                                <div class="rounded-lg overflow-hidden border border-slate-200 bg-white">
+                                    <img src="assets/4wd/p100_battery_driver_wire.png" alt="배터리 전원선 결선" class="w-full h-auto object-cover max-h-56">
+                                </div>
+                                <div class="text-sm text-slate-600 space-y-1">
+                                    <p>• <strong>6칸 배터리 홀더 전원선:</strong> L298N 전원 단자의 <strong class="text-rose-600">VCC(+12V)에 빨강선</strong>, <strong class="text-slate-800">GND(-)에 검정선</strong>을 드라이버로 조여 결선합니다.</p>
+                                    <p>• <strong>제어 점퍼선 6가닥 연결:</strong> ENA, IN1, IN2, IN3, IN4, ENB 핀에 암-수 또는 암-암 점퍼선을 꽂아 상부로 연결할 준비를 합니다.</p>
+                                </div>
+                            </div>
+
+                            <!-- 1-6 -->
+                            <div class="border rounded-xl p-4 bg-slate-50 space-y-3">
+                                <div class="flex items-center justify-between">
+                                    <span class="font-bold text-slate-800 text-base flex items-center gap-2">
+                                        <span class="w-6 h-6 bg-indigo-600 text-white rounded-full flex items-center justify-center text-xs font-bold">6</span>
+                                        황동서포터 3개 & 휠 4EA 결합 (완성)
+                                    </span>
+                                    <span class="text-xs bg-slate-200 text-slate-700 px-2 py-0.5 rounded font-mono">No.29 ~ 32</span>
+                                </div>
+                                <div class="rounded-lg overflow-hidden border border-slate-200 bg-white">
+                                    <img src="assets/4wd/p105_lower_chassis_done.png" alt="하부 바디 완성" class="w-full h-auto object-cover max-h-56">
+                                </div>
+                                <div class="text-sm text-slate-600 space-y-1">
+                                    <p>• <strong>황동 서포터 40mm 3개:</strong> 하부 바디 프레임 결합 구멍 3곳에 아래에서 M3 10mm 볼트로 조여 세웁니다.</p>
+                                    <p>• <strong>고무 바퀴 4개 장착:</strong> DC모터 축의 납작한 면(D컷)과 바퀴 중심축 구멍 모양을 맞춰 꾹 눌러 끼웁니다.</p>
+                                    <p>• 🎉 <strong>4휠 스마트 RC카 하부 바디 프레임 조립 완료!</strong></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- STEP 2: UPPER BODY ASSEMBLY & INTEGRATION (4강 내용) -->
+                    <div class="bg-white rounded-xl p-6 border border-slate-200 shadow-sm space-y-6">
+                        <div class="border-b pb-3 flex items-center justify-between flex-wrap gap-2">
+                            <h3 class="text-xl font-bold text-slate-800 flex items-center space-x-2">
+                                <span class="bg-amber-600 text-white text-xs px-2.5 py-1 rounded font-black">4강 STEP 2</span>
+                                <span>상부 바디 프레임(Upper Body) 조립 & 차체 종합 결합</span>
+                            </h3>
+                            <span class="text-xs text-slate-500 font-medium">PDF 106p ~ 140p 핵심 가이드</span>
+                        </div>
+
+                        <!-- IMPORTANT ALERT: SERVO ZERO -->
+                        <div class="bg-amber-50 border-2 border-amber-300 rounded-xl p-5 shadow-sm space-y-3">
+                            <div class="flex items-start space-x-3">
+                                <i class="fa-solid fa-triangle-exclamation text-amber-600 text-2xl mt-0.5 flex-shrink-0"></i>
+                                <div>
+                                    <h4 class="font-black text-amber-900 text-base sm:text-lg flex items-center gap-2">
+                                        🚨 [필수 조립 규칙] 서보 모터 90도 영점(Zero Point) 세팅 후 조립!
+                                    </h4>
+                                    <p class="text-amber-800 text-sm sm:text-base mt-1 leading-relaxed">
+                                        서보모터를 기계적으로 조립하기 전에 반드시 아두이노에 <strong><code class="bg-amber-200/80 px-1.5 py-0.5 rounded font-mono font-bold">5_Servo_zero.ino</code> 코드를 업로드하여 모터 축을 90도 중앙 위치로 회전</strong>시켜야 합니다! 영점을 맞추지 않고 조립하면 주행 시 초음파 센서가 옆이나 엉뚱한 방향을 바라보게 됩니다.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="bg-white p-3 rounded-lg border border-amber-200 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs sm:text-sm">
+                                <div class="flex items-center space-x-2 text-slate-700">
+                                    <i class="fa-solid fa-code text-indigo-600"></i>
+                                    <span>영점 설정 코드: <code class="font-mono font-bold">servo.attach(2); servo.write(90);</code></span>
+                                </div>
+                                <button onclick="document.getElementById('code-servo-zero-box').scrollIntoView({behavior: 'smooth'})" class="bg-amber-600 hover:bg-amber-700 text-white font-bold px-3 py-1.5 rounded text-xs transition">
+                                    영점 코드 보러가기 &rarr;
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Step 2 Cards Grid -->
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <!-- 2-1 -->
+                            <div class="border rounded-xl p-4 bg-slate-50 space-y-3">
+                                <div class="flex items-center justify-between">
+                                    <span class="font-bold text-slate-800 text-base flex items-center gap-2">
+                                        <span class="w-6 h-6 bg-amber-600 text-white rounded-full flex items-center justify-center text-xs font-bold">1</span>
+                                        초음파 센서 + 서보모터 브라켓 조립
+                                    </span>
+                                    <span class="text-xs bg-slate-200 text-slate-700 px-2 py-0.5 rounded font-mono">No.34 ~ 38</span>
+                                </div>
+                                <div class="rounded-lg overflow-hidden border border-slate-200 bg-white">
+                                    <img src="assets/4wd/p113_ultrasonic_servo_bracket.png" alt="초음파 서보 결합" class="w-full h-auto object-cover max-h-56">
+                                </div>
+                                <div class="text-sm text-slate-600 space-y-1">
+                                    <p>• 서보모터 양쪽에 브라켓 날개 2개를 각각 결합합니다.</p>
+                                    <p>• 초음파 센서를 브라켓 위에 올리고 <strong>케이블 타이</strong>로 단단히 묶어 고정합니다. 남은 케이블 타이 끝은 니퍼로 깔끔하게 잘라냅니다.</p>
+                                </div>
+                            </div>
+
+                            <!-- 2-2 -->
+                            <div class="border rounded-xl p-4 bg-slate-50 space-y-3">
+                                <div class="flex items-center justify-between">
+                                    <span class="font-bold text-slate-800 text-base flex items-center gap-2">
+                                        <span class="w-6 h-6 bg-amber-600 text-white rounded-full flex items-center justify-center text-xs font-bold">2</span>
+                                        서보 아래 브라켓 & 상부 바디 장착
+                                    </span>
+                                    <span class="text-xs bg-slate-200 text-slate-700 px-2 py-0.5 rounded font-mono">No.40 ~ 43</span>
+                                </div>
+                                <div class="rounded-lg overflow-hidden border border-slate-200 bg-white">
+                                    <img src="assets/4wd/p121_servo_upper_mount.png" alt="상부 서보 결합" class="w-full h-auto object-cover max-h-56">
+                                </div>
+                                <div class="text-sm text-slate-600 space-y-1">
+                                    <p>• 90도 영점이 맞춰진 서보모터 축에 아래 브라켓을 꽂고 <strong>중심축 볼트</strong>를 조여 결합합니다.</p>
+                                    <p>• 긴 볼트와 너트를 사용하여 서보모터 브라켓 조립체를 상부 바디 프레임 전면에 단단히 고정합니다.</p>
+                                </div>
+                            </div>
+
+                            <!-- 2-3 -->
+                            <div class="border rounded-xl p-4 bg-slate-50 space-y-3">
+                                <div class="flex items-center justify-between">
+                                    <span class="font-bold text-slate-800 text-base flex items-center gap-2">
+                                        <span class="w-6 h-6 bg-amber-600 text-white rounded-full flex items-center justify-center text-xs font-bold">3</span>
+                                        황동서포터 10mm & 15가닥 케이블 인출
+                                    </span>
+                                    <span class="text-xs bg-slate-200 text-slate-700 px-2 py-0.5 rounded font-mono">No.44 ~ 46</span>
+                                </div>
+                                <div class="rounded-lg overflow-hidden border border-slate-200 bg-white">
+                                    <img src="assets/4wd/p124_wire_threading.png" alt="점퍼선 인출" class="w-full h-auto object-cover max-h-56">
+                                </div>
+                                <div class="text-sm text-slate-600 space-y-1">
+                                    <p>• 상부 바디 프레임 뒷면에 <strong>황동 서포터 10mm 2개</strong>를 M3 10mm 볼트로 조립합니다.</p>
+                                    <p>• 하부 프레임의 모든 점퍼 케이블(라인트레이서 9가닥 + 모터드라이버 제어선 6가닥 = <strong>총 15가닥</strong>)을 상부 프레임 배선 구멍으로 위로 뺍니다.</p>
+                                </div>
+                            </div>
+
+                            <!-- 2-4 -->
+                            <div class="border rounded-xl p-4 bg-slate-50 space-y-3">
+                                <div class="flex items-center justify-between">
+                                    <span class="font-bold text-slate-800 text-base flex items-center gap-2">
+                                        <span class="w-6 h-6 bg-amber-600 text-white rounded-full flex items-center justify-center text-xs font-bold">4</span>
+                                        상·하부 바디 프레임 볼트 체결
+                                    </span>
+                                    <span class="text-xs bg-slate-200 text-slate-700 px-2 py-0.5 rounded font-mono">No.47 ~ 48</span>
+                                </div>
+                                <div class="rounded-lg overflow-hidden border border-slate-200 bg-white">
+                                    <img src="assets/4wd/p126_upper_lower_combine.png" alt="상하부 바디 결합" class="w-full h-auto object-cover max-h-56">
+                                </div>
+                                <div class="text-sm text-slate-600 space-y-1">
+                                    <p>• 하부에 미리 세워둔 40mm 서포터 3개 위에 상부 바디 프레임을 정확히 맞추어 얹습니다.</p>
+                                    <p>• <strong>M3 10mm 볼트 3개</strong>를 위에서 조여 상부와 하부 바디 프레임을 견고하게 결합합니다.</p>
+                                </div>
+                            </div>
+
+                            <!-- 2-5 -->
+                            <div class="border rounded-xl p-4 bg-slate-50 space-y-3">
+                                <div class="flex items-center justify-between">
+                                    <span class="font-bold text-slate-800 text-base flex items-center gap-2">
+                                        <span class="w-6 h-6 bg-amber-600 text-white rounded-full flex items-center justify-center text-xs font-bold">5</span>
+                                        배터리 홀더 고정 & 미니 브레드보드 부착
+                                    </span>
+                                    <span class="text-xs bg-slate-200 text-slate-700 px-2 py-0.5 rounded font-mono">No.49 ~ 51</span>
+                                </div>
+                                <div class="rounded-lg overflow-hidden border border-slate-200 bg-white">
+                                    <img src="assets/4wd/p129_ir_receiver_mount.png" alt="적외선 수신 센서 부착" class="w-full h-auto object-cover max-h-56">
+                                </div>
+                                <div class="text-sm text-slate-600 space-y-1">
+                                    <p>• 둥근 납작머리 볼트로 10mm 서포터 위에 <strong>6구 배터리 홀더</strong>를 조립합니다.</p>
+                                    <p>• 상부 전면에 <strong>미니 브레드보드</strong>를 양면테이프로 부착하고, <strong>적외선(IR) 수신 센서</strong>를 꽂아줍니다.</p>
+                                </div>
+                            </div>
+
+                            <!-- 2-6 -->
+                            <div class="border rounded-xl p-4 bg-slate-50 space-y-3">
+                                <div class="flex items-center justify-between">
+                                    <span class="font-bold text-slate-800 text-base flex items-center gap-2">
+                                        <span class="w-6 h-6 bg-amber-600 text-white rounded-full flex items-center justify-center text-xs font-bold">6</span>
+                                        아두이노 + 센서 쉴드 장착 (완성 뷰)
+                                    </span>
+                                    <span class="text-xs bg-slate-200 text-slate-700 px-2 py-0.5 rounded font-mono">No.52</span>
+                                </div>
+                                <div class="rounded-lg overflow-hidden border border-slate-200 bg-white">
+                                    <img src="assets/4wd/p130_final_assembled_view.png" alt="최종 조립 완성 뷰" class="w-full h-auto object-cover max-h-56">
+                                </div>
+                                <div class="text-sm text-slate-600 space-y-1">
+                                    <p>• 아두이노 우노 보드를 황동서포터 위에 올리고 볼트로 결합한 뒤, 그 위에 <strong>센서 확장 쉴드 V5.0</strong>을 핀에 맞게 꼭 눌러 결합합니다.</p>
+                                    <p>• 🎉 <strong>4휠 스마트 RC카 전체 하드웨어 프레임 조립 완료!</strong></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- STEP 3: SENSOR SHIELD WIRING & PIN MAPPING -->
+                    <div class="bg-white rounded-xl p-6 border border-slate-200 shadow-sm space-y-6">
+                        <div class="border-b pb-3 flex items-center justify-between flex-wrap gap-2">
+                            <h3 class="text-xl font-bold text-slate-800 flex items-center space-x-2">
+                                <span class="bg-emerald-600 text-white text-xs px-2.5 py-1 rounded font-black">STEP 3</span>
+                                <span>센서 확장 쉴드 V5.0 종합 회로 결선도 & 핀 매핑 테이블</span>
+                            </h3>
+                            <span class="text-xs text-slate-500 font-medium">PDF 131p ~ 140p 결선 완벽 매핑</span>
+                        </div>
+
+                        <!-- Info Banner -->
+                        <div class="bg-emerald-50 border border-emerald-200 rounded-lg p-4 text-emerald-900 text-sm sm:text-base leading-relaxed">
+                            <i class="fa-solid fa-circle-info text-emerald-600 mr-1.5"></i>
+                            센서 확장 쉴드의 핀은 <strong>G (GND / 접지)</strong>, <strong>V (VCC / 전원 +5V)</strong>, <strong>S (Signal / 디지털·아날로그 제어 신호)</strong> 3줄로 구성되어 있습니다. 케이블 결선 시 G, V, S의 순서가 뒤바뀌지 않도록 주의하세요!
+                        </div>
+
+                        <!-- Comprehensive Pinout Table -->
+                        <div class="overflow-x-auto">
+                            <table class="w-full border-collapse border border-slate-200 text-sm sm:text-base">
+                                <thead>
+                                    <tr class="bg-slate-100 text-slate-800 font-bold border-b border-slate-200 text-left">
+                                        <th class="p-3 border-r">구분 / 부품</th>
+                                        <th class="p-3 border-r">부품 핀 이름</th>
+                                        <th class="p-3 border-r">센서 쉴드 연결 포트</th>
+                                        <th class="p-3 border-r">권장 선 색상 / 규칙</th>
+                                        <th class="p-3">기능 및 설명</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y divide-slate-200 text-slate-700">
+                                    <!-- Motor Driver -->
+                                    <tr class="bg-indigo-50/50 hover:bg-indigo-50">
+                                        <td class="p-3 font-bold text-indigo-900 border-r" rowspan="6">L298N 모터드라이버</td>
+                                        <td class="p-3 font-mono font-semibold border-r">ENA</td>
+                                        <td class="p-3 font-mono font-bold text-indigo-600 border-r">S (Digital 5)</td>
+                                        <td class="p-3 border-r">PWM 제어선</td>
+                                        <td class="p-3">오른쪽 모터 속도 제어 (0~255)</td>
+                                    </tr>
+                                    <tr class="bg-indigo-50/50 hover:bg-indigo-50">
+                                        <td class="p-3 font-mono font-semibold border-r">ENB</td>
+                                        <td class="p-3 font-mono font-bold text-indigo-600 border-r">S (Digital 6)</td>
+                                        <td class="p-3 border-r">PWM 제어선</td>
+                                        <td class="p-3">왼쪽 모터 속도 제어 (0~255)</td>
+                                    </tr>
+                                    <tr class="bg-indigo-50/50 hover:bg-indigo-50">
+                                        <td class="p-3 font-mono font-semibold border-r">IN1</td>
+                                        <td class="p-3 font-mono font-bold text-slate-800 border-r">S (Digital 8)</td>
+                                        <td class="p-3 border-r">방향 신호 1</td>
+                                        <td class="p-3">오른쪽 모터 정회전/역회전 신호</td>
+                                    </tr>
+                                    <tr class="bg-indigo-50/50 hover:bg-indigo-50">
+                                        <td class="p-3 font-mono font-semibold border-r">IN2</td>
+                                        <td class="p-3 font-mono font-bold text-slate-800 border-r">S (Digital 9)</td>
+                                        <td class="p-3 border-r">방향 신호 2</td>
+                                        <td class="p-3">오른쪽 모터 정회전/역회전 신호</td>
+                                    </tr>
+                                    <tr class="bg-indigo-50/50 hover:bg-indigo-50">
+                                        <td class="p-3 font-mono font-semibold border-r">IN3</td>
+                                        <td class="p-3 font-mono font-bold text-slate-800 border-r">S (Digital 10)</td>
+                                        <td class="p-3 border-r">방향 신호 3</td>
+                                        <td class="p-3">왼쪽 모터 정회전/역회전 신호</td>
+                                    </tr>
+                                    <tr class="bg-indigo-50/50 hover:bg-indigo-50">
+                                        <td class="p-3 font-mono font-semibold border-r">IN4</td>
+                                        <td class="p-3 font-mono font-bold text-slate-800 border-r">S (Digital 11)</td>
+                                        <td class="p-3 border-r">방향 신호 4</td>
+                                        <td class="p-3">왼쪽 모터 정회전/역회전 신호</td>
+                                    </tr>
+
+                                    <!-- Servo Motor -->
+                                    <tr class="bg-amber-50/50 hover:bg-amber-50">
+                                        <td class="p-3 font-bold text-amber-900 border-r" rowspan="3">서보 모터 (SG90)</td>
+                                        <td class="p-3 font-mono font-semibold border-r">GND</td>
+                                        <td class="p-3 font-mono font-bold text-slate-800 border-r">G (Digital 2)</td>
+                                        <td class="p-3 border-r text-amber-800 font-semibold">갈색 (Brown)</td>
+                                        <td class="p-3">모터 그라운드 접지</td>
+                                    </tr>
+                                    <tr class="bg-amber-50/50 hover:bg-amber-50">
+                                        <td class="p-3 font-mono font-semibold border-r">VCC</td>
+                                        <td class="p-3 font-mono font-bold text-rose-600 border-r">V (Digital 2)</td>
+                                        <td class="p-3 border-r text-rose-600 font-semibold">빨간색 (Red)</td>
+                                        <td class="p-3">모터 전원 공급 (+5V)</td>
+                                    </tr>
+                                    <tr class="bg-amber-50/50 hover:bg-amber-50">
+                                        <td class="p-3 font-mono font-semibold border-r">Signal</td>
+                                        <td class="p-3 font-mono font-bold text-amber-600 border-r">S (Digital 2)</td>
+                                        <td class="p-3 border-r text-amber-600 font-semibold">주황/노랑 (Orange)</td>
+                                        <td class="p-3">각도 제어 PWM 신호</td>
+                                    </tr>
+
+                                    <!-- Ultrasonic -->
+                                    <tr class="hover:bg-slate-50">
+                                        <td class="p-3 font-bold text-slate-900 border-r" rowspan="4">초음파 센서 (HC-SR04)</td>
+                                        <td class="p-3 font-mono font-semibold border-r">VCC</td>
+                                        <td class="p-3 font-mono font-bold text-rose-600 border-r">V (Digital 12)</td>
+                                        <td class="p-3 border-r">빨강</td>
+                                        <td class="p-3">+5V 전원 공급</td>
+                                    </tr>
+                                    <tr class="hover:bg-slate-50">
+                                        <td class="p-3 font-mono font-semibold border-r">GND</td>
+                                        <td class="p-3 font-mono font-bold text-slate-800 border-r">G (Digital 12)</td>
+                                        <td class="p-3 border-r">검정/갈색</td>
+                                        <td class="p-3">그라운드 접지</td>
+                                    </tr>
+                                    <tr class="hover:bg-slate-50">
+                                        <td class="p-3 font-mono font-semibold border-r">ECHO</td>
+                                        <td class="p-3 font-mono font-bold text-indigo-600 border-r">S (Digital 12)</td>
+                                        <td class="p-3 border-r">신호선</td>
+                                        <td class="p-3">반사파 수신 핀 (INPUT)</td>
+                                    </tr>
+                                    <tr class="hover:bg-slate-50">
+                                        <td class="p-3 font-mono font-semibold border-r">TRIG</td>
+                                        <td class="p-3 font-mono font-bold text-indigo-600 border-r">S (Digital 13)</td>
+                                        <td class="p-3 border-r">신호선</td>
+                                        <td class="p-3">초음파 발신 트리거 핀 (OUTPUT)</td>
+                                    </tr>
+
+                                    <!-- IR Receiver -->
+                                    <tr class="bg-rose-50/50 hover:bg-rose-50">
+                                        <td class="p-3 font-bold text-rose-900 border-r" rowspan="3">적외선 수신 모듈</td>
+                                        <td class="p-3 font-mono font-semibold border-r">GND (-)</td>
+                                        <td class="p-3 font-mono font-bold text-slate-800 border-r">G (Analog A0)</td>
+                                        <td class="p-3 border-r">검정</td>
+                                        <td class="p-3">그라운드 접지</td>
+                                    </tr>
+                                    <tr class="bg-rose-50/50 hover:bg-rose-50">
+                                        <td class="p-3 font-mono font-semibold border-r">VCC (+)</td>
+                                        <td class="p-3 font-mono font-bold text-rose-600 border-r">V (Analog A0)</td>
+                                        <td class="p-3 border-r">빨강</td>
+                                        <td class="p-3">+5V 전원 공급</td>
+                                    </tr>
+                                    <tr class="bg-rose-50/50 hover:bg-rose-50">
+                                        <td class="p-3 font-mono font-semibold border-r">SIG (S)</td>
+                                        <td class="p-3 font-mono font-bold text-rose-600 border-r">S (Analog A0)</td>
+                                        <td class="p-3 border-r">신호선</td>
+                                        <td class="p-3">리모컨 38kHz 적외선 수신 신호</td>
+                                    </tr>
+
+                                    <!-- Line Tracer 3CH -->
+                                    <tr class="bg-cyan-50/50 hover:bg-cyan-50">
+                                        <td class="p-3 font-bold text-cyan-900 border-r" rowspan="3">라인트레이서 3채널<br><span class="text-xs font-normal text-slate-500">(TCRT5000)</span></td>
+                                        <td class="p-3 font-mono font-semibold border-r">L1 (우측 센서)</td>
+                                        <td class="p-3 font-mono font-bold text-cyan-700 border-r">G, V, S (Analog A3)</td>
+                                        <td class="p-3 border-r">GND / VCC / OUT</td>
+                                        <td class="p-3">오른쪽 검은색 라인 감지 센서</td>
+                                    </tr>
+                                    <tr class="bg-cyan-50/50 hover:bg-cyan-50">
+                                        <td class="p-3 font-mono font-semibold border-r">L2 (중앙 센서)</td>
+                                        <td class="p-3 font-mono font-bold text-cyan-700 border-r">G, V, S (Analog A4)</td>
+                                        <td class="p-3 border-r">GND / VCC / OUT</td>
+                                        <td class="p-3">가운데 검은색 라인 감지 센서</td>
+                                    </tr>
+                                    <tr class="bg-cyan-50/50 hover:bg-cyan-50">
+                                        <td class="p-3 font-mono font-semibold border-r">L3 (좌측 센서)</td>
+                                        <td class="p-3 font-mono font-bold text-cyan-700 border-r">G, V, S (Analog A5)</td>
+                                        <td class="p-3 border-r">GND / VCC / OUT</td>
+                                        <td class="p-3">왼쪽 검은색 라인 감지 센서</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <!-- Visual Wiring Images Grid -->
+                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 pt-2">
+                            <div class="border rounded-lg p-3 bg-slate-50 space-y-2">
+                                <span class="text-xs font-bold text-indigo-700 block">모터드라이버 결선 (S5,6 / S8~11)</span>
+                                <div class="rounded overflow-hidden border bg-white">
+                                    <img src="assets/4wd/p132_wiring_motordriver.png" alt="모터드라이버 결선표" class="w-full h-auto">
+                                </div>
+                            </div>
+                            <div class="border rounded-lg p-3 bg-slate-50 space-y-2">
+                                <span class="text-xs font-bold text-amber-700 block">서보모터 결선 (G2, V2, S2)</span>
+                                <div class="rounded overflow-hidden border bg-white">
+                                    <img src="assets/4wd/p134_wiring_servo.png" alt="서보모터 결선표" class="w-full h-auto">
+                                </div>
+                            </div>
+                            <div class="border rounded-lg p-3 bg-slate-50 space-y-2">
+                                <span class="text-xs font-bold text-slate-700 block">초음파센서 결선 (G12, V12, S12, S13)</span>
+                                <div class="rounded overflow-hidden border bg-white">
+                                    <img src="assets/4wd/p135_wiring_ultrasonic.png" alt="초음파센서 결선표" class="w-full h-auto">
+                                </div>
+                            </div>
+                            <div class="border rounded-lg p-3 bg-slate-50 space-y-2">
+                                <span class="text-xs font-bold text-cyan-700 block">라인트레이서 3개 결선 (A3, A4, A5)</span>
+                                <div class="rounded overflow-hidden border bg-white">
+                                    <img src="assets/4wd/p139_wiring_linetracer.png" alt="라인트레이서 결선표" class="w-full h-auto">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- STEP 4: L298N PRINCIPLE & H-BRIDGE TRUTH TABLE -->
+                    <div class="bg-white rounded-xl p-6 border border-slate-200 shadow-sm space-y-6">
+                        <div class="border-b pb-3 flex items-center justify-between flex-wrap gap-2">
+                            <h3 class="text-xl font-bold text-slate-800 flex items-center space-x-2">
+                                <span class="bg-rose-600 text-white text-xs px-2.5 py-1 rounded font-black">STEP 4</span>
+                                <span>L298N 듀얼 H-Bridge 모터 드라이버 동작 원리 & 진리표</span>
+                            </h3>
+                            <span class="text-xs text-slate-500 font-medium">PDF 141p ~ 151p 핵심 이론</span>
+                        </div>
+
+                        <!-- 2-column Theory -->
+                        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 items-center">
+                            <div class="space-y-4 text-slate-700 text-base leading-relaxed">
+                                <h4 class="font-bold text-slate-800 text-lg text-indigo-700 flex items-center gap-1.5">
+                                    <i class="fa-solid fa-bolt"></i> 왜 모터 드라이버가 꼭 필요할까요?
+                                </h4>
+                                <p>
+                                    아두이노 IO 핀의 출력 전류는 최대 <strong>40mA</strong>에 불과합니다. 반면 RC카 구동에 사용되는 4개의 DC 모터는 회전 시 <strong>수백 mA ~ 1A 이상</strong>의 강력한 전류를 필요로 합니다. 아두이노 보드에 직접 모터를 연결하면 전력 부족으로 오작동하거나 칩이 타버릴 수 있기 때문에, 외부 전원(배터리)을 모터에 안전하게 공급하고 방향과 속도를 스위칭해주는 <strong>L298N 전용 모터 드라이버</strong>가 필수적입니다.
+                                </p>
+                                <h4 class="font-bold text-slate-800 text-lg text-indigo-700 flex items-center gap-1.5 pt-2">
+                                    <i class="fa-solid fa-shuffle"></i> H-Bridge 회로의 스위칭 메커니즘
+                                </h4>
+                                <p>
+                                    L298N 내부에는 알파벳 'H' 모양으로 배치된 4개의 트랜지스터 스위치가 내장되어 있습니다. 대각선 방향의 스위치 2개씩을 교대로 ON/OFF 함으로써, 모터 양단에 흐르는 전류의 방향을 자유자재로 바꾸어 <strong>정회전(전진)</strong>과 <strong>역회전(후진)</strong>을 실현합니다.
+                                </p>
+                            </div>
+                            <div class="rounded-xl overflow-hidden border border-slate-200 shadow-sm bg-slate-50 p-2">
+                                <img src="assets/4wd/p143_hbridge_principle.png" alt="H-Bridge 동작원리 다이어그램" class="w-full h-auto">
+                            </div>
+                        </div>
+
+                        <!-- Motor Direction Truth Table -->
+                        <div class="space-y-3 pt-2">
+                            <h4 class="font-bold text-slate-800 text-base sm:text-lg flex items-center gap-2">
+                                <i class="fa-solid fa-table text-indigo-600"></i>
+                                <span>L298N 모터 방향 제어 진리표 (Truth Table)</span>
+                            </h4>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div class="rounded-xl overflow-hidden border border-slate-200 bg-white p-2">
+                                    <img src="assets/4wd/p151_motor_direction_truth_table.png" alt="모터 드라이버 방향 정리표" class="w-full h-auto">
+                                </div>
+                                <div class="space-y-2">
+                                    <div class="bg-indigo-50 border border-indigo-200 p-3.5 rounded-lg text-sm">
+                                        <strong class="text-indigo-900 block mb-1 text-base">🚗 전진 (SmartCar_Go)</strong>
+                                        <div class="font-mono text-xs sm:text-sm space-y-0.5 text-slate-700">
+                                            <div>• 오른쪽 모터: IN1 = <span class="text-rose-600 font-bold">HIGH</span>, IN2 = <span class="text-blue-600 font-bold">LOW</span></div>
+                                            <div>• 왼쪽 모터: IN3 = <span class="text-rose-600 font-bold">HIGH</span>, IN4 = <span class="text-blue-600 font-bold">LOW</span></div>
+                                        </div>
+                                    </div>
+                                    <div class="bg-amber-50 border border-amber-200 p-3.5 rounded-lg text-sm">
+                                        <strong class="text-amber-900 block mb-1 text-base">🔙 후진 (SmartCar_Back)</strong>
+                                        <div class="font-mono text-xs sm:text-sm space-y-0.5 text-slate-700">
+                                            <div>• 오른쪽 모터: IN1 = <span class="text-blue-600 font-bold">LOW</span>, IN2 = <span class="text-rose-600 font-bold">HIGH</span></div>
+                                            <div>• 왼쪽 모터: IN3 = <span class="text-blue-600 font-bold">LOW</span>, IN4 = <span class="text-rose-600 font-bold">HIGH</span></div>
+                                        </div>
+                                    </div>
+                                    <div class="bg-emerald-50 border border-emerald-200 p-3.5 rounded-lg text-sm">
+                                        <strong class="text-emerald-900 block mb-1 text-base">⚖️ 속도 제어 & 직진 보정 (PWM)</strong>
+                                        <p class="text-xs sm:text-sm text-slate-600">
+                                            ENA, ENB 핀에 <code class="font-mono">analogWrite(pin, 0~255)</code> 값을 전달합니다. 제작 오차로 RC카가 오른쪽으로 치우쳐 달릴 경우, 우측 모터 속도를 올리거나 좌측 모터 속도를 살짝 낮추어 완벽한 직진 주행을 맞출 수 있습니다!
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- STEP 5: ARDUINO SKETCH EXAMPLES & TEST -->
+                    <div class="bg-white rounded-xl p-6 border border-slate-200 shadow-sm space-y-6">
+                        <div class="border-b pb-3 flex items-center justify-between flex-wrap gap-2">
+                            <h3 class="text-xl font-bold text-slate-800 flex items-center space-x-2">
+                                <span class="bg-indigo-600 text-white text-xs px-2.5 py-1 rounded font-black">STEP 5</span>
+                                <span>실습 예제 코드 & 모터 주행 테스트</span>
+                            </h3>
+                            <span class="text-xs text-slate-500 font-medium">아두이노 IDE 업로드 실습</span>
+                        </div>
+
+                        <!-- CODE 1: SERVO ZERO -->
+                        <div id="code-servo-zero-box" class="space-y-3">
+                            <div class="flex items-center justify-between flex-wrap gap-2 bg-slate-100 p-3 rounded-lg">
+                                <div class="flex items-center space-x-2">
+                                    <span class="bg-amber-600 text-white text-xs font-bold px-2 py-0.5 rounded">예제 1</span>
+                                    <h4 class="font-bold text-slate-800 text-base">5_Servo_zero.ino (서보 모터 90도 영점 조절 코드)</h4>
+                                </div>
+                                <button onclick="copyCode('code-servo-zero')" class="bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-bold px-3 py-1.5 rounded transition flex items-center gap-1">
+                                    <i class="fa-solid fa-copy"></i> 코드 복사
+                                </button>
+                            </div>
+                            <div class="bg-slate-900 text-slate-200 rounded-xl p-4 overflow-x-auto text-sm sm:text-base font-mono leading-relaxed border border-slate-800">
+<pre id="code-servo-zero"><code>#include &lt;Servo.h&gt;  
+Servo servo;
+
+void setup() {
+  servo.attach(2);      // 서보모터를 디지털 2번 핀에 연결
+  Serial.begin(9600);  
+  servo.write(90);       // 서보모터를 정확히 90도(중앙)로 회전
+  delay(1000);           // 1초간 회전 완료 대기
+}
+
+void loop() {
+  // 영점을 유지하므로 loop는 비워둡니다.
+}</code></pre>
+                            </div>
+                            <p class="text-xs text-slate-500">
+                                💡 <strong>사용법:</strong> 서보모터를 쉴드의 2번 핀(GND=G2, VCC=V2, SIG=S2)에 꽂고 위 코드를 업로드하면 축이 정중앙(90도)으로 이동합니다. 이 상태에서 조립을 진행하세요.
+                            </p>
+                        </div>
+
+                        <!-- CODE 2: MOTOR DRIVER GO/BACK -->
+                        <div class="space-y-3 pt-4 border-t">
+                            <div class="flex items-center justify-between flex-wrap gap-2 bg-slate-100 p-3 rounded-lg">
+                                <div class="flex items-center space-x-2">
+                                    <span class="bg-indigo-600 text-white text-xs font-bold px-2 py-0.5 rounded">예제 2</span>
+                                    <h4 class="font-bold text-slate-800 text-base">6_Motor_driver.ino (L298N 전진 3초 / 후진 3초 주행 테스트)</h4>
+                                </div>
+                                <button onclick="copyCode('code-motor-driver')" class="bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-bold px-3 py-1.5 rounded transition flex items-center gap-1">
+                                    <i class="fa-solid fa-copy"></i> 코드 복사
+                                </button>
+                            </div>
+                            <div class="bg-slate-900 text-slate-200 rounded-xl p-4 overflow-x-auto text-sm sm:text-base font-mono leading-relaxed border border-slate-800">
+<pre id="code-motor-driver"><code>// =========================================================
+// [에듀이노] 4휠 스마트 RC카 - 6_Motor_driver
+// L298N 모터 드라이버를 이용한 4휠 전진/후진 구동 예제
+// =========================================================
+
+int RightMotor_E_pin = 5;       // 오른쪽 모터 속도 제어(PWM) -> D5
+int RightMotor_1_pin = 8;       // 오른쪽 모터 정/역 방향 제어 IN1 -> D8
+int RightMotor_2_pin = 9;       // 오른쪽 모터 정/역 방향 제어 IN2 -> D9
+int LeftMotor_3_pin  = 10;      // 왼쪽 모터 정/역 방향 제어 IN3 -> D10
+int LeftMotor_4_pin  = 11;      // 왼쪽 모터 정/역 방향 제어 IN4 -> D11
+int LeftMotor_E_pin  = 6;       // 왼쪽 모터 속도 제어(PWM) -> D6
+
+// 함수 원형 선언
+void SmartCar_Go();
+void SmartCar_Back();
+
+// 좌우 모터 기본 속도 (0 ~ 255 범위, 153은 약 60% 출력)
+int L_MotorSpeed = 153;        // 왼쪽 모터 속도
+int R_MotorSpeed = 153;        // 오른쪽 모터 속도
+
+void setup() {
+  Serial.begin(9600);
+  
+  // 모든 모터 제어 핀을 출력(OUTPUT) 모드로 설정
+  pinMode(RightMotor_E_pin, OUTPUT);        
+  pinMode(RightMotor_1_pin, OUTPUT);
+  pinMode(RightMotor_2_pin, OUTPUT);
+  pinMode(LeftMotor_3_pin, OUTPUT);
+  pinMode(LeftMotor_4_pin, OUTPUT);
+  pinMode(LeftMotor_E_pin, OUTPUT);
+
+  Serial.println("4WD Smart Car Motor Driver Ready!");
+}
+
+void loop() {
+  // 1. 3초간 전진 주행
+  SmartCar_Go();
+  delay(3000);
+
+  // 2. 3초간 후진 주행
+  SmartCar_Back();
+  delay(3000);
+}
+
+// ---------------------------------------------------------
+// 스마트카 전진 함수 (모든 바퀴 정회전)
+// ---------------------------------------------------------
+void SmartCar_Go() {
+  Serial.println("Forward (전진)");
+  // 오른쪽 모터 정회전
+  digitalWrite(RightMotor_1_pin, HIGH);
+  digitalWrite(RightMotor_2_pin, LOW);
+  // 왼쪽 모터 정회전
+  digitalWrite(LeftMotor_3_pin, HIGH);
+  digitalWrite(LeftMotor_4_pin, LOW);
+  
+  // 좌우 속도 인가 (PWM)
+  analogWrite(RightMotor_E_pin, R_MotorSpeed);
+  analogWrite(LeftMotor_E_pin, L_MotorSpeed);
+}
+
+// ---------------------------------------------------------
+// 스마트카 후진 함수 (모든 바퀴 역회전)
+// ---------------------------------------------------------
+void SmartCar_Back() {
+  Serial.println("Backward (후진)");
+  // 오른쪽 모터 역회전
+  digitalWrite(RightMotor_1_pin, LOW);
+  digitalWrite(RightMotor_2_pin, HIGH);
+  // 왼쪽 모터 역회전
+  digitalWrite(LeftMotor_3_pin, LOW);
+  digitalWrite(LeftMotor_4_pin, HIGH);
+  
+  // 좌우 속도 인가 (PWM)
+  analogWrite(RightMotor_E_pin, R_MotorSpeed);
+  analogWrite(LeftMotor_E_pin, L_MotorSpeed);
+}</code></pre>
+                            </div>
+                        </div>
+
+                        <!-- Safe Testing Guidelines -->
+                        <div class="bg-rose-50 border border-rose-200 rounded-xl p-5 space-y-2 text-rose-950">
+                            <h4 class="font-bold text-base sm:text-lg flex items-center gap-2 text-rose-800">
+                                <i class="fa-solid fa-shield-halved"></i> 모터 주행 테스트 시 안전 필수 수칙!
+                            </h4>
+                            <ul class="text-sm sm:text-base space-y-1.5 list-disc list-inside text-rose-900">
+                                <li><strong>코드 업로드 시:</strong> 컴퓨터 USB를 연결할 때 배터리 홀더 전원 스위치는 <strong>OFF</strong>로 둡니다.</li>
+                                <li><strong>테스트 시 차체 거치:</strong> 바퀴가 바닥에 닿은 상태에서 갑자기 출발하면 부품이 떨어질 수 있으니, 상자나 물건 위에 <strong>바퀴가 공중에 뜨도록 거치</strong>한 상태에서 배터리 전원을 켭니다.</li>
+                                <li><strong>실습 종료 시:</strong> 실습이 끝나면 건전지 과방전 및 모터 발열을 막기 위해 <strong>반드시 배터리 스위치를 끄거나 배터리를 분리</strong>합니다!</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- TROUBLESHOOTING & FAQ -->
+                    <div class="bg-white rounded-xl p-6 border border-slate-200 shadow-sm space-y-4">
+                        <h3 class="text-xl font-bold text-slate-800 flex items-center space-x-2 border-b pb-3">
+                            <i class="fa-solid fa-wrench text-amber-500"></i>
+                            <span>조립 & 주행 자주 묻는 질문 (Troubleshooting)</span>
+                        </h3>
+                        <div class="space-y-3">
+                            <div class="bg-slate-50 p-4 rounded-lg border border-slate-200">
+                                <h4 class="font-bold text-slate-800 text-base mb-1">Q1. 전진을 시켰는데 좌우 바퀴가 서로 반대로 돌거나 뒤로 가요!</h4>
+                                <p class="text-sm text-slate-600 leading-relaxed">
+                                    A. 모터 단자 결선 시 (+)선과 (-)선이 바뀌었을 때 발생합니다. 해당 바퀴의 L298N 단자대 나사를 풀고 빨간선과 검은선 위치를 서로 맞바꾸어 조여주거나, 아두이노 코드의 <code class="font-mono text-indigo-600">SmartCar_Go()</code> 함수에서 HIGH와 LOW 값을 서로 반대로 변경해주면 깔끔하게 해결됩니다.
+                                </p>
+                            </div>
+                            <div class="bg-slate-50 p-4 rounded-lg border border-slate-200">
+                                <h4 class="font-bold text-slate-800 text-base mb-1">Q2. RC카가 똑바로 가지 않고 자꾸 한쪽(오른쪽 또는 왼쪽)으로 휘어요!</h4>
+                                <p class="text-sm text-slate-600 leading-relaxed">
+                                    A. 모터의 기어 및 물리적 특성상 좌우 회전 속도에 미세한 차이가 발생할 수 있습니다. 오른쪽으로 휜다면 오른쪽 바퀴가 느린 것이므로, 코드 상단의 <code class="font-mono text-indigo-600">R_MotorSpeed</code> 값을 153에서 170~180 정도로 높여주거나, <code class="font-mono text-indigo-600">L_MotorSpeed</code>를 140 정도로 낮추어 주행 테스트를 반복하며 중심을 맞춥니다.
+                                </p>
+                            </div>
+                            <div class="bg-slate-50 p-4 rounded-lg border border-slate-200">
+                                <h4 class="font-bold text-slate-800 text-base mb-1">Q3. 코드를 업로드했는데 바퀴가 전혀 돌지 않고 삐~ 소리만 나요!</h4>
+                                <p class="text-sm text-slate-600 leading-relaxed">
+                                    A. 모터는 USB 전원만으로는 구동되지 않습니다. AA 건전지 6개가 배터리 홀더에 정상적으로 장착되어 있는지 확인하고, L298N 전원 단자대의 나사가 단단히 조여져 있는지 점검하세요. 또한 PWM 속도 값이 너무 낮으면(예: 100 이하) 모터가 돌지 못하므로 속도 변수 값을 150 이상으로 지정해 보세요.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
                 <!-- SECTION 6: QUIZ -->
                 <section id="sect-quiz" class="section-content hidden space-y-6">
                     <div class="border-b border-slate-200 pb-4">
@@ -3250,6 +4134,70 @@ void stopMotors() {
                 console.error('복사 중 오류 발생:', err);
             });
         }
+
+        // =========================================================
+        // 이미지 클릭 시 큰 화면 모달(Lightbox) 확대 기능
+        // =========================================================
+        document.addEventListener('DOMContentLoaded', () => {
+            const modal = document.getElementById('image-lightbox-modal');
+            const modalImg = document.getElementById('lightbox-img');
+            const modalCaption = document.getElementById('lightbox-caption');
+            const closeBtn = document.getElementById('lightbox-close-btn');
+
+            function openLightbox(src, alt) {
+                if (!modal || !modalImg) return;
+                modalImg.src = src;
+                modalCaption.textContent = alt || '이미지 확대 보기';
+                modal.classList.remove('hidden');
+                setTimeout(() => modal.classList.add('active'), 10);
+                document.body.style.overflow = 'hidden';
+            }
+
+            function closeLightbox() {
+                if (!modal) return;
+                modal.classList.remove('active');
+                setTimeout(() => {
+                    modal.classList.add('hidden');
+                    if (modalImg) modalImg.src = '';
+                }, 250);
+                document.body.style.overflow = '';
+            }
+
+            // 모든 컨텐츠 내 이미지 클릭 시 모달 열기 (이벤트 위임)
+            document.addEventListener('click', (e) => {
+                const img = e.target.closest('img');
+                if (img && !img.closest('#image-lightbox-modal')) {
+                    // 작은 아이콘/썸네일 제외 (너비 40px 초과 대상)
+                    if (img.naturalWidth > 40 || img.clientWidth > 40) {
+                        openLightbox(img.src, img.alt);
+                    }
+                }
+            });
+
+            if (closeBtn) closeBtn.addEventListener('click', closeLightbox);
+            if (modal) modal.addEventListener('click', closeLightbox);
+
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && modal && modal.classList.contains('active')) {
+                    closeLightbox();
+                }
+            });
+        });
     </script>
+
+    <!-- Image Lightbox Modal for Fullscreen Image View -->
+    <div id="image-lightbox-modal" class="fixed inset-0 z-50 bg-black/85 backdrop-blur-sm hidden flex items-center justify-center p-4 transition-opacity duration-300 opacity-0 pointer-events-none" style="z-index: 9999;">
+        <button id="lightbox-close-btn" class="absolute top-4 right-5 text-white/80 hover:text-white text-3xl font-bold p-3 z-10 transition-transform hover:scale-125 focus:outline-none" title="닫기 (ESC 또는 배경 클릭)">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+        <div class="relative max-w-5xl max-h-[92vh] flex flex-col items-center justify-center" onclick="event.stopPropagation();">
+            <img id="lightbox-img" src="" alt="" class="max-w-full max-h-[82vh] object-contain rounded-xl shadow-2xl transition-all duration-300 select-none border border-slate-700/50 bg-slate-950/50">
+            <div id="lightbox-caption" class="mt-3 text-center text-slate-200 text-sm sm:text-base font-semibold bg-slate-900/90 px-4 py-1.5 rounded-full border border-slate-700/60 max-w-2xl truncate shadow-lg"></div>
+            <p class="text-xs text-slate-400 mt-1.5 flex items-center gap-1 select-none">
+                <i class="fa-solid fa-circle-info"></i> 배경 클릭 또는 ESC 키를 누르면 닫힙니다.
+            </p>
+        </div>
+    </div>
+
 </body>
 </html>
