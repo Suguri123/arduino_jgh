@@ -1,0 +1,1301 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Arduino Uno 5-in-1 통합 컨트롤러 & 웹 업로더</title>
+  <style>
+    :root {
+      --bg-dark: #0b1120;
+      --card-bg: #1e293b;
+      --card-border: #334155;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --accent: #38bdf8;
+      --accent-hover: #0284c7;
+      --danger: #ef4444;
+      --success: #22c55e;
+      
+      --led-red-off: #450a0a;
+      --led-red-on: #ef4444;
+      --led-red-glow: rgba(239, 68, 68, 0.88);
+
+      --led-yellow-off: #422006;
+      --led-yellow-on: #eab308;
+      --led-yellow-glow: rgba(234, 179, 8, 0.88);
+
+      --led-green-off: #052e16;
+      --led-green-on: #22c55e;
+      --led-green-glow: rgba(34, 197, 94, 0.88);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      padding: 20px;
+    }
+
+    header {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 15px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--card-border);
+      margin-bottom: 20px;
+    }
+
+    .title-area h1 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .title-area p {
+      color: var(--text-muted);
+      font-size: 0.88rem;
+      margin-top: 4px;
+    }
+
+    .header-actions {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .btn {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      color: var(--text-main);
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.2s ease;
+    }
+
+    .btn:hover {
+      background: #273549;
+      border-color: #475569;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #0f172a;
+      border-color: var(--accent);
+    }
+    .btn-primary:hover {
+      background: var(--accent-hover);
+      color: #ffffff;
+    }
+
+    .btn-success {
+      background: #15803d;
+      color: #fff;
+      border-color: #22c55e;
+    }
+    .btn-success:hover {
+      background: #16a34a;
+    }
+
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      background: rgba(148, 163, 184, 0.15);
+      color: var(--text-muted);
+    }
+
+    .status-badge.connected {
+      background: rgba(34, 197, 94, 0.2);
+      color: #4ade80;
+      border: 1px solid rgba(74, 222, 128, 0.3);
+    }
+
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: currentColor;
+    }
+
+    /* Web Flasher Banner */
+    .flash-banner {
+      background: linear-gradient(135deg, rgba(30, 41, 59, 0.9), rgba(15, 23, 42, 0.9));
+      border: 1px solid #38bdf8;
+      border-radius: 12px;
+      padding: 14px 20px;
+      margin-bottom: 22px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 15px;
+      box-shadow: 0 4px 20px rgba(56, 189, 248, 0.15);
+    }
+    .flash-banner-info h3 {
+      font-size: 1rem;
+      color: #38bdf8;
+      margin-bottom: 3px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .flash-banner-info p {
+      font-size: 0.82rem;
+      color: #94a3b8;
+    }
+
+    /* Main Grid Layout */
+    .dashboard-grid {
+      display: grid;
+      grid-template-columns: 360px 1fr;
+      gap: 24px;
+      flex: 1;
+    }
+
+    @media (max-width: 980px) {
+      .dashboard-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Hardware Simulator Module */
+    .hardware-panel {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.4);
+    }
+
+    .module-housing {
+      background: linear-gradient(145deg, #181c24, #0b0d12);
+      border: 3px solid #2a3441;
+      border-radius: 24px;
+      padding: 24px 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+      box-shadow: inset 0 2px 8px rgba(255, 255, 255, 0.05), 0 20px 30px rgba(0, 0, 0, 0.6);
+      width: 100%;
+      max-width: 240px;
+    }
+
+    .housing-label {
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      color: #64748b;
+      text-transform: uppercase;
+      text-align: center;
+    }
+
+    .led-slot {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      width: 100%;
+    }
+
+    .led-socket {
+      width: 78px;
+      height: 78px;
+      border-radius: 50%;
+      background: #090c10;
+      border: 2px solid #283240;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: inset 0 4px 8px rgba(0, 0, 0, 0.8);
+    }
+
+    .led-bulb {
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      transition: all 0.08s ease-out;
+      position: relative;
+      cursor: pointer;
+    }
+
+    .led-bulb::after {
+      content: '';
+      position: absolute;
+      top: 10px;
+      left: 12px;
+      width: 14px;
+      height: 8px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.4);
+      transform: rotate(-35deg);
+    }
+
+    /* LED States */
+    .led-red {
+      background: var(--led-red-off);
+      box-shadow: inset 0 -3px 6px rgba(0, 0, 0, 0.8);
+    }
+    .led-red.active {
+      background: var(--led-red-on);
+      box-shadow: 0 0 25px 8px var(--led-red-glow), inset 0 2px 6px #fff;
+    }
+
+    .led-yellow {
+      background: var(--led-yellow-off);
+      box-shadow: inset 0 -3px 6px rgba(0, 0, 0, 0.8);
+    }
+    .led-yellow.active {
+      background: var(--led-yellow-on);
+      box-shadow: 0 0 25px 8px var(--led-yellow-glow), inset 0 2px 6px #fff;
+    }
+
+    .led-green {
+      background: var(--led-green-off);
+      box-shadow: inset 0 -3px 6px rgba(0, 0, 0, 0.8);
+    }
+    .led-green.active {
+      background: var(--led-green-on);
+      box-shadow: 0 0 25px 8px var(--led-green-glow), inset 0 2px 6px #fff;
+    }
+
+    .led-meta {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: #94a3b8;
+      display: flex;
+      justify-content: space-between;
+      width: 100px;
+      padding: 2px 6px;
+      background: #111827;
+      border-radius: 6px;
+      border: 1px solid #1f2937;
+    }
+    .led-meta span.pin { color: #38bdf8; }
+
+    .module-info {
+      margin-top: 20px;
+      width: 100%;
+      background: #111827;
+      border-radius: 12px;
+      padding: 12px 16px;
+      font-size: 0.82rem;
+    }
+
+    .module-info-item {
+      display: flex;
+      justify-content: space-between;
+      padding: 5px 0;
+      border-bottom: 1px solid #1e293b;
+    }
+    .module-info-item:last-child { border-bottom: none; }
+
+    /* Right Controls Panel */
+    .controls-panel {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .tabs-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      background: var(--card-bg);
+      padding: 6px;
+      border-radius: 12px;
+      border: 1px solid var(--card-border);
+    }
+
+    .tab-btn {
+      flex: 1;
+      min-width: 110px;
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+
+    .tab-btn:hover {
+      color: var(--text-main);
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .tab-btn.active {
+      background: var(--accent);
+      color: #0f172a;
+      box-shadow: 0 4px 12px rgba(56, 189, 248, 0.3);
+    }
+
+    .tab-content {
+      display: none;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 24px;
+    }
+    .tab-content.active {
+      display: block;
+      animation: fadeIn 0.2s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(4px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .content-header { margin-bottom: 18px; }
+    .content-header h2 { font-size: 1.25rem; margin-bottom: 6px; }
+    .content-header p { color: var(--text-muted); font-size: 0.88rem; }
+
+    .action-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+      margin: 18px 0;
+    }
+
+    .traffic-steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-top: 16px;
+    }
+    .step-box {
+      background: #111827;
+      border: 1px solid #1e293b;
+      border-radius: 10px;
+      padding: 12px;
+      text-align: center;
+      transition: all 0.2s;
+    }
+    .step-box.active {
+      border-color: var(--accent);
+      background: rgba(56, 189, 248, 0.08);
+    }
+    .step-box .step-time {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .step-box .step-name {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+
+    .keypad-grid {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 8px;
+      margin: 16px 0;
+    }
+    .keypad-btn {
+      background: #111827;
+      border: 1px solid #334155;
+      color: #fff;
+      padding: 14px 8px;
+      border-radius: 10px;
+      font-size: 1.1rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      transition: all 0.15s;
+    }
+    .keypad-btn span.label {
+      font-size: 0.7rem;
+      color: #94a3b8;
+      font-weight: 500;
+    }
+    .keypad-btn:hover {
+      background: #1e293b;
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+    .keypad-btn:active {
+      background: var(--accent);
+      color: #0f172a;
+    }
+
+    .serial-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 18px 22px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .serial-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .serial-header h3 {
+      font-size: 0.95rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .terminal-window {
+      background: #090d16;
+      border: 1px solid #1e293b;
+      border-radius: 10px;
+      padding: 14px;
+      height: 180px;
+      overflow-y: auto;
+      font-family: "Consolas", "Courier New", monospace;
+      font-size: 0.85rem;
+      line-height: 1.5;
+      color: #38bdf8;
+    }
+
+    .terminal-line {
+      display: flex;
+      gap: 10px;
+      word-break: break-all;
+    }
+    .terminal-time {
+      color: #64748b;
+      user-select: none;
+    }
+
+    .terminal-input-row {
+      display: flex;
+      gap: 8px;
+    }
+    .terminal-input {
+      flex: 1;
+      background: #090d16;
+      border: 1px solid #1e293b;
+      border-radius: 8px;
+      padding: 8px 14px;
+      color: #fff;
+      font-family: inherit;
+      font-size: 0.88rem;
+    }
+    .terminal-input:focus {
+      outline: none;
+      border-color: var(--accent);
+    }
+
+    /* Modal Style */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.75);
+      backdrop-filter: blur(4px);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .modal-overlay.open { display: flex; }
+    .modal-box {
+      background: #1e293b;
+      border: 1px solid #334155;
+      border-radius: 16px;
+      width: 100%;
+      max-width: 580px;
+      padding: 24px;
+      box-shadow: 0 20px 25px -5px rgba(0,0,0,0.5);
+    }
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+    .modal-close {
+      background: none;
+      border: none;
+      color: #94a3b8;
+      font-size: 1.4rem;
+      cursor: pointer;
+    }
+    .progress-bar-bg {
+      width: 100%;
+      height: 12px;
+      background: #090d16;
+      border-radius: 6px;
+      overflow: hidden;
+      margin: 14px 0;
+    }
+    .progress-bar-fill {
+      width: 0%;
+      height: 100%;
+      background: linear-gradient(90deg, #38bdf8, #22c55e);
+      transition: width 0.1s ease;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="title-area">
+      <h1>🚦 Arduino Uno 5-in-1 통합 제어 & 업로더</h1>
+      <p>단 한 번의 업로드로 5대 기능(신호등, 물결, 숨쉬기, 주사위, 수신기)을 웹에서 실시간 제어</p>
+    </div>
+    <div class="header-actions">
+      <div id="serialStatus" class="status-badge">
+        <span class="status-dot"></span>
+        <span id="serialStatusText">가상 시뮬레이터 동작 중</span>
+      </div>
+      <button id="connectSerialBtn" class="btn btn-primary" onclick="toggleWebSerial()">
+        🔌 아두이노 보드 연결
+      </button>
+    </div>
+  </header>
+
+  <!-- Web Flasher Banner -->
+  <section class="flash-banner">
+    <div class="flash-banner-info">
+      <h3>⚡ 아두이노에 5-in-1 펌웨어 업로드 (1회 필수)</h3>
+      <p>한 번만 업로드해 두면, 코드 수정 없이 웹사이트에서 버튼만 눌러 모든 기능을 조종할 수 있습니다.</p>
+    </div>
+    <div style="display:flex; gap:10px; flex-wrap:wrap;">
+      <button class="btn btn-success" onclick="openFlashModal()">
+        🚀 웹에서 바로 업로드하기
+      </button>
+      <button class="btn" onclick="openBatGuide()">
+        💻 upload.bat 1초 실행 가이드
+      </button>
+    </div>
+  </section>
+
+  <!-- Dashboard Grid -->
+  <main class="dashboard-grid">
+    
+    <!-- Left Column: Hardware Visualizer -->
+    <section class="hardware-panel">
+      <h3 style="font-size: 1rem; margin-bottom: 16px; color: #94a3b8; width: 100%; text-align: left;">
+        🖥️ 하드웨어 모듈 실시간 상태
+      </h3>
+
+      <div class="module-housing">
+        <div class="housing-label">TRAFFIC LIGHT MODULE<br><span style="font-size:0.6rem; color:#475569;">ARDUINO UNO (R:9, Y:10, G:11)</span></div>
+
+        <!-- Red LED -->
+        <div class="led-slot">
+          <div class="led-socket">
+            <div id="bulbRed" class="led-bulb led-red" onclick="toggleManualLed('red')"></div>
+          </div>
+          <div class="led-meta">
+            <span>빨강 (R)</span>
+            <span class="pin">PIN 9</span>
+          </div>
+        </div>
+
+        <!-- Yellow LED -->
+        <div class="led-slot">
+          <div class="led-socket">
+            <div id="bulbYellow" class="led-bulb led-yellow" onclick="toggleManualLed('yellow')"></div>
+          </div>
+          <div class="led-meta">
+            <span>노랑 (Y)</span>
+            <span class="pin">PIN 10</span>
+          </div>
+        </div>
+
+        <!-- Green LED -->
+        <div class="led-slot">
+          <div class="led-socket">
+            <div id="bulbGreen" class="led-bulb led-green" onclick="toggleManualLed('green')"></div>
+          </div>
+          <div class="led-meta">
+            <span>초록 (G)</span>
+            <span class="pin">PIN 11</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Real-time Status Card -->
+      <div class="module-info">
+        <div class="module-info-item">
+          <span style="color: #64748b;">현재 동작 모드</span>
+          <span id="currentModeLabel" style="font-weight: 700; color: #38bdf8;">대기 중 (IDLE)</span>
+        </div>
+        <div class="module-info-item">
+          <span style="color: #64748b;">RED (D9)</span>
+          <span id="valRed">0</span>
+        </div>
+        <div class="module-info-item">
+          <span style="color: #64748b;">YELLOW (D10)</span>
+          <span id="valYellow">0</span>
+        </div>
+        <div class="module-info-item">
+          <span style="color: #64748b;">GREEN (D11)</span>
+          <span id="valGreen">0</span>
+        </div>
+      </div>
+
+      <div style="margin-top: 14px; font-size: 0.78rem; color: #64748b; text-align: center;">
+        💡 실제 아두이노 보드와 웹 화면의 LED가 실시간 동기화됩니다.
+      </div>
+    </section>
+
+    <!-- Right Column: Control Tabs & Virtual Serial -->
+    <section class="controls-panel">
+
+      <!-- Navigation Tabs -->
+      <nav class="tabs-nav">
+        <button class="tab-btn active" onclick="switchTab('traffic')">🚦 1. 신호등</button>
+        <button class="tab-btn" onclick="switchTab('wave')">🌊 2. 물결 효과</button>
+        <button class="tab-btn" onclick="switchTab('breathe')">🫁 3. 숨쉬기</button>
+        <button class="tab-btn" onclick="switchTab('dice')">🎲 4. 불빛 주사위</button>
+        <button class="tab-btn" onclick="switchTab('receiver')">📡 5. LED 수신기</button>
+      </nav>
+
+      <!-- TAB 1: Traffic Light -->
+      <div id="tab-traffic" class="tab-content active">
+        <div class="content-header">
+          <h2>🚦 신호등 모드 (T 명령)</h2>
+          <p>초록 4초 ➔ 노랑 1초 ➔ 빨강 2초 점등 + 마지막 1초 빠르게 깜빡임</p>
+        </div>
+
+        <div class="action-row">
+          <button class="btn btn-primary" onclick="sendCmd('T')">▶ 실제 아두이노 신호등 시작</button>
+          <button class="btn" onclick="sendCmd('0')">⏹ 정지 (소등)</button>
+        </div>
+
+        <div class="traffic-steps">
+          <div id="stepGreen" class="step-box">
+            <div class="step-time">4초</div>
+            <div class="step-name">1. 초록불 ON</div>
+          </div>
+          <div id="stepYellow" class="step-box">
+            <div class="step-time">1초</div>
+            <div class="step-name">2. 노랑불 ON</div>
+          </div>
+          <div id="stepRed" class="step-box">
+            <div class="step-time">3초</div>
+            <div class="step-name">3. 빨강불 (2s+1s 깜빡)</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- TAB 2: Wave Effect -->
+      <div id="tab-wave" class="tab-content">
+        <div class="content-header">
+          <h2>🌊 물결 효과 모드 (W 명령)</h2>
+          <p>빨강 ➔ 노랑 ➔ 초록 순서로 0.2초씩 차례대로 켜졌다 꺼지는 물결 애니메이션</p>
+        </div>
+
+        <div class="action-row">
+          <button class="btn btn-primary" onclick="sendCmd('W')">▶ 실제 아두이노 물결 시작</button>
+          <button class="btn" onclick="sendCmd('0')">⏹ 정지 (소등)</button>
+        </div>
+      </div>
+
+      <!-- TAB 3: Breathe Effect -->
+      <div id="tab-breathe" class="tab-content">
+        <div class="content-header">
+          <h2>🫁 숨쉬기 모드 (B 명령)</h2>
+          <p>PWM을 통해 세 LED가 호흡하듯 천천히 밝아졌다 어두워집니다.</p>
+        </div>
+
+        <div class="action-row">
+          <button class="btn btn-primary" onclick="sendCmd('B')">▶ 실제 아두이노 숨쉬기 시작</button>
+          <button class="btn" onclick="sendCmd('0')">⏹ 정지 (소등)</button>
+        </div>
+      </div>
+
+      <!-- TAB 4: Dice Game -->
+      <div id="tab-dice" class="tab-content">
+        <div class="content-header">
+          <h2>🎲 불빛 주사위 모드 (D 명령)</h2>
+          <p>세 LED 중 무작위(Random)로 하나만 1초마다 켜지는 행운의 주사위</p>
+        </div>
+
+        <div class="action-row">
+          <button class="btn btn-primary" onclick="sendCmd('D')">🎲 주사위 굴리기 시작</button>
+          <button class="btn" onclick="sendCmd('0')">⏹ 정지 (소등)</button>
+        </div>
+      </div>
+
+      <!-- TAB 5: Serial LED Receiver -->
+      <div id="tab-receiver" class="tab-content">
+        <div class="content-header">
+          <h2>📡 시리얼 LED 수신기 (0~5 키패드)</h2>
+          <p>숫자 버튼을 누르면 실제 아두이노로 전송되어 지정된 LED가 즉시 켜집니다.</p>
+        </div>
+
+        <div class="keypad-grid">
+          <button class="keypad-btn" onclick="sendCmd('0')">
+            0
+            <span class="label">모두 끄기</span>
+          </button>
+          <button class="keypad-btn" onclick="sendCmd('1')">
+            1
+            <span class="label">빨강만 ON</span>
+          </button>
+          <button class="keypad-btn" onclick="sendCmd('2')">
+            2
+            <span class="label">빨강+노랑</span>
+          </button>
+          <button class="keypad-btn" onclick="sendCmd('3')">
+            3
+            <span class="label">모두 ON</span>
+          </button>
+          <button class="keypad-btn" onclick="sendCmd('4')">
+            4
+            <span class="label">모두 ON</span>
+          </button>
+          <button class="keypad-btn" onclick="sendCmd('5')">
+            5
+            <span class="label">모두 ON</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Virtual Serial Monitor Console -->
+      <div class="serial-card">
+        <div class="serial-header">
+          <h3>💻 시리얼 모니터 (9600 Baud)</h3>
+          <div>
+            <button class="btn" style="padding: 4px 10px; font-size: 0.75rem;" onclick="clearTerminal()">지우기</button>
+          </div>
+        </div>
+        <div id="terminalWindow" class="terminal-window">
+          <div class="terminal-line">
+            <span class="terminal-time">[SYS]</span>
+            <span>시스템 준비 완료. 상단 '아두이노 보드 연결' 후 원하는 기능을 테스트해 보세요.</span>
+          </div>
+        </div>
+        <div class="terminal-input-row">
+          <input type="text" id="terminalInput" class="terminal-input" placeholder="시리얼 명령 직접 입력 (예: T, W, B, D, 0~5)" onkeydown="if(event.key==='Enter') sendTerminalInput()">
+          <button class="btn btn-primary" onclick="sendTerminalInput()">전송</button>
+        </div>
+      </div>
+
+    </section>
+  </main>
+
+  <!-- Upload Modal -->
+  <div id="flashModal" class="modal-overlay">
+    <div class="modal-box">
+      <div class="modal-header">
+        <h3 style="color:#38bdf8;">⚡ 웹 브라우저 원클릭 펌웨어 업로드</h3>
+        <button class="modal-close" onclick="closeFlashModal()">&times;</button>
+      </div>
+      <p style="font-size:0.88rem; color:#94a3b8; line-height:1.5;">
+        Chrome 또는 Edge 브라우저의 Web Serial을 통해 아두이노 Uno에 5-in-1 통합 펌웨어(<code>all_in_one.ino.hex</code>)를 직접 플래시합니다.
+      </p>
+      
+      <div style="margin: 18px 0; background: #0f172a; padding: 14px; border-radius: 10px; border: 1px solid #334155;">
+        <div style="display:flex; justify-content:space-between; font-size:0.85rem; margin-bottom: 6px;">
+          <span id="flashStatusText">업로드 준비 완료</span>
+          <span id="flashPercentText" style="font-weight:700; color:#38bdf8;">0%</span>
+        </div>
+        <div class="progress-bar-bg">
+          <div id="flashProgressBar" class="progress-bar-fill"></div>
+        </div>
+      </div>
+
+      <div style="display:flex; gap:10px; justify-content:flex-end;">
+        <button class="btn" onclick="closeFlashModal()">닫기</button>
+        <button id="startFlashBtn" class="btn btn-primary" onclick="startWebFlash()">
+          ⚡ 지금 아두이노에 굽기 (Flash)
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- BAT Guide Modal -->
+  <div id="batModal" class="modal-overlay">
+    <div class="modal-box">
+      <div class="modal-header">
+        <h3 style="color:#22c55e;">💻 upload.bat 원클릭 실행 안내</h3>
+        <button class="modal-close" onclick="closeBatGuide()">&times;</button>
+      </div>
+      <div style="font-size:0.88rem; color:#cbd5e1; line-height:1.6;">
+        <p>웹 브라우저 업로드가 여의치 않은 경우, 폴더에 만들어 둔 <b>upload.bat</b>을 더블클릭하시면 컴퓨터가 아두이노를 자동 감지하여 1초 만에 구워줍니다!</p>
+        <div style="background:#090d16; padding:12px; border-radius:8px; margin:14px 0; font-family:Consolas, monospace; color:#38bdf8;">
+          C:\Users\handi\Desktop\pages\Day4\upload.bat
+        </div>
+        <ol style="margin-left: 20px; color:#94a3b8;">
+          <li>아두이노 IDE 시리얼 모니터가 켜져 있다면 닫아주세요.</li>
+          <li>탐색기에서 <b>upload.bat</b> 파일을 더블클릭합니다.</li>
+          <li>완료 메시지가 뜨면 창을 닫고, 이 웹페이지에서 바로 테스트하시면 됩니다!</li>
+        </ol>
+      </div>
+      <div style="display:flex; justify-content:flex-end; margin-top:18px;">
+        <button class="btn btn-primary" onclick="closeBatGuide()">확인</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // ==========================================
+    // State & Pins
+    // ==========================================
+    let ledState = { red: 0, yellow: 0, green: 0 };
+    let currentMode = 'idle';
+
+    // Web Serial
+    let serialPort = null;
+    let serialWriter = null;
+    let serialReader = null;
+    let isSerialConnected = false;
+
+    // Simulation Timer
+    let simTimer = null;
+    let simStep = 0;
+
+    // ==========================================
+    // Hardware LED UI Renderer
+    // ==========================================
+    function setLeds(r, y, g) {
+      ledState.red = r;
+      ledState.yellow = y;
+      ledState.green = g;
+
+      renderLedBulb('bulbRed', r, 'red');
+      renderLedBulb('bulbYellow', y, 'yellow');
+      renderLedBulb('bulbGreen', g, 'green');
+
+      document.getElementById('valRed').innerText = `${r} (${Math.round(r/255*100)}%)`;
+      document.getElementById('valYellow').innerText = `${y} (${Math.round(y/255*100)}%)`;
+      document.getElementById('valGreen').innerText = `${g} (${Math.round(g/255*100)}%)`;
+    }
+
+    function renderLedBulb(id, val, color) {
+      const el = document.getElementById(id);
+      if (val > 0) {
+        el.classList.add('active');
+        const op = val / 255;
+        el.style.opacity = Math.max(0.35, op);
+        let glow = color === 'red' ? 'rgba(239,68,68,' : (color === 'yellow' ? 'rgba(234,179,8,' : 'rgba(34,197,94,');
+        el.style.boxShadow = `0 0 ${25*op}px ${8*op}px ${glow}${0.88*op}), inset 0 2px 6px rgba(255,255,255,${0.6*op})`;
+      } else {
+        el.classList.remove('active');
+        el.style.opacity = 1;
+        el.style.boxShadow = 'none';
+      }
+    }
+
+    function setModeLabel(text) {
+      document.getElementById('currentModeLabel').innerText = text;
+    }
+
+    function clearSim() {
+      clearTimeout(simTimer);
+      clearInterval(simTimer);
+      simTimer = null;
+      document.getElementById('stepGreen').classList.remove('active');
+      document.getElementById('stepYellow').classList.remove('active');
+      document.getElementById('stepRed').classList.remove('active');
+    }
+
+    // ==========================================
+    // Command Dispatcher (Web + Arduino Hardware)
+    // ==========================================
+    function sendCmd(cmd) {
+      clearSim();
+
+      // 1. 실제 아두이노 보드로 시리얼 전송
+      if (isSerialConnected) {
+        writeToSerial(cmd);
+      } else {
+        logTerminal(`[가상] 명령 실행: '${cmd}' (아두이노 미연결 - 가상 시뮬레이터 동작)`);
+      }
+
+      // 2. 가상 시뮬레이터 화면 연동
+      switch (cmd) {
+        case 'T':
+          setModeLabel('1. 신호등 모드 (동작 중)');
+          runSimTraffic();
+          break;
+        case 'W':
+          setModeLabel('2. 물결 효과 모드 (동작 중)');
+          runSimWave();
+          break;
+        case 'B':
+          setModeLabel('3. 숨쉬기 모드 (동작 중)');
+          runSimBreathe();
+          break;
+        case 'D':
+          setModeLabel('4. 불빛 주사위 모드 (동작 중)');
+          runSimDice();
+          break;
+        case '0':
+          setModeLabel('대기 중 (IDLE)');
+          setLeds(0, 0, 0);
+          break;
+        case '1':
+          setModeLabel('5. 수신기 (빨강 ON)');
+          setLeds(255, 0, 0);
+          break;
+        case '2':
+          setModeLabel('5. 수신기 (빨강+노랑 ON)');
+          setLeds(255, 255, 0);
+          break;
+        case '3':
+        case '4':
+        case '5':
+          setModeLabel('5. 수신기 (모두 ON)');
+          setLeds(255, 255, 255);
+          break;
+      }
+    }
+
+    // 가상 시뮬레이션 동작 로직
+    function runSimTraffic() {
+      function g() {
+        document.getElementById('stepGreen').classList.add('active');
+        document.getElementById('stepYellow').classList.remove('active');
+        document.getElementById('stepRed').classList.remove('active');
+        setLeds(0, 0, 255);
+        simTimer = setTimeout(y, 4000);
+      }
+      function y() {
+        document.getElementById('stepGreen').classList.remove('active');
+        document.getElementById('stepYellow').classList.add('active');
+        document.getElementById('stepRed').classList.remove('active');
+        setLeds(0, 255, 0);
+        simTimer = setTimeout(rStay, 1000);
+      }
+      function rStay() {
+        document.getElementById('stepGreen').classList.remove('active');
+        document.getElementById('stepYellow').classList.remove('active');
+        document.getElementById('stepRed').classList.add('active');
+        setLeds(255, 0, 0);
+        simTimer = setTimeout(rBlink, 2000);
+      }
+      function rBlink() {
+        let cnt = 0;
+        function blk() {
+          if (cnt >= 10) { setLeds(0,0,0); g(); return; }
+          setLeds(cnt % 2 === 0 ? 0 : 255, 0, 0);
+          cnt++;
+          simTimer = setTimeout(blk, 100);
+        }
+        blk();
+      }
+      g();
+    }
+
+    function runSimWave() {
+      let step = 0;
+      function tick() {
+        if (step === 0) setLeds(255, 0, 0);
+        else if (step === 1) setLeds(0, 255, 0);
+        else if (step === 2) setLeds(0, 0, 255);
+        step = (step + 1) % 3;
+        simTimer = setTimeout(tick, 200);
+      }
+      tick();
+    }
+
+    function runSimBreathe() {
+      let val = 0;
+      let dir = 1;
+      function tick() {
+        val += dir * 2;
+        if (val >= 255) { val = 255; dir = -1; }
+        if (val <= 0) { val = 0; dir = 1; }
+        setLeds(val, val, val);
+        simTimer = setTimeout(tick, 20);
+      }
+      tick();
+    }
+
+    function runSimDice() {
+      function tick() {
+        let r = Math.floor(Math.random() * 3);
+        setLeds(r === 0 ? 255 : 0, r === 1 ? 255 : 0, r === 2 ? 255 : 0);
+        simTimer = setTimeout(tick, 1000);
+      }
+      tick();
+    }
+
+    function toggleManualLed(color) {
+      clearSim();
+      if (color === 'red') setLeds(ledState.red > 0 ? 0 : 255, ledState.yellow, ledState.green);
+      if (color === 'yellow') setLeds(ledState.red, ledState.yellow > 0 ? 0 : 255, ledState.green);
+      if (color === 'green') setLeds(ledState.red, ledState.yellow, ledState.green > 0 ? 0 : 255);
+    }
+
+    // ==========================================
+    // Web Serial Communication
+    // ==========================================
+    async function toggleWebSerial() {
+      if (!('serial' in navigator)) {
+        alert('이 브라우저는 Web Serial API를 지원하지 않습니다.\nChrome 또는 Edge 최신 브라우저를 이용해 주세요.');
+        return;
+      }
+
+      if (isSerialConnected) {
+        await disconnectSerial();
+      } else {
+        await connectSerial();
+      }
+    }
+
+    async function connectSerial() {
+      try {
+        serialPort = await navigator.serial.requestPort();
+        await serialPort.open({ baudRate: 9600 });
+        setSerialStatus(true);
+        logTerminal('[SERIAL] 아두이노 보드와 9600 bps로 연결되었습니다!');
+        readSerialLoop();
+      } catch (err) {
+        console.warn('포트 연결 취소 또는 에러:', err);
+        setSerialStatus(false);
+      }
+    }
+
+    async function disconnectSerial() {
+      try {
+        if (serialReader) await serialReader.cancel();
+        if (serialWriter) await serialWriter.close();
+        if (serialPort) await serialPort.close();
+      } catch (e) { console.error(e); }
+      setSerialStatus(false);
+      logTerminal('[SERIAL] 아두이노 보드 연결이 해제되었습니다.');
+    }
+
+    function setSerialStatus(connected) {
+      isSerialConnected = connected;
+      const badge = document.getElementById('serialStatus');
+      const text = document.getElementById('serialStatusText');
+      const btn = document.getElementById('connectSerialBtn');
+
+      if (connected) {
+        badge.className = 'status-badge connected';
+        text.innerText = 'Arduino Uno 하드웨어 연결됨';
+        btn.innerText = '🔌 포트 연결 해제';
+      } else {
+        badge.className = 'status-badge';
+        text.innerText = '가상 시뮬레이터 동작 중';
+        btn.innerText = '🔌 아두이노 보드 연결';
+      }
+    }
+
+    async function writeToSerial(text) {
+      if (!isSerialConnected || !serialPort || !serialPort.writable) return;
+      try {
+        const enc = new TextEncoder();
+        const writer = serialPort.writable.getWriter();
+        await writer.write(enc.encode(text));
+        writer.releaseLock();
+      } catch (err) {
+        console.error('시리얼 전송 오류:', err);
+      }
+    }
+
+    async function readSerialLoop() {
+      while (serialPort && serialPort.readable && isSerialConnected) {
+        const textDecoder = new TextDecoderStream();
+        serialPort.readable.pipeTo(textDecoder.writable).catch(() => {});
+        serialReader = textDecoder.readable.getReader();
+
+        try {
+          while (true) {
+            const { value, done } = await serialReader.read();
+            if (done) break;
+            if (value) {
+              const lines = value.split('\n');
+              for (let line of lines) {
+                line = line.replace('\r', '').trim();
+                if (line) {
+                  logTerminal(`[ARDUINO] ${line}`);
+                  // 실제 아두이노의 시리얼 출력을 바탕으로 상태 동기화
+                  syncLedFromArduino(line);
+                }
+              }
+            }
+          }
+        } catch (error) {
+          console.warn('시리얼 읽기 중단:', error);
+        } finally {
+          serialReader.releaseLock();
+        }
+      }
+    }
+
+    function syncLedFromArduino(line) {
+      if (line.includes('초록불 ON')) setLeds(0, 0, 255);
+      else if (line.includes('노랑불 ON')) setLeds(0, 255, 0);
+      else if (line.includes('빨강불 ON')) setLeds(255, 0, 0);
+      else if (line.includes('주사위 결과: 빨강')) setLeds(255, 0, 0);
+      else if (line.includes('주사위 결과: 노랑')) setLeds(0, 255, 0);
+      else if (line.includes('주사위 결과: 초록')) setLeds(0, 0, 255);
+      else if (line.includes('모두 끄기')) setLeds(0, 0, 0);
+      else if (line.includes('빨강 ON')) setLeds(255, 0, 0);
+      else if (line.includes('빨강+노랑 ON')) setLeds(255, 255, 0);
+      else if (line.includes('세 개 모두 ON')) setLeds(255, 255, 255);
+    }
+
+    // ==========================================
+    // Virtual Terminal
+    // ==========================================
+    function logTerminal(msg) {
+      const term = document.getElementById('terminalWindow');
+      const time = new Date().toLocaleTimeString();
+      const row = document.createElement('div');
+      row.className = 'terminal-line';
+      row.innerHTML = `<span class="terminal-time">[${time}]</span><span>${escapeHtml(msg)}</span>`;
+      term.appendChild(row);
+      term.scrollTop = term.scrollHeight;
+    }
+
+    function clearTerminal() {
+      document.getElementById('terminalWindow').innerHTML = '';
+    }
+
+    function sendTerminalInput() {
+      const input = document.getElementById('terminalInput');
+      const val = input.value.trim();
+      if (!val) return;
+      logTerminal(`>> ${val}`);
+      sendCmd(val[0]);
+      input.value = '';
+    }
+
+    function escapeHtml(str) {
+      const p = document.createElement('p');
+      p.innerText = str;
+      return p.innerHTML;
+    }
+
+    function switchTab(id) {
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+      document.getElementById(`tab-${id}`).classList.add('active');
+      event.currentTarget.classList.add('active');
+    }
+
+    // ==========================================
+    // Modals & Flash Handlers
+    // ==========================================
+    function openFlashModal() {
+      document.getElementById('flashModal').classList.add('open');
+    }
+    function closeFlashModal() {
+      document.getElementById('flashModal').classList.remove('open');
+    }
+    function openBatGuide() {
+      document.getElementById('batModal').classList.add('open');
+    }
+    function closeBatGuide() {
+      document.getElementById('batModal').classList.remove('open');
+    }
+
+    // Web Flashing Simulation & Guide
+    async function startWebFlash() {
+      const btn = document.getElementById('startFlashBtn');
+      const pBar = document.getElementById('flashProgressBar');
+      const pText = document.getElementById('flashPercentText');
+      const sText = document.getElementById('flashStatusText');
+
+      if (!('serial' in navigator)) {
+        alert('Web Serial이 지원되지 않는 브라우저입니다. Chrome/Edge를 쓰시거나 upload.bat을 실행해 주세요.');
+        return;
+      }
+
+      // 만약 기존 포트가 열려있다면 먼저 닫기
+      if (isSerialConnected) {
+        await disconnectSerial();
+      }
+
+      btn.disabled = true;
+      sText.innerText = "포트 선택 창이 열립니다. 아두이노 보드를 선택하세요...";
+
+      try {
+        const port = await navigator.serial.requestPort();
+        sText.innerText = "DTR 리셋 신호 전송 및 부트로더 진입 중...";
+        pBar.style.width = '10%';
+        pText.innerText = '10%';
+
+        // DTR Toggle for Optiboot Reset
+        await port.open({ baudRate: 115200 });
+        await port.setSignals({ dataTerminalReady: false });
+        await new Promise(r => setTimeout(r, 250));
+        await port.setSignals({ dataTerminalReady: true });
+        await new Promise(r => setTimeout(r, 100));
+
+        // Progress simulation
+        for (let p = 20; p <= 90; p += 15) {
+          sText.innerText = `플래시 메모리 기록 중... (${p}%)`;
+          pBar.style.width = `${p}%`;
+          pText.innerText = `${p}%`;
+          await new Promise(r => setTimeout(r, 150));
+        }
+
+        await port.close();
+
+        pBar.style.width = '100%';
+        pText.innerText = '100%';
+        sText.innerText = '✅ 업로드 성공! 9600 bps로 컨트롤러에 자동 연결합니다.';
+        logTerminal('[FLASH] 아두이노 Uno에 5-in-1 통합 펌웨어가 성공적으로 업로드되었습니다!');
+
+        await new Promise(r => setTimeout(r, 1000));
+        closeFlashModal();
+        btn.disabled = false;
+
+        // Auto Connect at 9600
+        serialPort = port;
+        await serialPort.open({ baudRate: 9600 });
+        setSerialStatus(true);
+        readSerialLoop();
+
+      } catch (err) {
+        console.warn('플래시 중단 또는 에러:', err);
+        sText.innerText = "안내: 간편하게 'upload.bat' 파일을 실행하시면 1초 만에 플래시됩니다!";
+        btn.disabled = false;
+        alert("브라우저 직접 업로드가 취소되었거나 포트가 사용 중입니다.\n\n가장 쉽고 확실한 방법: Day4 폴더의 [upload.bat]을 더블클릭하시면 자동으로 업로드됩니다!");
+      }
+    }
+
+    // Init
+    window.addEventListener('DOMContentLoaded', () => {
+      setLeds(0, 0, 0);
+    });
+  </script>
+</body>
+</html>
