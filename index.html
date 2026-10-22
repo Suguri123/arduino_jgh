@@ -150,9 +150,9 @@
                     <span class="bg-cyan-600 text-slate-900 text-xs px-2 py-0.5 rounded font-black">3차시</span>
                     <span class="truncate">4휠 스마트 RC카 조립</span>
                 </button>
-                <button class="nav-item disabled w-full flex items-center space-x-3 px-3 py-2 rounded-lg text-left" id="btn-inter4">
-                    <span class="bg-slate-700 text-slate-500 text-xs px-2 py-0.5 rounded font-black">4차시</span>
-                    <span class="truncate text-slate-600">앱 조종 프로젝트 (잠김)</span>
+                <button onclick="switchSection('inter4')" class="nav-item w-full flex items-center space-x-3 px-3 py-2 rounded-lg text-left transition-all hover:bg-slate-800 hover:text-white" id="btn-inter4">
+                    <span class="bg-cyan-600 text-slate-900 text-xs px-2 py-0.5 rounded font-black shrink-0 whitespace-nowrap">4차시</span>
+                    <span class="truncate" title="RC카 응용 제어 &amp; 자율주행">RC카 응용 &amp; 자율주행</span>
                 </button>
 
                 <!-- 자가진단 -->
@@ -3290,8 +3290,18 @@ void stopMotors() {
                                     </span>
                                     <span class="text-xs bg-slate-200 text-slate-700 px-2 py-0.5 rounded font-mono">No.34 ~ 38</span>
                                 </div>
-                                <div class="rounded-lg overflow-hidden border border-slate-200 bg-white">
-                                    <img src="assets/4wd/p113_ultrasonic_servo_bracket.png" alt="초음파 서보 결합" class="w-full h-auto object-cover max-h-56">
+                                <div data-image-gallery="servo-assembly" class="space-y-2">
+                                    <div class="rounded-lg overflow-hidden border border-slate-200 bg-white">
+                                        <img src="assets/4wd/p113_ultrasonic_servo_bracket.png" alt="초음파 센서 + 서보모터 브라켓 조립 완성" class="w-full h-48 object-contain" tabindex="0" role="button" aria-label="조립 이미지 6장 확대 보기">
+                                    </div>
+                                    <p class="text-xs text-slate-500">사진을 누르면 크게 볼 수 있어요. 좌우로 넘겨 조립 순서를 확인하세요.</p>
+                                    <div class="grid grid-cols-3 gap-2">
+                                        <figure><img src="assets/4wd/servo_step34_parts.png" alt="No.34 서보모터와 브라켓 날개 2개 준비" class="w-full h-20 object-contain rounded border bg-white" tabindex="0" role="button"><figcaption class="text-xs text-center text-slate-600 mt-1">34. 부품 준비</figcaption></figure>
+                                        <figure><img src="assets/4wd/servo_step35_first_bracket.png" alt="No.35 첫 번째 브라켓 날개 결합" class="w-full h-20 object-contain rounded border bg-white" tabindex="0" role="button"><figcaption class="text-xs text-center text-slate-600 mt-1">35. 한쪽 날개 결합</figcaption></figure>
+                                        <figure><img src="assets/4wd/servo_step36_second_bracket.png" alt="No.36 나머지 브라켓 날개 결합" class="w-full h-20 object-contain rounded border bg-white" tabindex="0" role="button"><figcaption class="text-xs text-center text-slate-600 mt-1">36. 반대쪽 날개 결합</figcaption></figure>
+                                        <figure><img src="assets/4wd/servo_step37_ultrasonic.png" alt="No.37 브라켓 위에 초음파 센서 올리기" class="w-full h-20 object-contain rounded border bg-white" tabindex="0" role="button"><figcaption class="text-xs text-center text-slate-600 mt-1">37. 초음파 센서 배치</figcaption></figure>
+                                        <figure><img src="assets/4wd/servo_step38_cable_ties.png" alt="No.38 케이블 타이로 초음파 센서 고정" class="w-full h-20 object-contain rounded border bg-white" tabindex="0" role="button"><figcaption class="text-xs text-center text-slate-600 mt-1">38. 케이블 타이 고정</figcaption></figure>
+                                    </div>
                                 </div>
                                 <div class="text-sm text-slate-600 space-y-1">
                                     <p>• 서보모터 양쪽에 브라켓 날개 2개를 각각 결합합니다.</p>
@@ -3308,8 +3318,14 @@ void stopMotors() {
                                     </span>
                                     <span class="text-xs bg-slate-200 text-slate-700 px-2 py-0.5 rounded font-mono">No.40 ~ 43</span>
                                 </div>
-                                <div class="rounded-lg overflow-hidden border border-slate-200 bg-white">
-                                    <img src="assets/4wd/p121_servo_upper_mount.png" alt="상부 서보 결합" class="w-full h-auto object-cover max-h-56">
+                                <div data-image-gallery="servo-upper-mount" class="space-y-2">
+                                    <div class="rounded-lg overflow-hidden border border-slate-200 bg-white">
+                                        <img src="assets/4wd/p121_servo_upper_mount.png" alt="상부 서보 결합" class="w-full h-48 object-contain" tabindex="0" role="button" aria-label="상부 바디 장착 이미지 2장 확대 보기">
+                                    </div>
+                                    <p class="text-xs text-slate-500">사진을 누르면 크게 볼 수 있어요. 좌우로 넘겨 장착 방향을 확인하세요.</p>
+                                    <div class="grid grid-cols-3 gap-2">
+                                        <figure><img src="assets/4wd/servo_step41_lower_bracket.png" alt="No.41 영점이 가장 잘 맞는 방향으로 아래 브라켓 결합" class="w-full h-20 object-contain rounded border bg-white" tabindex="0" role="button"><figcaption class="text-xs text-center text-slate-600 mt-1">41. 아래 브라켓 방향 확인</figcaption></figure>
+                                    </div>
                                 </div>
                                 <div class="text-sm text-slate-600 space-y-1">
                                     <p>• 90도 영점이 맞춰진 서보모터 축에 아래 브라켓을 꽂고 <strong>중심축 볼트</strong>를 조여 결합합니다.</p>
@@ -3781,6 +3797,60 @@ void SmartCar_Back() {
                             </div>
                         </div>
 
+                        <!-- CODE 3: LINE SENSOR TEST -->
+                        <div id="code-line-test-box" class="space-y-3 pt-4 border-t">
+                            <div class="flex items-center justify-between flex-wrap gap-2 bg-slate-100 p-3 rounded-lg">
+                                <div class="flex items-center space-x-2">
+                                    <span class="bg-cyan-600 text-white text-xs font-bold px-2 py-0.5 rounded">예제 3</span>
+                                    <h4 class="font-bold text-slate-800 text-base">Line_sensor_test.ino (라인트레이서 센서 3개 동작 확인 코드)</h4>
+                                </div>
+                                <button onclick="copyCode('code-line-test')" class="bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-bold px-3 py-1.5 rounded transition flex items-center gap-1">
+                                    <i class="fa-solid fa-copy"></i> 코드 복사
+                                </button>
+                            </div>
+                            <p class="text-sm sm:text-base text-slate-600">
+                                주행 코드를 올리기 전에 <strong>라인트레이서 센서 3개(A5, A4, A3)</strong>가 정상적으로 값을 읽는지 먼저 확인합니다. 모터는 전혀 움직이지 않으므로 배터리 전원 없이 <strong>USB만 연결</strong>한 상태에서 테스트할 수 있습니다.
+                            </p>
+                            <div class="bg-slate-900 text-slate-200 rounded-xl p-4 overflow-x-auto text-sm sm:text-base font-mono leading-relaxed border border-slate-800">
+<pre id="code-line-test"><code>void setup() {
+  Serial.begin(9600);
+}
+
+void loop() {
+  Serial.print("L(A5)="); Serial.print(digitalRead(A5));
+  Serial.print("  C(A4)="); Serial.print(digitalRead(A4));
+  Serial.print("  R(A3)="); Serial.print(digitalRead(A3));
+  Serial.print("   analog: ");
+  Serial.print(analogRead(A5)); Serial.print(", ");
+  Serial.print(analogRead(A4)); Serial.print(", ");
+  Serial.println(analogRead(A3));
+  delay(200);
+}</code></pre>
+                            </div>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div class="bg-cyan-50 border border-cyan-200 rounded-xl p-4 space-y-2">
+                                    <h5 class="font-bold text-cyan-900 text-sm sm:text-base flex items-center gap-2"><i class="fa-solid fa-list-check"></i> 테스트 순서</h5>
+                                    <ol class="list-decimal pl-5 space-y-1.5 text-sm text-cyan-950">
+                                        <li>위 코드를 업로드하고 <strong>시리얼 모니터</strong>를 열어 속도를 <strong>9600 baud</strong>로 맞춥니다.</li>
+                                        <li>0.2초마다 L / C / R 값이 한 줄씩 출력되는지 확인합니다.</li>
+                                        <li>흰 종이 위에 차를 올려 세 센서의 값을 읽고, 이어서 <strong>검은색 테이프(라인)</strong> 위로 센서를 하나씩 옮기며 값이 바뀌는지 확인합니다.</li>
+                                        <li>왼쪽 센서를 라인에 올렸을 때 <strong>L(A5)</strong> 값만 바뀌면 배선 순서가 맞는 것입니다. 다른 자리의 값이 바뀌면 A3~A5 결선을 서로 바꿔 꽂습니다.</li>
+                                    </ol>
+                                </div>
+                                <div class="bg-slate-50 border border-slate-200 rounded-xl p-4 space-y-2">
+                                    <h5 class="font-bold text-slate-800 text-sm sm:text-base flex items-center gap-2"><i class="fa-solid fa-magnifying-glass"></i> 출력값 읽는 법</h5>
+                                    <ul class="list-disc pl-5 space-y-1.5 text-sm text-slate-700">
+                                        <li><strong>digitalRead (0 / 1):</strong> 주행 코드가 실제로 사용하는 값입니다. 일반적으로 <strong>검은색 라인 = 0(LOW)</strong>, <strong>흰색 바탕 = 1(HIGH)</strong>이지만 센서 모듈에 따라 반대일 수 있으니 실제 출력으로 확인하세요.</li>
+                                        <li><strong>analogRead (0 ~ 1023):</strong> 센서가 받는 반사광의 세기입니다. 흰색과 검은색에서 값 차이가 크게 벌어져야 정상이며, 차이가 작으면 센서 높이(바닥에서 약 1 cm)나 조절 나사(가변저항)를 돌려 감도를 맞춥니다.</li>
+                                        <li><strong>값이 전혀 안 바뀌거나 항상 같은 값:</strong> 해당 센서의 S 신호선, VCC, GND 배선을 다시 확인합니다. 센서 뒷면 LED가 라인 위에서 켜지거나 꺼지는지도 함께 보면 좋습니다.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <p class="text-xs text-slate-500">
+                                💡 세 센서 모두 흰색과 검은색을 확실히 구분하면 라인트레이서 주행 코드를 업로드할 준비가 된 것입니다.
+                            </p>
+                        </div>
+
                         <!-- Safe Testing Guidelines -->
                         <div class="bg-rose-50 border border-rose-200 rounded-xl p-5 space-y-2 text-rose-950">
                             <h4 class="font-bold text-base sm:text-lg flex items-center gap-2 text-rose-800">
@@ -3822,6 +3892,1009 @@ void SmartCar_Back() {
                         </div>
                     </div>
                 </section>
+
+<section id="sect-inter4" class="section-content hidden space-y-8">
+<div class="border-b border-slate-200 pb-4"><h2 class="text-3xl font-bold text-slate-800 flex flex-wrap items-center gap-3"><span class="bg-cyan-600 text-white text-sm px-2 py-1 rounded">중급 4차시</span><span>4휠 스마트 RC카 응용 제어 &amp; 자율주행</span></h2><p class="text-slate-500 mt-3 text-sm sm:text-base">시리얼 명령과 적외선 리모컨으로 조종하고, 라인을 따라 달리며 장애물을 피해가는 RC카를 완성합니다.</p></div>
+<div class="bg-gradient-to-br from-slate-800 to-slate-950 text-white rounded-2xl p-6 shadow-md space-y-4"><span class="text-cyan-300 text-sm font-bold">에듀이노 교재 5~7강 + 블루투스 실습 · 제작사 코드 7~12번</span><p class="text-slate-200 text-base leading-relaxed">3차시에서 조립한 <strong>4휠 RC카와 L298N 모터 드라이버</strong>를 그대로 사용합니다. <strong>5강의 시리얼·리모컨 제어 → 6강의 라인트레이싱 → 7강의 장애물 회피</strong> 순서로 입력을 받아 주행을 결정하는 방법을 익힙니다. 이어서 제작사 11·12번 코드로 블루투스 통신과 앱 조종을 실습합니다.</p><div class="flex flex-wrap gap-2 text-xs"><button type="button" onclick="document.getElementById('inter4-serial').scrollIntoView({behavior: 'smooth'})" class="bg-white/10 hover:bg-white/20 px-3 py-1.5 rounded-full">01 시리얼 명령 ↓</button><button type="button" onclick="document.getElementById('inter4-ir').scrollIntoView({behavior: 'smooth'})" class="bg-white/10 hover:bg-white/20 px-3 py-1.5 rounded-full">02 적외선 리모컨 ↓</button><button type="button" onclick="document.getElementById('inter4-line').scrollIntoView({behavior: 'smooth'})" class="bg-white/10 hover:bg-white/20 px-3 py-1.5 rounded-full">03 라인트레이싱 ↓</button><button type="button" onclick="document.getElementById('inter4-obstacle').scrollIntoView({behavior: 'smooth'})" class="bg-white/10 hover:bg-white/20 px-3 py-1.5 rounded-full">04 장애물 회피 ↓</button></div></div>
+<div class="bg-cyan-50 border border-cyan-200 rounded-xl p-6 space-y-3"><h3 class="font-bold text-cyan-950 text-lg">차시별 핵심 학습 목표</h3><ul class="space-y-2 text-sm sm:text-base text-slate-700"><li>✓ <strong>명령 해석:</strong> 시리얼 문자와 리모컨 수신값을 전진·후진·정지·회전 동작에 연결한다.</li><li>✓ <strong>센서 판단:</strong> 왼쪽·중앙·오른쪽 라인센서의 조합으로 진행 방향을 결정한다.</li><li>✓ <strong>장애물 회피:</strong> 초음파 거리와 서보모터의 좌우 탐색 결과를 비교해 경로를 선택한다.</li><li>✓ <strong>주행 보정:</strong> 시리얼 로그로 동작을 확인하고 속도·회전 시간·센서 상태를 점검한다.</li></ul></div>
+<div id="inter4-final-codes" class="bg-cyan-50 border border-cyan-200 rounded-xl p-6 space-y-4"><div class="flex flex-wrap items-center justify-between gap-3"><h3 class="font-bold text-cyan-950 text-lg">제작사 배포 최종 코드 6종</h3><a href="assets/4wd/code/manufacturer_final_codes_7-12.zip" download class="bg-cyan-700 hover:bg-cyan-800 text-white rounded-lg px-4 py-2 text-sm font-bold">전체 코드 ZIP 다운로드</a></div><p class="text-sm text-slate-600">제공받은 제작사 파일을 그대로 사용합니다. 각 실습의 코드를 복사하거나 원본 파일을 다운로드하세요. ZIP은 스케치별 폴더를 포함합니다.</p><div class="grid grid-cols-1 sm:grid-cols-2 gap-2"><button type="button" onclick="document.getElementById('inter4-serial').scrollIntoView({behavior: 'smooth'})" class="text-left bg-white border border-cyan-100 hover:border-cyan-400 rounded-lg p-3"><strong class="block text-sm text-cyan-950">7. 시리얼 명령 제어</strong><span class="text-xs text-slate-500 break-all">7_RC_CAR_Serial.ino →</span></button><button type="button" onclick="document.getElementById('inter4-ir').scrollIntoView({behavior: 'smooth'})" class="text-left bg-white border border-cyan-100 hover:border-cyan-400 rounded-lg p-3"><strong class="block text-sm text-cyan-950">8. 적외선 리모컨 제어</strong><span class="text-xs text-slate-500 break-all">8_RC_CAR_IR.ino →</span></button><button type="button" onclick="document.getElementById('inter4-line').scrollIntoView({behavior: 'smooth'})" class="text-left bg-white border border-cyan-100 hover:border-cyan-400 rounded-lg p-3"><strong class="block text-sm text-cyan-950">9. 라인트레이싱</strong><span class="text-xs text-slate-500 break-all">9_RC_CAR_Line.ino →</span></button><button type="button" onclick="document.getElementById('inter4-obstacle').scrollIntoView({behavior: 'smooth'})" class="text-left bg-white border border-cyan-100 hover:border-cyan-400 rounded-lg p-3"><strong class="block text-sm text-cyan-950">10. 초음파 장애물 회피</strong><span class="text-xs text-slate-500 break-all">10_RC_CAR_Obstacle.ino →</span></button><button type="button" onclick="document.getElementById('inter4-bluetooth').scrollIntoView({behavior: 'smooth'})" class="text-left bg-white border border-cyan-100 hover:border-cyan-400 rounded-lg p-3"><strong class="block text-sm text-cyan-950">11. 블루투스 송수신 확인</strong><span class="text-xs text-slate-500 break-all">11_Bluetooth.ino →</span></button><button type="button" onclick="document.getElementById('inter4-bluetooth-car').scrollIntoView({behavior: 'smooth'})" class="text-left bg-white border border-cyan-100 hover:border-cyan-400 rounded-lg p-3"><strong class="block text-sm text-cyan-950">12. 블루투스 앱 조종</strong><span class="text-xs text-slate-500 break-all">12_RC_CAR_Bluetooth.ino →</span></button></div></div>
+<div  class="bg-white rounded-xl p-6 border border-slate-200 shadow-sm space-y-5 scroll-mt-6">
+      <div class="border-b pb-3 flex items-center justify-between flex-wrap gap-2"><h3 class="text-xl font-bold text-slate-800 flex items-center gap-2"><span class="bg-cyan-600 text-white text-xs px-2.5 py-1 rounded font-black">준비</span><span>실습 준비물 & 공통 핀 연결 구성표</span></h3><span class="text-xs text-slate-500 font-medium">3차시 배선 복습 · PDF 131~139p</span></div><div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm"><div class="bg-slate-50 border rounded-lg p-4"><strong class="block text-slate-800 mb-1">차체와 구동부</strong><p class="text-slate-600">조립한 4휠 스마트 RC카, Arduino Uno, 센서 확장 쉴드 V5.0, L298N, AA 배터리 홀더와 USB 케이블</p></div><div class="bg-slate-50 border rounded-lg p-4"><strong class="block text-slate-800 mb-1">입력 장치와 실습 환경</strong><p class="text-slate-600">IR 리모컨·수신 모듈, 라인센서 3개, HC-SR04·SG90, 검정 테이프 트랙과 높이가 있는 장애물</p></div></div><div class="overflow-x-auto rounded-lg border border-slate-200"><table class="w-full min-w-[560px] text-sm text-left"><thead class="bg-slate-100 text-slate-700"><tr><th scope="col" class="px-4 py-3 whitespace-nowrap">장치 / 신호</th><th scope="col" class="px-4 py-3 whitespace-nowrap">연결 핀</th><th scope="col" class="px-4 py-3 whitespace-nowrap">확인할 내용</th></tr></thead><tbody class="divide-y divide-slate-200"><tr><td class="px-4 py-3 align-top">L298N ENA / ENB</td><td class="px-4 py-3 align-top">D5 / D6</td><td class="px-4 py-3 align-top">오른쪽 / 왼쪽 모터 속도(PWM)</td></tr><tr><td class="px-4 py-3 align-top">L298N IN1·IN2 / IN3·IN4</td><td class="px-4 py-3 align-top">D8·D9 / D10·D11</td><td class="px-4 py-3 align-top">오른쪽 / 왼쪽 모터 방향</td></tr><tr><td class="px-4 py-3 align-top">IR 수신 모듈 SIG</td><td class="px-4 py-3 align-top">A0</td><td class="px-4 py-3 align-top">GND·VCC·SIG 순서를 모듈 표시와 대조</td></tr><tr><td class="px-4 py-3 align-top">라인센서 L / C / R</td><td class="px-4 py-3 align-top">A5 / A4 / A3</td><td class="px-4 py-3 align-top">차량 진행 방향에서 왼쪽 / 중앙 / 오른쪽</td></tr><tr><td class="px-4 py-3 align-top">HC-SR04 TRIG / ECHO</td><td class="px-4 py-3 align-top">D13 / D12</td><td class="px-4 py-3 align-top">송신 / 수신</td></tr><tr><td class="px-4 py-3 align-top">SG90 서보 신호선</td><td class="px-4 py-3 align-top">D2</td><td class="px-4 py-3 align-top">3차시에서 맞춘 정면 90°와 브라켓 방향 확인</td></tr></tbody></table></div><p class="text-sm text-slate-600">센서 확장 쉴드의 <strong>G는 GND, V는 전원, S는 신호</strong>입니다. 모터 외부 전원과 아두이노의 GND를 공통으로 연결하고, 배선은 전원을 끈 상태에서 확인합니다.</p><div data-image-gallery="inter4-wiring" class="grid grid-cols-1 sm:grid-cols-2 gap-4"><figure class="rounded-xl border border-slate-200 bg-slate-50 overflow-hidden"><img src="assets/4wd/p132_wiring_motordriver.png" alt="공통 L298N 모터 배선" class="w-full aspect-video object-contain bg-white" loading="lazy" tabindex="0" role="button" aria-label="공통 L298N 모터 배선 확대 보기"><figcaption class="p-3 text-sm font-semibold text-slate-700">공통 L298N 모터 배선<span class="block mt-1 text-xs font-normal text-slate-500">PDF 132p · 클릭하여 확대 / 좌우 이동</span></figcaption></figure><figure class="rounded-xl border border-slate-200 bg-slate-50 overflow-hidden"><img src="assets/4wd/p131_wiring_ir.png" alt="적외선 리모컨 수신 모듈 배선" class="w-full aspect-video object-contain bg-white" loading="lazy" tabindex="0" role="button" aria-label="적외선 리모컨 수신 모듈 배선 확대 보기"><figcaption class="p-3 text-sm font-semibold text-slate-700">적외선 리모컨 수신 모듈 배선<span class="block mt-1 text-xs font-normal text-slate-500">PDF 131p · 클릭하여 확대 / 좌우 이동</span></figcaption></figure><figure class="rounded-xl border border-slate-200 bg-slate-50 overflow-hidden"><img src="assets/4wd/p139_wiring_linetracer.png" alt="라인센서 3채널 배선" class="w-full aspect-video object-contain bg-white" loading="lazy" tabindex="0" role="button" aria-label="라인센서 3채널 배선 확대 보기"><figcaption class="p-3 text-sm font-semibold text-slate-700">라인센서 3채널 배선<span class="block mt-1 text-xs font-normal text-slate-500">PDF 139p · 클릭하여 확대 / 좌우 이동</span></figcaption></figure><figure class="rounded-xl border border-slate-200 bg-slate-50 overflow-hidden"><img src="assets/4wd/p135_wiring_ultrasonic.png" alt="초음파 센서 배선" class="w-full aspect-video object-contain bg-white" loading="lazy" tabindex="0" role="button" aria-label="초음파 센서 배선 확대 보기"><figcaption class="p-3 text-sm font-semibold text-slate-700">초음파 센서 배선<span class="block mt-1 text-xs font-normal text-slate-500">PDF 135p · 클릭하여 확대 / 좌우 이동</span></figcaption></figure></div><div class="bg-amber-50 border border-amber-200 rounded-xl p-4 space-y-1"><h4 class="font-bold text-amber-900">업로드 전 라이브러리 확인</h4><p class="text-sm text-amber-950 leading-relaxed">IRremote는 최신 버전이 있지만, <strong>이 수업의 리모컨 예제가 정상 동작하도록 반드시 2.6.0 버전을 선택해 설치하세요.</strong> 최신 버전으로 자동 업데이트하지 말고, Arduino IDE의 라이브러리 관리자에서 설치 버전을 확인합니다. 이 예제는 <code>IRremote.h</code>, <code>IRrecv</code>, <code>decode_results</code>를 사용합니다. 설치 순서는 아래 리모컨 실습의 오류 해결 안내에서 확인할 수 있습니다. 장애물 회피 예제는 <code>Servo.h</code> 라이브러리를 사용합니다. </p></div><div class="bg-rose-50 border border-rose-200 rounded-xl p-4 space-y-1"><h4 class="font-bold text-rose-900">각 예제는 하나씩 업로드해 실습합니다</h4><p class="text-sm text-rose-950 leading-relaxed">아래의 여섯 파일은 각각 독립된 스케치입니다. 여러 예제의 <code>setup()</code>과 <code>loop()</code>를 한 파일에 이어 붙이지 않습니다. 업로드 중에는 배터리 전원을 끄고, 업로드 후에는 먼저 바퀴를 띄워 방향과 정지 동작을 확인하세요.</p></div></div>
+<div  class="bg-white rounded-xl p-6 border border-slate-200 shadow-sm space-y-5 scroll-mt-6">
+      <div class="border-b pb-3 flex items-center justify-between flex-wrap gap-2"><h3 class="text-xl font-bold text-slate-800 flex items-center gap-2"><span class="bg-cyan-600 text-white text-xs px-2.5 py-1 rounded font-black">영상</span><span>5~7강 핵심 동영상 강의</span></h3><span class="text-xs text-slate-500 font-medium">교재에 수록된 에듀이노 동영상</span></div><div class="grid grid-cols-1 md:grid-cols-2 gap-5"><div class="rounded-xl border overflow-hidden"><iframe class="w-full aspect-video" src="https://www.youtube.com/embed/h1jmu6Be9Fg" title="시리얼 통신으로 주행하기" loading="lazy" allowfullscreen></iframe><div class="p-4 space-y-2"><h4 class="font-bold text-slate-800">시리얼 통신으로 주행하기</h4><a href="https://www.youtube.com/watch?v=h1jmu6Be9Fg" target="_blank" rel="noopener noreferrer" class="text-sm text-cyan-700 underline">교재 동영상 보기 · PDF 164p</a></div></div><div class="rounded-xl border overflow-hidden"><iframe class="w-full aspect-video" src="https://www.youtube.com/embed/sQAOMK0e8gU" title="적외선 리모컨으로 조종하기" loading="lazy" allowfullscreen></iframe><div class="p-4 space-y-2"><h4 class="font-bold text-slate-800">적외선 리모컨으로 조종하기</h4><a href="https://www.youtube.com/watch?v=sQAOMK0e8gU" target="_blank" rel="noopener noreferrer" class="text-sm text-cyan-700 underline">교재 동영상 보기 · PDF 179p</a></div></div><div class="rounded-xl border overflow-hidden"><iframe class="w-full aspect-video" src="https://www.youtube.com/embed/RmgVzq10uTo" title="검정 라인을 따라 주행하기" loading="lazy" allowfullscreen></iframe><div class="p-4 space-y-2"><h4 class="font-bold text-slate-800">검정 라인을 따라 주행하기</h4><a href="https://www.youtube.com/watch?v=RmgVzq10uTo" target="_blank" rel="noopener noreferrer" class="text-sm text-cyan-700 underline">교재 동영상 보기 · PDF 189p</a></div></div><div class="rounded-xl border overflow-hidden"><iframe class="w-full aspect-video" src="https://www.youtube.com/embed/gRqX4jMHRW8" title="초음파로 장애물 회피하기" loading="lazy" allowfullscreen></iframe><div class="p-4 space-y-2"><h4 class="font-bold text-slate-800">초음파로 장애물 회피하기</h4><a href="https://www.youtube.com/watch?v=gRqX4jMHRW8" target="_blank" rel="noopener noreferrer" class="text-sm text-cyan-700 underline">교재 동영상 보기 · PDF 201p</a></div></div></div></div>
+<div id="inter4-serial" class="bg-white rounded-xl p-6 border border-slate-200 shadow-sm space-y-5 scroll-mt-6">
+      <div class="border-b pb-3 flex items-center justify-between flex-wrap gap-2"><h3 class="text-xl font-bold text-slate-800 flex items-center gap-2"><span class="bg-cyan-600 text-white text-xs px-2.5 py-1 rounded font-black">5강 STEP 1</span><span>시리얼 통신으로 RC카 제어하기</span></h3><span class="text-xs text-slate-500 font-medium">PDF 157~164p</span></div><ol class="list-decimal pl-6 space-y-2 text-sm sm:text-base text-slate-600"><li class="pl-1"><strong>7_RC_CAR_Serial.ino</strong>를 업로드한 뒤 시리얼 모니터를 엽니다.</li><li class="pl-1">통신 속도는 <strong>9600 baud</strong>, 줄바꿈은 <strong>없음(No line ending)</strong>으로 설정합니다.</li><li class="pl-1">소문자 명령을 하나씩 전송하고, 시리얼 출력과 바퀴의 방향을 함께 확인합니다.</li></ol><div class="overflow-x-auto rounded-lg border border-slate-200"><table class="w-full min-w-[560px] text-sm text-left"><thead class="bg-slate-100 text-slate-700"><tr><th scope="col" class="px-4 py-3 whitespace-nowrap">입력 문자</th><th scope="col" class="px-4 py-3 whitespace-nowrap">동작</th><th scope="col" class="px-4 py-3 whitespace-nowrap">원본 코드에서 실행하는 내용</th></tr></thead><tbody class="divide-y divide-slate-200"><tr><td class="px-4 py-3 align-top"><code>g</code></td><td class="px-4 py-3 align-top">전진</td><td class="px-4 py-3 align-top"><code>motor_role(HIGH, HIGH)</code></td></tr><tr><td class="px-4 py-3 align-top"><code>b</code></td><td class="px-4 py-3 align-top">후진</td><td class="px-4 py-3 align-top"><code>motor_role(LOW, LOW)</code></td></tr><tr><td class="px-4 py-3 align-top"><code>s</code></td><td class="px-4 py-3 align-top">정지</td><td class="px-4 py-3 align-top">D5와 D6의 PWM을 모두 0으로 설정</td></tr><tr><td class="px-4 py-3 align-top">그 외 문자</td><td class="px-4 py-3 align-top">잘못된 명령 표시</td><td class="px-4 py-3 align-top"><code>Wrong command</code> 출력 · 자동 정지 명령은 아님</td></tr></tbody></table></div><div class="bg-cyan-50 border border-cyan-200 rounded-xl p-4 space-y-1"><h4 class="font-bold text-cyan-900">확인 포인트</h4><p class="text-sm text-cyan-950 leading-relaxed">좌우 기본 속도는 모두 <strong>153 / 255</strong>입니다. <code>Serial.available()</code>로 입력을 확인하고 <code>Serial.read()</code>로 한 글자를 읽습니다. 명령을 보내지 않아도 이전 주행 상태가 이어지므로, 반드시 <code>s</code>로 정지시키세요. USB 케이블을 연결한 실습은 이동 범위를 짧게 잡습니다.</p></div><div data-image-gallery="inter4-serial" class="grid grid-cols-1 sm:grid-cols-2 gap-4"><figure class="rounded-xl border border-slate-200 bg-slate-50 overflow-hidden"><img src="assets/4wd/p160_application.png" alt="시리얼 모니터 열기" class="w-full aspect-video object-contain bg-white" loading="lazy" tabindex="0" role="button" aria-label="시리얼 모니터 열기 확대 보기"><figcaption class="p-3 text-sm font-semibold text-slate-700">시리얼 모니터 열기<span class="block mt-1 text-xs font-normal text-slate-500">PDF 160p · 클릭하여 확대 / 좌우 이동</span></figcaption></figure><figure class="rounded-xl border border-slate-200 bg-slate-50 overflow-hidden"><img src="assets/4wd/p161_application.png" alt="g 입력: 전진 확인" class="w-full aspect-video object-contain bg-white" loading="lazy" tabindex="0" role="button" aria-label="g 입력: 전진 확인 확대 보기"><figcaption class="p-3 text-sm font-semibold text-slate-700">g 입력: 전진 확인<span class="block mt-1 text-xs font-normal text-slate-500">PDF 161p · 클릭하여 확대 / 좌우 이동</span></figcaption></figure><figure class="rounded-xl border border-slate-200 bg-slate-50 overflow-hidden"><img src="assets/4wd/p162_application.png" alt="b 입력: 후진 확인" class="w-full aspect-video object-contain bg-white" loading="lazy" tabindex="0" role="button" aria-label="b 입력: 후진 확인 확대 보기"><figcaption class="p-3 text-sm font-semibold text-slate-700">b 입력: 후진 확인<span class="block mt-1 text-xs font-normal text-slate-500">PDF 162p · 클릭하여 확대 / 좌우 이동</span></figcaption></figure><figure class="rounded-xl border border-slate-200 bg-slate-50 overflow-hidden"><img src="assets/4wd/p163_application.png" alt="s 입력: 정지 확인" class="w-full aspect-video object-contain bg-white" loading="lazy" tabindex="0" role="button" aria-label="s 입력: 정지 확인 확대 보기"><figcaption class="p-3 text-sm font-semibold text-slate-700">s 입력: 정지 확인<span class="block mt-1 text-xs font-normal text-slate-500">PDF 163p · 클릭하여 확대 / 좌우 이동</span></figcaption></figure></div><div class="rounded-xl overflow-hidden border border-slate-200"><div class="bg-slate-100 p-4 flex flex-wrap items-center justify-between gap-3"><div class="min-w-0"><h4 class="font-bold text-slate-800 break-all">7_RC_CAR_Serial.ino</h4><p class="text-xs text-slate-500 mt-1">시리얼 문자 g / b / s로 전진·후진·정지 · 제작사 배포 최종 코드</p></div><div class="flex items-center gap-2"><a href="assets/4wd/code/7_RC_CAR_Serial.ino" download class="border border-slate-300 bg-white text-slate-700 px-3 py-2 rounded-lg text-xs font-bold">원본 다운로드</a><button type="button" onclick="copyCode('code-inter4-serial')" class="bg-cyan-700 hover:bg-cyan-800 text-white px-3 py-2 rounded-lg text-xs font-bold">코드 복사</button></div></div><pre class="code-block p-4 overflow-auto leading-relaxed max-h-[460px]"><code id="code-inter4-serial">/* 이 소스는 에듀이노(Eduino)에 의해서 번역, 수정, 작성되었고 소유권 또한 에듀이노의 것입니다. 
+ *  소유권자의 허락을 받지 않고 무단으로 수정, 삭제하여 배포할 시 법적인 처벌을 받을 수도 있습니다. 
+ *  
+ *  에듀이노 SmartCar 예제
+ *  - 스마트 자동차 전진, 후진, 정지 명령 시리얼통신으로 제어하기 -
+ *  
+ *  PC와 USB케이블을 우노 보드와 연결한 상태에서 
+ *  터미널을 통해 키보드 명령을 하면 스마트 자동차가 움직이는 예제.
+ *  
+ *  명령
+ *  1. 터미널에 키보드로 g 라고 입력함
+ *  -&gt; 스마트 카 전진
+ *  2. 터미널에 키보드로 b 라고 입력함
+ *  -&gt; 스마트 카 후진
+ *  3. 터미널에 키보드로 s 라고 입력함
+ *  -&gt; 스마트 카 정지
+ *  
+ */
+
+int RightMotor_E_pin = 5;                      // 오른쪽 모터의 Enable &amp; PWM
+int LeftMotor_E_pin = 6;                       // 왼쪽 모터의 Enable &amp; PWM
+int RightMotor_1_pin = 8;                      // 오른쪽 모터 제어선 IN1
+int RightMotor_2_pin = 9;                      // 오른쪽 모터 제어선 IN2
+int LeftMotor_3_pin = 10;                      // 왼쪽 모터 제어선 IN3
+int LeftMotor_4_pin = 11;                      // 왼쪽 모터 제어선 IN4
+
+int L_MotorSpeed = 153;                        // 왼쪽 모터 속도
+int R_MotorSpeed = 153;                        // 오른쪽 모터 속도
+
+void setup() {
+  pinMode(RightMotor_E_pin, OUTPUT);           // 출력모드로 설정
+  pinMode(RightMotor_1_pin, OUTPUT);
+  pinMode(RightMotor_2_pin, OUTPUT);
+  pinMode(LeftMotor_3_pin, OUTPUT);
+  pinMode(LeftMotor_4_pin, OUTPUT);
+  pinMode(LeftMotor_E_pin, OUTPUT);
+
+  Serial.begin(9600);                       
+  Serial.println(&quot;Welcome Eduino!&quot;);
+}
+
+void loop() {
+  if (Serial.available()){                  
+    char command = Serial.read();          
+    Serial.print(&quot;Recived command : &quot;);
+    if(command == &#x27;g&#x27;){                    
+      motor_role(HIGH, HIGH);
+      Serial.println(&quot;직진&quot;); 
+    }
+    else if(command == &#x27;b&#x27;){               
+      motor_role(LOW, LOW); 
+      Serial.println(&quot;후진&quot;); 
+    }
+    else if(command == &#x27;s&#x27;){
+      analogWrite(RightMotor_E_pin, 0);  
+      analogWrite(LeftMotor_E_pin, 0);
+      Serial.println(&quot;정지&quot;);
+    }
+    else{
+      Serial.println(&quot;Wrong command&quot;);      
+    }
+  }
+}
+
+void motor_role(int R_motor, int L_motor){
+   digitalWrite(RightMotor_1_pin, R_motor);
+   digitalWrite(RightMotor_2_pin, !R_motor);
+   digitalWrite(LeftMotor_3_pin, L_motor);
+   digitalWrite(LeftMotor_4_pin, !L_motor);
+
+   analogWrite(RightMotor_E_pin, R_MotorSpeed);  
+   analogWrite(LeftMotor_E_pin, L_MotorSpeed);
+}
+</code></pre></div></div>
+<div id="inter4-ir" class="bg-white rounded-xl p-6 border border-slate-200 shadow-sm space-y-5 scroll-mt-6">
+      <div class="border-b pb-3 flex items-center justify-between flex-wrap gap-2"><h3 class="text-xl font-bold text-slate-800 flex items-center gap-2"><span class="bg-cyan-600 text-white text-xs px-2.5 py-1 rounded font-black">5강 STEP 2</span><span>적외선 리모컨으로 무선 조종하기</span></h3><span class="text-xs text-slate-500 font-medium">PDF 165~179p</span></div><div class="bg-amber-50 border-2 border-amber-300 rounded-xl p-5 space-y-4" id="inter4-irremote-setup">
+<h4 class="font-bold text-amber-950 text-lg">컴파일 오류 해결: IRremote 라이브러리 설치</h4>
+<p class="bg-amber-200/70 border border-amber-300 rounded-lg p-3 text-sm sm:text-base font-bold text-amber-950">버전 필수 확인: 최신 버전이 있어도 이 수업에서는 IRremote 2.6.0을 사용하세요. 제공된 리모컨 예제의 정상 동작을 위한 설치 버전입니다.</p>
+<p class="text-sm text-amber-950"><code class="break-words">IRremote.h: No such file or directory</code>는 적외선 리모컨용 <strong>IRremote 라이브러리의 헤더 파일을 찾지 못했다</strong>는 뜻입니다. 아래 순서대로 설치한 뒤 다시 컴파일하세요.</p>
+<figure data-image-gallery="inter4-irremote-error" class="max-w-3xl mx-auto"><img src="assets/4wd/irremote_missing_library.png" alt="Arduino IDE에서 IRremote.h를 찾지 못해 컴파일이 중단된 오류 화면" class="w-full h-auto rounded-lg border bg-white" loading="lazy" tabindex="0" role="button" aria-label="IRremote 라이브러리 누락 오류 화면 확대 보기"><figcaption class="text-xs text-slate-600 text-center mt-2">오류 메시지 예시 · 클릭하면 확대됩니다.</figcaption></figure>
+<ol class="list-decimal pl-6 space-y-2 text-sm sm:text-base text-amber-950"><li>Arduino IDE 왼쪽의 <strong>책 모양 아이콘(라이브러리 관리자)</strong>을 클릭합니다.</li><li>검색창에 <strong>IRremote</strong>를 입력합니다.</li><li>검색 결과에서 <strong>IRremote</strong>를 찾아 버전 선택 메뉴를 <strong class="bg-amber-200 px-2 py-0.5 rounded">2.6.0</strong>으로 변경한 뒤 <strong>설치</strong>합니다.</li><li>설치가 끝나면 왼쪽 위 <strong>✓ 확인 버튼</strong>을 눌러 다시 컴파일합니다.</li></ol>
+<p class="text-sm text-amber-950">컴파일이 성공한 뒤 보드·포트를 확인해 업로드하고, 리모컨 수신 테스트를 진행합니다.</p>
+<div class="bg-white border border-amber-300 rounded-lg p-4 space-y-2"><h4 class="font-bold text-amber-950">리모컨 버튼을 누를 때 빨간 LED 확인!</h4><p class="text-sm text-slate-700">리모컨을 <strong>적외선 수신 센서</strong> 쪽으로 향하게 하고 버튼을 누르세요. <strong>누를 때마다 센서의 빨간불(LED)이 깜박이는지</strong> 확인합니다. 깜박이지 않으면 센서의 전원·배선, 리모컨 배터리와 방향을 점검하세요.</p><p class="text-sm text-slate-600">LED가 깜박이는 것을 확인한 뒤, 시리얼 모니터에서도 버튼별 수신값이 출력되는지 확인합니다.</p></div>
+<p class="text-xs text-slate-600">버전 참고: <a href="https://github.com/Arduino-IRremote/Arduino-IRremote/blob/2.6.0/src/IRremote.h" target="_blank" rel="noopener noreferrer" class="underline">IRremote 2.6.0 공식 소스</a>에서 이 예제가 사용하는 수신 API를 확인할 수 있습니다.</p>
+</div><p class="text-sm sm:text-base text-slate-600">리모컨 버튼에서 받은 값을 <code>control_SmartCar()</code>에서 해석하고, <code>mode</code>에 따라 직진·후진·회전·정지 함수를 실행합니다. 신호 수신 뒤에는 <code>irrecv.resume()</code>으로 다음 입력을 기다립니다.</p><div class="overflow-x-auto rounded-lg border border-slate-200"><table class="w-full min-w-[560px] text-sm text-left"><thead class="bg-slate-100 text-slate-700"><tr><th scope="col" class="px-4 py-3 whitespace-nowrap">리모컨 버튼</th><th scope="col" class="px-4 py-3 whitespace-nowrap">10진수 수신값</th><th scope="col" class="px-4 py-3 whitespace-nowrap">동작</th></tr></thead><tbody class="divide-y divide-slate-200"><tr><td class="px-4 py-3 align-top">2</td><td class="px-4 py-3 align-top">16718055</td><td class="px-4 py-3 align-top">전진 · mode 0</td></tr><tr><td class="px-4 py-3 align-top">8</td><td class="px-4 py-3 align-top">16730805</td><td class="px-4 py-3 align-top">후진 · mode 0</td></tr><tr><td class="px-4 py-3 align-top">4</td><td class="px-4 py-3 align-top">16716015</td><td class="px-4 py-3 align-top">좌회전 · mode 2</td></tr><tr><td class="px-4 py-3 align-top">6</td><td class="px-4 py-3 align-top">16734885</td><td class="px-4 py-3 align-top">우회전 · mode 1</td></tr><tr><td class="px-4 py-3 align-top">5</td><td class="px-4 py-3 align-top">16726215</td><td class="px-4 py-3 align-top">정지 · mode 3</td></tr><tr><td class="px-4 py-3 align-top">+</td><td class="px-4 py-3 align-top">16754775</td><td class="px-4 py-3 align-top">속도 +20 · 최대 255</td></tr><tr><td class="px-4 py-3 align-top">−</td><td class="px-4 py-3 align-top">16769055</td><td class="px-4 py-3 align-top">속도 −20 · 최소 50</td></tr></tbody></table></div><ol class="list-decimal pl-6 space-y-2 text-sm sm:text-base text-slate-600"><li class="pl-1">IR 수신 모듈의 SIG가 <strong>A0</strong>인지 확인하고 원본 코드를 업로드합니다.</li><li class="pl-1">리모컨을 적외선 수신 센서 쪽으로 향하게 하고, <strong>버튼을 누를 때 센서의 빨간 LED가 깜박이는지</strong> 확인합니다.</li><li class="pl-1">시리얼 모니터를 <strong>9600 baud</strong>로 열어 버튼별 <code>HEX</code> 값과 10진수 값을 확인합니다.</li><li class="pl-1">먼저 <strong>2 → 5 → 8 → 5</strong> 순서로 전진·정지·후진을 시험합니다.</li><li class="pl-1">전진 상태에서 <strong>4 / 6</strong>으로 회전하고, <strong>+ / −</strong>로 속도를 바꿔 봅니다.</li></ol><div class="bg-cyan-50 border border-cyan-200 rounded-xl p-4 space-y-1"><h4 class="font-bold text-cyan-900">리모컨 회전은 좌우 속도 차이를 이용합니다</h4><p class="text-sm text-cyan-950 leading-relaxed">제공 코드의 우회전은 오른쪽 속도를 <code>max(속도 × 0.4, 50)</code>, 왼쪽을 <code>min(속도 × 1.4, 255)</code>로 설정합니다. 좌회전은 오른쪽을 <code>min(속도 × 1.4, 255)</code>, 왼쪽을 <code>max(속도 × 0.2, 50)</code>로 설정합니다. 회전 버튼은 직전의 전진·후진 방향값을 유지하므로, 처음에는 전진 버튼을 누른 뒤 회전을 시험하세요.</p></div><div class="bg-rose-50 border border-rose-200 rounded-xl p-4 space-y-1"><h4 class="font-bold text-rose-900">버튼을 놓는 것만으로는 정지하지 않습니다</h4><p class="text-sm text-rose-950 leading-relaxed">원본은 마지막 명령을 유지합니다. <strong>5번 버튼으로 정지</strong>시키고, 리모컨 신호가 닿지 않을 때는 배터리 스위치를 끕니다. 다른 리모컨을 사용하면 수신 코드가 다를 수 있으므로 실제 시리얼 출력과 명령표를 비교하세요.</p></div><div data-image-gallery="inter4-ir" class="grid grid-cols-1 sm:grid-cols-2 gap-4"><figure class="rounded-xl border border-slate-200 bg-slate-50 overflow-hidden"><img src="assets/4wd/p176_application.png" alt="+ / − 버튼으로 속도 조절" class="w-full aspect-video object-contain bg-white" loading="lazy" tabindex="0" role="button" aria-label="+ / − 버튼으로 속도 조절 확대 보기"><figcaption class="p-3 text-sm font-semibold text-slate-700">+ / − 버튼으로 속도 조절<span class="block mt-1 text-xs font-normal text-slate-500">PDF 176p · 클릭하여 확대 / 좌우 이동</span></figcaption></figure><figure class="rounded-xl border border-slate-200 bg-slate-50 overflow-hidden"><img src="assets/4wd/p177_application.png" alt="4 / 6 버튼으로 회전" class="w-full aspect-video object-contain bg-white" loading="lazy" tabindex="0" role="button" aria-label="4 / 6 버튼으로 회전 확대 보기"><figcaption class="p-3 text-sm font-semibold text-slate-700">4 / 6 버튼으로 회전<span class="block mt-1 text-xs font-normal text-slate-500">PDF 177p · 클릭하여 확대 / 좌우 이동</span></figcaption></figure><figure class="rounded-xl border border-slate-200 bg-slate-50 overflow-hidden"><img src="assets/4wd/p178_application.png" alt="리모컨 주요 버튼과 RC카 제어" class="w-full aspect-video object-contain bg-white" loading="lazy" tabindex="0" role="button" aria-label="리모컨 주요 버튼과 RC카 제어 확대 보기"><figcaption class="p-3 text-sm font-semibold text-slate-700">리모컨 주요 버튼과 RC카 제어<span class="block mt-1 text-xs font-normal text-slate-500">PDF 178p · 클릭하여 확대 / 좌우 이동</span></figcaption></figure></div><div class="rounded-xl overflow-hidden border border-slate-200"><div class="bg-slate-100 p-4 flex flex-wrap items-center justify-between gap-3"><div class="min-w-0"><h4 class="font-bold text-slate-800 break-all">8_RC_CAR_IR.ino</h4><p class="text-xs text-slate-500 mt-1">적외선 리모컨 수신값과 mode에 따른 주행 제어 · 제작사 배포 최종 코드</p></div><div class="flex items-center gap-2"><a href="assets/4wd/code/8_RC_CAR_IR.ino" download class="border border-slate-300 bg-white text-slate-700 px-3 py-2 rounded-lg text-xs font-bold">원본 다운로드</a><button type="button" onclick="copyCode('code-inter4-ir')" class="bg-cyan-700 hover:bg-cyan-800 text-white px-3 py-2 rounded-lg text-xs font-bold">코드 복사</button></div></div><pre class="code-block p-4 overflow-auto leading-relaxed max-h-[460px]"><code id="code-inter4-ir">/* 이 소스는 에듀이노(Eduino)에 의해서 번역, 수정, 작성되었고 소유권 또한 에듀이노의 것입니다. 
+ *  소유권자의 허락을 받지 않고 무단으로 수정, 삭제하여 배포할 시 법적인 처벌을 받을 수도 있습니다. 
+ *  
+ *  에듀이노 SmartCar 기본예제 4
+ *  - 스마트 자동차 전진, 후진, 좌회전, 우회전, 정지 명령 적외선 리모컨으로 제어하기 -
+ *  
+ *  적외선 수신센서를 연결한 상태에서 적외선 리모컨으로 명령하여 
+ *  스마트 자동차의 동작을 제어하는 예제입니다.
+ *  
+ *  명령
+ *  1. 적외선 리모컨의 +
+ *  -&gt; 모터 속도 증가
+ *  2. 적외선 리모컨의 -
+ *  -&gt; 모터 속도 감소
+ *  3. 적외선 리모컨의 2
+ *  -&gt; 전진 명령
+ *  4. 적외선 리모컨의 5
+ *  -&gt; 정지 명령
+ *  5. 적외선 리모컨의 8
+ *  -&gt; 후진 명령
+ *  6. 적외선 리모컨의 2
+ *  -&gt; 전진 명령
+ *  7. 적외선 리모컨의 4
+ *  -&gt; 좌회전 명령
+ *  8. 적외선 리모컨의 6
+ *  -&gt; 우회전 명령
+ *  
+ */
+
+ /*
+ * IR remote 이름과 주소 
+ *  이름,  16진수 주소 , 10진수 주소
+  { &quot;0&quot;,    0xFF6897 , 16738455 } 
+  { &quot;1&quot;,    0xFF30CF , 16724175 }
+  { &quot;2&quot;,    0xFF18E7 , 16718055 }
+  { &quot;3&quot;,    0xFF7A85 , 16743045 }
+  { &quot;4&quot;,    0xFF10EF , 16716015 }
+  { &quot;5&quot;,    0xFF38C7 , 16726215 }
+  { &quot;6&quot;,    0xFF5AA5 , 16734885 }
+  { &quot;7&quot;,    0xFF42BD , 16728765 }
+  { &quot;8&quot;,    0xFF4AB5 , 16730805 }
+  { &quot;9&quot;,    0xFF52AD , 16732845 }
+  { &quot;100+&quot;, 0xFF9867 , 16750695 }
+  { &quot;200+&quot;, 0xFFB04F , 16756815 }
+  { &quot;-&quot;,    0xFFE01F , 16769055 }
+  { &quot;+&quot;,    0xFFA857 , 16754775 }
+  { &quot;EQ&quot;,   0xFF906F , 16748655 }
+  { &quot;&lt;&lt;&quot;,   0xFF22DD , 16720605 }
+  { &quot;&gt;&gt;&quot;,   0xFF02FD , 16712445 }
+  { &quot;&gt;|&quot;,   0xFFC23D , 16761405 }
+  { &quot;CH-&quot;,  0xFFA25D , 16753245 }
+  { &quot;CH&quot;,   0xFF629D , 16736925 }
+  { &quot;CH+&quot;,  0xFFE21D , 16769565 }
+*/
+
+#include &lt;IRremote.h&gt;
+int RECV_PIN = A0;              // 적외선 수신센서 핀(아날로그 입력 A0)
+IRrecv irrecv(RECV_PIN);        // 적외선 송수신 통신을 위한 객체
+decode_results IR_Signal;       // 적외선 수신값 해석을 위한 객체
+
+int RightMotor_E_pin = 5;       // 오른쪽 모터의 Enable &amp; PWM
+int LeftMotor_E_pin = 6;        // 왼쪽 모터의 Enable &amp; PWM
+int RightMotor_1_pin = 8;       // 오른쪽 모터 제어선 IN1
+int RightMotor_2_pin = 9;       // 오른쪽 모터 제어선 IN2
+int LeftMotor_3_pin = 10;       // 왼쪽 모터 제어선 IN3
+int LeftMotor_4_pin = 11;       // 왼쪽 모터 제어선 IN4
+
+int motor_s = 153;              // 최대 속도(0~255)의 60% 
+
+int R_Motor = 0;
+int L_Motor = 0;
+int mode = 0;
+
+void setup() {
+  pinMode(RightMotor_E_pin, OUTPUT);        // 출력모드로 설정
+  pinMode(RightMotor_1_pin, OUTPUT);
+  pinMode(RightMotor_2_pin, OUTPUT);
+  pinMode(LeftMotor_3_pin, OUTPUT);
+  pinMode(LeftMotor_4_pin, OUTPUT);
+  pinMode(LeftMotor_E_pin, OUTPUT);
+
+  Serial.begin(9600);                       // PC와의 시리얼 통신 9600bps로 설정
+  Serial.println(&quot;Welcome Eduino!&quot;);
+  
+  irrecv.enableIRIn(); // 적외선 통신 수신 시작
+}
+
+void loop() { 
+  if(irrecv.decode(&amp;IR_Signal)){      // 적외선(IR) 수신값이 있는지 판단.       
+
+    Serial.print(&quot;Input Signal : &quot;);
+    Serial.print(&quot;HEX[ &quot;); Serial.print(IR_Signal.value, HEX); Serial.print(&quot; ], &quot;);
+    Serial.print(&quot;Int[ &quot;); Serial.print((String)IR_Signal.value); Serial.print(&quot; ] || &quot;);
+    
+    control_SmartCar((String)IR_Signal.value);
+
+    if(mode == 0){
+      motor_role(R_Motor, L_Motor, motor_s);
+    }
+    else if(mode == 1){
+      Right_role(R_Motor, L_Motor, motor_s);
+    }
+    else if(mode == 2){
+      Left_role(R_Motor, L_Motor, motor_s);
+    }
+    else{
+      motor_role(R_Motor, L_Motor, 0);
+    }
+    
+    irrecv.resume();  // 다음 적외선 값 수신   
+  } 
+}
+
+void control_SmartCar(String Remote_Val){ 
+  if( Remote_Val == &quot;16754775&quot; ){      // &quot;+&quot; 버튼, 명령 : 속도 증가
+    motor_s = motor_s + 20;
+    motor_s = min(motor_s, 255);
+    Serial.print(&quot;Speed Up : &quot;); 
+  }
+  
+  else if( Remote_Val == &quot;16769055&quot; ){ // &quot;-&quot; 버튼, 명령 : 속도 감소
+    motor_s = motor_s - 20;
+    motor_s = max(motor_s, 50);
+    Serial.print(&quot;Speed Down : &quot;);
+  }
+  
+  else if(Remote_Val == &quot;16718055&quot; ){  // &quot;2&quot; 버튼, 명령 : 전진
+    R_Motor = HIGH; L_Motor = HIGH; mode = 0;
+    Serial.print(&quot;Forward : &quot;);
+  }  
+  
+  else if( Remote_Val == &quot;16716015&quot; ){ // &quot;4&quot; 버튼, 명령 : 좌회전
+    mode = 2;
+    Serial.print(&quot;Turn Left : &quot;); 
+  }
+  
+  else if( Remote_Val == &quot;16734885&quot; ){ // &quot;6&quot; 버튼, 명령 : 우회전
+    mode = 1;
+    Serial.print(&quot;Turn Right : &quot;); 
+  }
+  
+  else if( Remote_Val == &quot;16730805&quot; ){ // &quot;8&quot; 버튼, 명령 : 후진
+    R_Motor = LOW; L_Motor = LOW; mode = 0;
+    Serial.print(&quot;Backward : &quot;); 
+  }
+
+  else if( Remote_Val == &quot;16726215&quot; ){ // &quot;5&quot; 버튼, 명령 : 정지
+    mode = 3;
+    Serial.print(&quot;Stop : &quot;);  
+  }
+  
+  else{
+    Serial.print(&quot;Not Defined : &quot;);  // 지정하지 않은 주소입력.
+  }
+  
+  Serial.print(&quot;R_Motor[ &quot;);Serial.print(R_Motor);Serial.print(&quot; ], &quot;);
+  Serial.print(&quot;L_Motor[ &quot;);Serial.print(L_Motor);Serial.print(&quot; ], &quot;);
+  Serial.print(&quot;motor_s[ &quot;);Serial.print(motor_s);Serial.print(&quot; ], &quot;);
+  Serial.print(&quot;Mode[ &quot;);Serial.print(mode);Serial.println(&quot; ]&quot;);
+}
+
+void motor_role(int R_motor, int L_motor, int Speed){
+   digitalWrite(RightMotor_1_pin, R_motor);
+   digitalWrite(RightMotor_2_pin, !R_motor);
+   digitalWrite(LeftMotor_3_pin, L_motor);
+   digitalWrite(LeftMotor_4_pin, !L_motor);
+   
+   analogWrite(RightMotor_E_pin, Speed);  // 우측 모터 속도값
+   analogWrite(LeftMotor_E_pin, Speed);   // 좌측 모터 속도값  
+}
+
+void Right_role(int R_motor, int L_motor, int Speed){
+   digitalWrite(RightMotor_1_pin, R_motor);
+   digitalWrite(RightMotor_2_pin, !R_motor);
+   digitalWrite(LeftMotor_3_pin, L_motor);
+   digitalWrite(LeftMotor_4_pin, !L_motor);
+   
+   analogWrite(RightMotor_E_pin, max(Speed*0.4,50));  // 우측 모터 속도값
+   analogWrite(LeftMotor_E_pin, min(Speed*1.4,255));   // 좌측 모터 속도값
+}
+
+void Left_role(int R_motor, int L_motor, int Speed){
+   digitalWrite(RightMotor_1_pin, R_motor);
+   digitalWrite(RightMotor_2_pin, !R_motor);
+   digitalWrite(LeftMotor_3_pin, L_motor);
+   digitalWrite(LeftMotor_4_pin, !L_motor);
+   
+   analogWrite(RightMotor_E_pin, min(Speed*1.4,255));  // 우측 모터 속도값
+   analogWrite(LeftMotor_E_pin, max(Speed*0.2,50));   // 좌측 모터 속도값   
+}
+</code></pre></div></div>
+<div id="inter4-line" class="bg-white rounded-xl p-6 border border-slate-200 shadow-sm space-y-5 scroll-mt-6">
+      <div class="border-b pb-3 flex items-center justify-between flex-wrap gap-2"><h3 class="text-xl font-bold text-slate-800 flex items-center gap-2"><span class="bg-cyan-600 text-white text-xs px-2.5 py-1 rounded font-black">6강 STEP 3</span><span>3채널 라인센서로 라인트레이싱하기</span></h3><span class="text-xs text-slate-500 font-medium">PDF 180~189p</span></div><p class="text-sm sm:text-base text-slate-600">차량의 세 라인센서를 <strong>L(왼쪽 A5), C(중앙 A4), R(오른쪽 A3)</strong> 순서로 읽습니다. 원본의 <code>digitalRead()</code> 결과를 아래 조건표와 연결해 주행 방향을 결정합니다.</p><div class="overflow-x-auto rounded-lg border border-slate-200"><table class="w-full min-w-[560px] text-sm text-left"><thead class="bg-slate-100 text-slate-700"><tr><th scope="col" class="px-4 py-3 whitespace-nowrap">L / C / R</th><th scope="col" class="px-4 py-3 whitespace-nowrap">원본 코드의 동작</th><th scope="col" class="px-4 py-3 whitespace-nowrap">모터 제어</th></tr></thead><tbody class="divide-y divide-slate-200"><tr><td class="px-4 py-3 align-top"><code>0 / 1 / 0</code></td><td class="px-4 py-3 align-top">직진</td><td class="px-4 py-3 align-top">양쪽 모터 전진</td></tr><tr><td class="px-4 py-3 align-top"><code>0 / 0 / 1</code>, <code>0 / 1 / 1</code></td><td class="px-4 py-3 align-top">우회전</td><td class="px-4 py-3 align-top">오른쪽 후진 / 왼쪽 전진</td></tr><tr><td class="px-4 py-3 align-top"><code>1 / 0 / 0</code>, <code>1 / 1 / 0</code></td><td class="px-4 py-3 align-top">좌회전</td><td class="px-4 py-3 align-top">오른쪽 전진 / 왼쪽 후진</td></tr><tr><td class="px-4 py-3 align-top"><code>1 / 0 / 1</code>, <code>1 / 1 / 1</code></td><td class="px-4 py-3 align-top">정지</td><td class="px-4 py-3 align-top">좌우 PWM 모두 0</td></tr><tr><td class="px-4 py-3 align-top"><code>0 / 0 / 0</code></td><td class="px-4 py-3 align-top">이전 센서값 SL / SC / SR로 판단</td><td class="px-4 py-3 align-top">초깃값은 1 / 1 / 1이므로 첫 입력이 0 / 0 / 0이면 정지</td></tr></tbody></table></div><div class="bg-cyan-50 border border-cyan-200 rounded-xl p-4 space-y-1"><h4 class="font-bold text-cyan-900">검정·흰색은 실제 센서값으로 확인하세요</h4><p class="text-sm text-cyan-950 leading-relaxed">조건표의 <strong>0은 LOW, 1은 HIGH</strong>입니다. 검정 테이프와 바닥 위에 각 센서를 놓고 시리얼 모니터의 L, C, R 값을 먼저 기록하세요. 센서 출력과 배선 위치가 코드의 조건과 맞는지 확인한 뒤 주행합니다. 이 예제는 리모컨처럼 속도 차이로 돌지 않고, 좌우 모터 방향을 다르게 설정해 회전합니다.</p></div><ol class="list-decimal pl-6 space-y-2 text-sm sm:text-base text-slate-600"><li class="pl-1">밝고 평평한 바닥에 검정 테이프로 트랙을 만듭니다. 교재처럼 <strong>모서리는 완만한 곡선</strong>으로 구성합니다.</li><li class="pl-1"><strong>9_RC_CAR_Line.ino</strong>를 업로드하고, 바퀴를 띄운 상태에서 센서값과 직진·회전·정지 로그를 확인합니다.</li><li class="pl-1">차량을 트랙 중앙에 놓고 짧은 구간부터 시험합니다. 선을 놓치면 모터 속도, 센서 높이, 센서 좌우 배선과 트랙 곡률을 차례로 점검합니다.</li></ol><div data-image-gallery="inter4-line" class="grid grid-cols-1 sm:grid-cols-2 gap-4"><figure class="rounded-xl border border-slate-200 bg-slate-50 overflow-hidden"><img src="assets/4wd/p185_application.png" alt="센서값 저장과 조건 분기" class="w-full aspect-video object-contain bg-white" loading="lazy" tabindex="0" role="button" aria-label="센서값 저장과 조건 분기 확대 보기"><figcaption class="p-3 text-sm font-semibold text-slate-700">센서값 저장과 조건 분기<span class="block mt-1 text-xs font-normal text-slate-500">PDF 185p · 클릭하여 확대 / 좌우 이동</span></figcaption></figure><figure class="rounded-xl border border-slate-200 bg-slate-50 overflow-hidden"><img src="assets/4wd/p186_application.png" alt="세 센서 조합에 따른 주행 판단" class="w-full aspect-video object-contain bg-white" loading="lazy" tabindex="0" role="button" aria-label="세 센서 조합에 따른 주행 판단 확대 보기"><figcaption class="p-3 text-sm font-semibold text-slate-700">세 센서 조합에 따른 주행 판단<span class="block mt-1 text-xs font-normal text-slate-500">PDF 186p · 클릭하여 확대 / 좌우 이동</span></figcaption></figure><figure class="rounded-xl border border-slate-200 bg-slate-50 overflow-hidden"><img src="assets/4wd/p187_application.png" alt="완만한 곡선으로 트랙 구성" class="w-full aspect-video object-contain bg-white" loading="lazy" tabindex="0" role="button" aria-label="완만한 곡선으로 트랙 구성 확대 보기"><figcaption class="p-3 text-sm font-semibold text-slate-700">완만한 곡선으로 트랙 구성<span class="block mt-1 text-xs font-normal text-slate-500">PDF 187p · 클릭하여 확대 / 좌우 이동</span></figcaption></figure><figure class="rounded-xl border border-slate-200 bg-slate-50 overflow-hidden"><img src="assets/4wd/p188_application.png" alt="직선과 곡선 주행 결과 확인" class="w-full aspect-video object-contain bg-white" loading="lazy" tabindex="0" role="button" aria-label="직선과 곡선 주행 결과 확인 확대 보기"><figcaption class="p-3 text-sm font-semibold text-slate-700">직선과 곡선 주행 결과 확인<span class="block mt-1 text-xs font-normal text-slate-500">PDF 188p · 클릭하여 확대 / 좌우 이동</span></figcaption></figure></div><div class="bg-amber-50 border border-amber-200 rounded-xl p-4 space-y-1"><h4 class="font-bold text-amber-900">선을 놓쳤을 때 원본의 동작</h4><p class="text-sm text-amber-950 leading-relaxed">세 센서가 모두 0이면 정지하지 않고 직전 센서값으로 판단합니다. 트랙 밖에서도 이전 주행이 이어질 수 있으므로 차량을 즉시 멈출 수 있도록 전원 스위치를 가까이 두고 관찰하세요.</p></div><div class="rounded-xl overflow-hidden border border-slate-200"><div class="bg-slate-100 p-4 flex flex-wrap items-center justify-between gap-3"><div class="min-w-0"><h4 class="font-bold text-slate-800 break-all">9_RC_CAR_Line.ino</h4><p class="text-xs text-slate-500 mt-1">세 라인센서의 값과 이전 상태를 이용한 라인트레이싱 · 제작사 배포 최종 코드</p></div><div class="flex items-center gap-2"><a href="assets/4wd/code/9_RC_CAR_Line.ino" download class="border border-slate-300 bg-white text-slate-700 px-3 py-2 rounded-lg text-xs font-bold">원본 다운로드</a><button type="button" onclick="copyCode('code-inter4-line')" class="bg-cyan-700 hover:bg-cyan-800 text-white px-3 py-2 rounded-lg text-xs font-bold">코드 복사</button></div></div><pre class="code-block p-4 overflow-auto leading-relaxed max-h-[460px]"><code id="code-inter4-line">/* 이 소스는 에듀이노(Eduino)에 의해서 번역, 수정, 작성되었고 소유권 또한 에듀이노의 것입니다.
+    소유권자의 허락을 받지 않고 무단으로 수정, 삭제하여 배포할 시 법적인 처벌을 받을 수도 있습니다.
+
+    에듀이노 SmartCar 예제
+    - 스마트 자동차 검정색 라인을 따라 스스로 움직이는 예제 -
+*/
+
+int RightMotor_E_pin = 5;                                        // 오른쪽 모터의 Enable &amp; PWM
+int LeftMotor_E_pin = 6;                                         // 왼쪽 모터의 Enable &amp; PWM
+int RightMotor_1_pin = 8;                                        // 오른쪽 모터 제어선 IN1
+int RightMotor_2_pin = 9;                                        // 오른쪽 모터 제어선 IN2
+int LeftMotor_3_pin = 10;                                        // 왼쪽 모터 제어선 IN3
+int LeftMotor_4_pin = 11;                                        // 왼쪽 모터 제어선 IN4
+
+int L_Line = A5;                                                 // 왼쪽 라인트레이서 센서는 A5 핀에 연결
+int C_Line = A4;                                                 // 가운데 라인트레이서 센서는 A4 핀에 연결
+int R_Line = A3;                                                 // 오른쪽 라인트레이서 센서는 A3 핀에 연결
+
+int L_MotorSpeed = 153;                                          // 왼쪽 모터 속도
+int R_MotorSpeed = 153;                                          // 오른쪽 모터 속도
+
+int SL = 1;
+int SC = 1;
+int SR = 1;
+
+void setup() {
+  pinMode(RightMotor_E_pin, OUTPUT);
+  pinMode(LeftMotor_E_pin, OUTPUT);
+  pinMode(RightMotor_1_pin, OUTPUT);
+  pinMode(RightMotor_2_pin, OUTPUT);
+  pinMode(LeftMotor_3_pin, OUTPUT);
+  pinMode(LeftMotor_4_pin, OUTPUT);
+
+  Serial.begin(9600);                                             // PC와의 시리얼 통신 9600bps로 설정
+  Serial.println(&quot;Welcome Eduino!&quot;);
+}
+
+void loop() {
+  int L = digitalRead(L_Line);
+  int C = digitalRead(C_Line);
+  int R = digitalRead(R_Line);
+
+  Serial.print(&quot;digital : &quot;); 
+  Serial.print(L); 
+  Serial.print(&quot;, &quot;); 
+  Serial.print(C); 
+  Serial.print(&quot;, &quot;); 
+  Serial.print(R); 
+  Serial.print(&quot;   &quot;);
+
+  if ( L == LOW &amp;&amp; C == LOW &amp;&amp; R == LOW ) {           // 0 0 0
+    L = SL; C = SC; R = SR;
+  }
+
+  if ( L == LOW &amp;&amp; C == HIGH &amp;&amp; R == LOW ) {          // 0 1 0
+    motor_role(HIGH, HIGH);
+    Serial.println(&quot;직진&quot;);
+  }
+  
+  else if (L == LOW &amp;&amp; R == HIGH ){                   // 0 0 1, 0 1 1
+    motor_role(LOW, HIGH);
+    Serial.println(&quot;우회전&quot;);
+  }
+ 
+  else if (L == HIGH &amp;&amp; R == LOW ) {                  // 1 0 0, 1 1 0
+    motor_role(HIGH, LOW);
+    Serial.println(&quot;좌회전&quot;);
+
+  }
+  else if ( L == HIGH &amp;&amp; R == HIGH ) {                // 1 1 1, 1 0 1
+    analogWrite(RightMotor_E_pin, 0);
+    analogWrite(LeftMotor_E_pin, 0);
+    Serial.println(&quot;정지&quot;);
+  }
+  SL = L; SC = C; SR = R;
+}
+
+void motor_role(int R_motor, int L_motor) {
+  digitalWrite(RightMotor_1_pin, R_motor);
+  digitalWrite(RightMotor_2_pin, !R_motor);
+  digitalWrite(LeftMotor_3_pin, L_motor);
+  digitalWrite(LeftMotor_4_pin, !L_motor);
+
+  analogWrite(RightMotor_E_pin, R_MotorSpeed);  // 우측 모터 속도값
+  analogWrite(LeftMotor_E_pin, L_MotorSpeed);   // 좌측 모터 속도값
+}
+</code></pre></div></div>
+<div id="inter4-obstacle" class="bg-white rounded-xl p-6 border border-slate-200 shadow-sm space-y-5 scroll-mt-6">
+      <div class="border-b pb-3 flex items-center justify-between flex-wrap gap-2"><h3 class="text-xl font-bold text-slate-800 flex items-center gap-2"><span class="bg-cyan-600 text-white text-xs px-2.5 py-1 rounded font-black">7강 STEP 4</span><span>초음파 센서와 서보로 장애물 회피하기</span></h3><span class="text-xs text-slate-500 font-medium">PDF 190~201p</span></div><p class="text-sm sm:text-base text-slate-600">초음파 센서로 전방 거리를 측정하고, 가까운 장애물을 만나면 서보모터를 <strong>30°와 150°</strong>로 돌려 두 방향의 여유 공간을 비교합니다. 탐색 뒤에는 <strong>90° 정면</strong>으로 되돌립니다.</p><div class="overflow-x-auto rounded-lg border border-slate-200"><table class="w-full min-w-[560px] text-sm text-left"><thead class="bg-slate-100 text-slate-700"><tr><th scope="col" class="px-4 py-3 whitespace-nowrap">전방 거리 d</th><th scope="col" class="px-4 py-3 whitespace-nowrap">원본 코드의 판단</th><th scope="col" class="px-4 py-3 whitespace-nowrap">실행 순서</th></tr></thead><tbody class="divide-y divide-slate-200"><tr><td class="px-4 py-3 align-top"><code>d ≥ 250 mm</code> (25 cm 이상)</td><td class="px-4 py-3 align-top">전진 유지</td><td class="px-4 py-3 align-top">다음 loop에서 거리 재측정</td></tr><tr><td class="px-4 py-3 align-top"><code>150 ≤ d &lt; 250 mm</code> (15~25 cm)</td><td class="px-4 py-3 align-top">정지 후 두 방향 탐색</td><td class="px-4 py-3 align-top">정지 0.2초 → Servo_con() → 회전 경로 선택</td></tr><tr><td class="px-4 py-3 align-top"><code>d &lt; 150 mm</code> (15 cm 미만)</td><td class="px-4 py-3 align-top">너무 가까움</td><td class="px-4 py-3 align-top">후진 1초 → 정지 0.2초 → 다음 loop에서 재측정</td></tr></tbody></table></div><div class="bg-cyan-50 border border-cyan-200 rounded-xl p-4 space-y-1"><h4 class="font-bold text-cyan-900">거리 단위와 경계값에 주의하세요</h4><p class="text-sm text-cyan-950 leading-relaxed">원본 <code>Ultrasonic()</code>의 반환값은 <strong>mm 기준</strong>입니다. 코드의 <code>150</code>은 15 cm, <code>250</code>은 25 cm입니다. 조건은 <code>&lt;</code>이므로 정확히 150 mm이면 탐색 구간, 250 mm이면 전진 구간입니다.</p></div><ol class="list-decimal pl-6 space-y-2 text-sm sm:text-base text-slate-600"><li class="pl-1">전방 거리 측정 후, 탐색 구간이면 정지합니다.</li><li class="pl-1">서보 <strong>30°</strong>에서 <code>Ult_30</code>, <strong>150°</strong>에서 <code>Ult_150</code>을 측정합니다. 각 방향에서 0.3초 대기 후 측정하고 0.7초 더 기다립니다.</li><li class="pl-1"><code>Ult_30 &gt; Ult_150</code>이면 <strong>val = 1 → 좌회전</strong>, 그렇지 않으면 <strong>val = 0 → 우회전</strong>입니다. 두 거리가 같을 때도 우회전을 선택합니다.</li><li class="pl-1">서보를 90°로 복귀시킨 뒤 <strong>정지 0.5초 → 후진 0.5초 → 선택 방향으로 회전 0.8초</strong>를 실행하고 다시 거리를 측정합니다.</li></ol><div data-image-gallery="inter4-obstacle" class="grid grid-cols-1 sm:grid-cols-2 gap-4"><figure class="rounded-xl border border-slate-200 bg-slate-50 overflow-hidden"><img src="assets/4wd/p195_application.png" alt="150 mm / 250 mm 기준으로 행동 결정" class="w-full aspect-video object-contain bg-white" loading="lazy" tabindex="0" role="button" aria-label="150 mm / 250 mm 기준으로 행동 결정 확대 보기"><figcaption class="p-3 text-sm font-semibold text-slate-700">150 mm / 250 mm 기준으로 행동 결정<span class="block mt-1 text-xs font-normal text-slate-500">PDF 195p · 클릭하여 확대 / 좌우 이동</span></figcaption></figure><figure class="rounded-xl border border-slate-200 bg-slate-50 overflow-hidden"><img src="assets/4wd/p196_application.png" alt="선택한 방향으로 후진 후 회전" class="w-full aspect-video object-contain bg-white" loading="lazy" tabindex="0" role="button" aria-label="선택한 방향으로 후진 후 회전 확대 보기"><figcaption class="p-3 text-sm font-semibold text-slate-700">선택한 방향으로 후진 후 회전<span class="block mt-1 text-xs font-normal text-slate-500">PDF 196p · 클릭하여 확대 / 좌우 이동</span></figcaption></figure><figure class="rounded-xl border border-slate-200 bg-slate-50 overflow-hidden"><img src="assets/4wd/p197_application.png" alt="서보 30°·150° 탐색과 거리 비교" class="w-full aspect-video object-contain bg-white" loading="lazy" tabindex="0" role="button" aria-label="서보 30°·150° 탐색과 거리 비교 확대 보기"><figcaption class="p-3 text-sm font-semibold text-slate-700">서보 30°·150° 탐색과 거리 비교<span class="block mt-1 text-xs font-normal text-slate-500">PDF 197p · 클릭하여 확대 / 좌우 이동</span></figcaption></figure><figure class="rounded-xl border border-slate-200 bg-slate-50 overflow-hidden"><img src="assets/4wd/p198_application.png" alt="장애물 회피 동작 원리" class="w-full aspect-video object-contain bg-white" loading="lazy" tabindex="0" role="button" aria-label="장애물 회피 동작 원리 확대 보기"><figcaption class="p-3 text-sm font-semibold text-slate-700">장애물 회피 동작 원리<span class="block mt-1 text-xs font-normal text-slate-500">PDF 198p · 클릭하여 확대 / 좌우 이동</span></figcaption></figure><figure class="rounded-xl border border-slate-200 bg-slate-50 overflow-hidden"><img src="assets/4wd/p199_application.png" alt="높이가 있는 장애물로 주행 환경 구성" class="w-full aspect-video object-contain bg-white" loading="lazy" tabindex="0" role="button" aria-label="높이가 있는 장애물로 주행 환경 구성 확대 보기"><figcaption class="p-3 text-sm font-semibold text-slate-700">높이가 있는 장애물로 주행 환경 구성<span class="block mt-1 text-xs font-normal text-slate-500">PDF 199p · 클릭하여 확대 / 좌우 이동</span></figcaption></figure><figure class="rounded-xl border border-slate-200 bg-slate-50 overflow-hidden"><img src="assets/4wd/p200_application.png" alt="두 방향 거리와 실제 회피 결과 확인" class="w-full aspect-video object-contain bg-white" loading="lazy" tabindex="0" role="button" aria-label="두 방향 거리와 실제 회피 결과 확인 확대 보기"><figcaption class="p-3 text-sm font-semibold text-slate-700">두 방향 거리와 실제 회피 결과 확인<span class="block mt-1 text-xs font-normal text-slate-500">PDF 200p · 클릭하여 확대 / 좌우 이동</span></figcaption></figure></div><div class="bg-amber-50 border border-amber-200 rounded-xl p-4 space-y-1"><h4 class="font-bold text-amber-900">실습 전 점검</h4><p class="text-sm text-amber-950 leading-relaxed">서보 영점과 브라켓 방향을 먼저 확인하세요. 초음파가 잘 반사되는 높이 있는 장애물로 시험하고, 9600 baud의 거리 로그를 확인합니다. 거리값이 계속 0이거나 불안정하면 주행을 중단하고 TRIG(D13)·ECHO(D12) 배선을 점검하세요. 원본은 측정 실패를 별도로 처리하지 않으며, <code>delay()</code> 대기 중에는 계속 새 거리를 측정하지 않습니다.</p></div><div id="inter4-servo-test" class="rounded-xl border border-cyan-200 bg-cyan-50/40 p-4 sm:p-5 space-y-4"><div class="flex items-center gap-2 flex-wrap"><span class="bg-cyan-600 text-white text-xs px-2.5 py-1 rounded font-black shrink-0">사전 테스트</span><h4 class="font-bold text-slate-800 text-base">10번 코드 전에 서보모터만 먼저 확인하기</h4></div><p class="text-sm sm:text-base text-slate-600">장애물 회피 코드는 서보가 <strong>30° → 90° → 150° → 90°</strong>로 정확히 움직여야 두 방향 거리를 제대로 비교할 수 있습니다. 모터와 초음파를 빼고 <strong>서보만 D2에 연결</strong>한 상태에서 아래 코드로 움직임을 먼저 확인하세요. 모터는 동작하지 않으므로 배터리 없이 USB만 연결해도 됩니다.</p><div class="rounded-xl overflow-hidden border border-slate-200"><div class="bg-slate-100 p-4 flex flex-wrap items-center justify-between gap-3"><div class="min-w-0"><h4 class="font-bold text-slate-800 break-all">Servo_sweep_test.ino</h4><p class="text-xs text-slate-500 mt-1">서보를 30° · 90° · 150° · 90° 순서로 1초씩 회전 · 시리얼 모니터에 현재 각도 출력</p></div><button type="button" onclick="copyCode('code-inter4-servo-test')" class="bg-cyan-700 hover:bg-cyan-800 text-white px-3 py-2 rounded-lg text-xs font-bold">코드 복사</button></div><pre class="code-block p-4 overflow-auto leading-relaxed max-h-[460px]"><code id="code-inter4-servo-test">#include &lt;Servo.h&gt;
+Servo s;
+
+void setup() {
+  Serial.begin(9600);
+  s.attach(2);          // 신호선 D2
+}
+
+void loop() {
+  int angles[] = {30, 90, 150, 90};
+  for (int i = 0; i &lt; 4; i++) {
+    s.write(angles[i]);
+    Serial.print("angle = "); Serial.println(angles[i]);
+    delay(1000);
+  }
+}</code></pre></div><div class="grid grid-cols-1 md:grid-cols-2 gap-4"><div class="bg-white border border-slate-200 rounded-xl p-4 space-y-2"><h5 class="font-bold text-slate-800 text-sm sm:text-base flex items-center gap-2"><i class="fa-solid fa-list-check text-cyan-600"></i> 확인 순서</h5><ol class="list-decimal pl-5 space-y-1.5 text-sm text-slate-700"><li>서보를 쉴드 2번 핀(G2 / V2 / S2)에 꽂고 코드를 업로드한 뒤 시리얼 모니터를 <strong>9600 baud</strong>로 엽니다.</li><li>시리얼 모니터의 <code>angle = 30 / 90 / 150 / 90</code> 출력과 실제 서보 움직임이 1초 간격으로 같이 바뀌는지 봅니다.</li><li>차체 앞에서 봤을 때 <strong>90°에서 초음파 센서가 정면</strong>을 향하고, 30°와 150°에서 좌우로 <strong>같은 각도만큼</strong> 돌아가는지 확인합니다.</li><li>정면이 비뚤어져 있으면 5_Servo_zero.ino로 90° 영점을 다시 잡고 브라켓을 다시 끼운 뒤 이 테스트를 반복합니다.</li></ol></div><div class="bg-white border border-slate-200 rounded-xl p-4 space-y-2"><h5 class="font-bold text-slate-800 text-sm sm:text-base flex items-center gap-2"><i class="fa-solid fa-triangle-exclamation text-amber-500"></i> 이럴 때는 점검하세요</h5><ul class="list-disc pl-5 space-y-1.5 text-sm text-slate-700"><li><strong>시리얼 출력은 나오는데 서보가 안 움직임:</strong> 신호선이 S2에 꽂혔는지, 서보의 갈색(GND)·빨간색(VCC)·주황색(SIG) 선 순서가 쉴드의 G / V / S와 맞는지 확인합니다.</li><li><strong>떨리거나 끝에서 윙윙 소리:</strong> 브라켓이 차체나 배선에 걸려 있지 않은지 확인하고, USB 전원만으로 힘이 부족하면 배터리 전원을 켭니다.</li><li><strong>좌우가 반대로 보임:</strong> 10번 코드에서는 30°에서 잰 거리를 <code>Ult_30</code>, 150°를 <code>Ult_150</code>으로 비교하므로, 서보 장착 방향이 반대면 회피 방향도 반대가 됩니다. 브라켓을 180° 돌려 다시 장착하세요.</li></ul></div></div><p class="text-xs text-slate-500">💡 네 각도가 모두 정확히 반복되면 다음으로 초음파 센서 테스트를 진행합니다.</p></div><div id="inter4-ultrasonic-test" class="rounded-xl border border-cyan-200 bg-cyan-50/40 p-4 sm:p-5 space-y-4"><div class="flex items-center gap-2 flex-wrap"><span class="bg-cyan-600 text-white text-xs px-2.5 py-1 rounded font-black shrink-0">사전 테스트</span><h4 class="font-bold text-slate-800 text-base">초음파 센서 거리값 확인하기</h4></div><p class="text-sm sm:text-base text-slate-600">서보 확인이 끝났으면 <strong>초음파 센서(TRIG=D13, ECHO=D12)</strong>가 거리를 제대로 재는지 확인합니다. 10번 코드는 <strong>150 mm / 250 mm</strong>를 기준으로 행동을 결정하므로, 이 테스트에서 mm 단위 거리값이 손 위치에 따라 자연스럽게 바뀌어야 합니다. 모터는 동작하지 않으므로 USB만 연결해도 됩니다.</p><div class="rounded-xl overflow-hidden border border-slate-200"><div class="bg-slate-100 p-4 flex flex-wrap items-center justify-between gap-3"><div class="min-w-0"><h4 class="font-bold text-slate-800 break-all">Ultrasonic_test.ino</h4><p class="text-xs text-slate-500 mt-1">0.3초마다 거리 측정 · 에코 펄스 시간(us)과 거리(mm / cm)를 시리얼 모니터에 출력</p></div><button type="button" onclick="copyCode('code-inter4-ultrasonic-test')" class="bg-cyan-700 hover:bg-cyan-800 text-white px-3 py-2 rounded-lg text-xs font-bold">코드 복사</button></div><pre class="code-block p-4 overflow-auto leading-relaxed max-h-[460px]"><code id="code-inter4-ultrasonic-test">int trigPin = 13;
+int echoPin = 12;
+
+void setup() {
+  Serial.begin(9600);
+  pinMode(trigPin, OUTPUT);
+  pinMode(echoPin, INPUT);
+  digitalWrite(trigPin, LOW);
+  Serial.println("Ultrasonic test");
+}
+
+void loop() {
+  digitalWrite(trigPin, LOW);
+  delayMicroseconds(2);
+  digitalWrite(trigPin, HIGH);
+  delayMicroseconds(10);
+  digitalWrite(trigPin, LOW);
+
+  long duration = pulseIn(echoPin, HIGH, 30000);   // 30ms 타임아웃 (약 5m)
+  long mm = duration * 0.34 / 2;                   // 340m/s, 왕복이라 /2
+
+  Serial.print("duration = "); Serial.print(duration);
+  Serial.print(" us   distance = ");
+  if (duration == 0) {
+    Serial.println("응답 없음");
+  } else {
+    Serial.print(mm); Serial.print(" mm  (");
+    Serial.print(mm / 10.0, 1); Serial.println(" cm)");
+  }
+  delay(300);
+}</code></pre></div><div class="grid grid-cols-1 md:grid-cols-2 gap-4"><div class="bg-white border border-slate-200 rounded-xl p-4 space-y-2"><h5 class="font-bold text-slate-800 text-sm sm:text-base flex items-center gap-2"><i class="fa-solid fa-list-check text-cyan-600"></i> 확인 순서</h5><ol class="list-decimal pl-5 space-y-1.5 text-sm text-slate-700"><li>초음파 센서를 쉴드의 <strong>G12 / V12 / S12(ECHO) / S13(TRIG)</strong>에 꽂고 코드를 업로드한 뒤 시리얼 모니터를 <strong>9600 baud</strong>로 엽니다.</li><li>센서 정면 약 <strong>10 cm</strong>에 손바닥이나 책을 대고 <code>distance</code>가 100 mm 전후로 나오는지 확인합니다. 20 cm, 30 cm로 물러나며 값이 비례해서 커지는지 봅니다.</li><li>자를 대고 실제 거리와 비교합니다. 몇 mm 정도 오차는 정상이며, 10번 코드의 기준값인 <strong>150 mm와 250 mm</strong> 부근에서 값이 안정적으로 읽히는지 특히 확인합니다.</li><li>앞을 완전히 비우면 <code>응답 없음</code>이나 큰 값이 나올 수 있습니다. 이는 반사체가 없어서이며 고장이 아닙니다.</li></ol></div><div class="bg-white border border-slate-200 rounded-xl p-4 space-y-2"><h5 class="font-bold text-slate-800 text-sm sm:text-base flex items-center gap-2"><i class="fa-solid fa-triangle-exclamation text-amber-500"></i> 이럴 때는 점검하세요</h5><ul class="list-disc pl-5 space-y-1.5 text-sm text-slate-700"><li><strong>항상 <code>응답 없음</code>(duration = 0):</strong> ECHO가 S12, TRIG가 S13에 바르게 꽂혔는지, 센서의 VCC·GND가 V12·G12에 연결됐는지 확인합니다. TRIG와 ECHO가 서로 바뀌면 항상 0이 나옵니다.</li><li><strong>값이 심하게 튐:</strong> 천이나 쿠션처럼 소리를 흡수하는 물체, 또는 비스듬히 놓인 물체는 반사가 약합니다. 책이나 상자처럼 평평하고 단단한 면을 정면에 두고 다시 측정합니다.</li><li><strong>가까이 대도 값이 안 줄어듦:</strong> 초음파 센서는 약 2 cm 이내를 측정하지 못합니다. 5 cm 이상 떨어뜨려 확인하고, 서보 브라켓에 장착한 상태라면 센서 앞을 가리는 배선이 없는지 봅니다.</li></ul></div></div><p class="text-xs text-slate-500">💡 서보와 초음파 두 테스트가 모두 통과하면 10_RC_CAR_Obstacle.ino를 업로드할 준비가 된 것입니다.</p></div><div class="rounded-xl overflow-hidden border border-slate-200"><div class="bg-slate-100 p-4 flex flex-wrap items-center justify-between gap-3"><div class="min-w-0"><h4 class="font-bold text-slate-800 break-all">10_RC_CAR_Obstacle.ino</h4><p class="text-xs text-slate-500 mt-1">초음파 거리와 서보 탐색을 이용한 장애물 회피 · 제작사 배포 최종 코드</p></div><div class="flex items-center gap-2"><a href="assets/4wd/code/10_RC_CAR_Obstacle.ino" download class="border border-slate-300 bg-white text-slate-700 px-3 py-2 rounded-lg text-xs font-bold">원본 다운로드</a><button type="button" onclick="copyCode('code-inter4-obstacle')" class="bg-cyan-700 hover:bg-cyan-800 text-white px-3 py-2 rounded-lg text-xs font-bold">코드 복사</button></div></div><pre class="code-block p-4 overflow-auto leading-relaxed max-h-[460px]"><code id="code-inter4-obstacle">/* 이 소스는 에듀이노(Eduino)에 의해서 번역, 수정, 작성되었고 소유권 또한 에듀이노의 것입니다. 
+ *  소유권자의 허락을 받지 않고 무단으로 수정, 삭제하여 배포할 시 법적인 처벌을 받을 수도 있습니다. 
+ *  
+ *  에듀이노 SmartCar 예제
+ *  - 스마트 자동차 스스로 눈앞에 장애물을 회피하며 움직이는 예제 -
+ *   
+ */
+#include &lt;Servo.h&gt;
+Servo EduServo;
+
+int trigPin = 13;                           // 디지털 13번 핀에 연결
+int echoPin = 12;                           // 디지털 12번 핀에 연결
+int Ultra_d = 0;
+
+int val = 0;                                // 좌우 경로 설정 변수
+   
+int RightMotor_E_pin = 5;                   // 오른쪽 모터의 Enable &amp; PWM
+int LeftMotor_E_pin = 6;                    // 왼쪽 모터의 Enable &amp; PWM
+int RightMotor_1_pin = 8;                   // 오른쪽 모터 제어선 IN1
+int RightMotor_2_pin = 9;                   // 오른쪽 모터 제어선 IN2
+int LeftMotor_3_pin = 10;                   // 왼쪽 모터 제어선 IN3
+int LeftMotor_4_pin = 11;                   // 왼쪽 모터 제어선 IN4
+
+int L_MotorSpeed = 153;                     // 왼쪽 모터 속도
+int R_MotorSpeed = 153;                     // 오른쪽 모터 속도
+
+void setup() {  
+  EduServo.attach(2);                       // 서보모터 PWM 디지털입출력 2번핀 연결
+  
+  pinMode(echoPin, INPUT);                  // echoPin 입력
+  pinMode(trigPin, OUTPUT);                 // trigPin 출력
+  
+  pinMode(RightMotor_E_pin, OUTPUT);        // 출력모드로 설정
+  pinMode(RightMotor_1_pin, OUTPUT);
+  pinMode(RightMotor_2_pin, OUTPUT);
+  pinMode(LeftMotor_3_pin, OUTPUT);
+  pinMode(LeftMotor_4_pin, OUTPUT);
+  pinMode(LeftMotor_E_pin, OUTPUT);
+
+  Serial.begin(9600);
+  Serial.println(&quot;Welcome Eduino!&quot;);
+}
+
+void loop() { 
+  Ultra_d = Ultrasonic();
+  Serial.println(Ultra_d);   
+  motor_role(HIGH, HIGH);         // 직진
+
+  if(Ultra_d &lt; 250) {
+    if (Ultra_d &lt; 150) {
+      Serial.println(&quot;150 이하.&quot;);
+      motor_role(LOW, LOW);      // 후진
+      delay(1000);
+      analogWrite(RightMotor_E_pin, 0);  
+      analogWrite(LeftMotor_E_pin, 0);
+      delay(200);
+    }
+    else {
+      analogWrite(RightMotor_E_pin, 0);  
+      analogWrite(LeftMotor_E_pin, 0);
+      delay(200);
+      Serial.println(&quot;150 이상.&quot;);
+      val =  Servo_con();
+      if (val == 0) {
+        Serial.println(&quot;우회전.&quot;);
+        analogWrite(RightMotor_E_pin, 0);  
+        analogWrite(LeftMotor_E_pin, 0);
+        delay(500);
+        motor_role(LOW, LOW);    // 후진
+        delay(500);
+        motor_role(LOW, HIGH);   // 우회전
+        delay(800);
+      }
+      else if (val == 1) {
+        Serial.println(&quot;좌회전.&quot;);
+        analogWrite(RightMotor_E_pin, 0);  
+        analogWrite(LeftMotor_E_pin, 0);
+        delay(500);
+        motor_role(LOW, LOW);   // 후진
+        delay(500);
+        motor_role(HIGH, LOW);  // 좌회전
+        delay(800);
+      }
+    }
+  }
+}
+
+void motor_role(int R_motor, int L_motor){
+   digitalWrite(RightMotor_1_pin, R_motor);
+   digitalWrite(RightMotor_2_pin, !R_motor);
+   digitalWrite(LeftMotor_3_pin, L_motor);
+   digitalWrite(LeftMotor_4_pin, !L_motor);
+   
+   analogWrite(RightMotor_E_pin, R_MotorSpeed);                          // 우측 모터 속도값
+   analogWrite(LeftMotor_E_pin, L_MotorSpeed);                           // 좌측 모터 속도값  
+}
+
+int Ultrasonic(){
+  long duration, distance;
+  digitalWrite(trigPin, HIGH);                                            // trigPin에서 초음파 발생(echoPin도 HIGH)        
+  delayMicroseconds(10);
+  digitalWrite(trigPin, LOW);
+  duration = pulseIn(echoPin, HIGH);                                      // echoPin 이 HIGH를 유지한 시간을 저장 한다.
+  distance = ((float)(340 * duration) / 1000) / 2; 
+
+  Serial.print(&quot;DIstance:&quot;);                                              // 물체와 초음파 센서간 거리를 표시.        
+  Serial.println(distance);
+
+  return distance;
+}
+
+int Servo_con(){
+  EduServo.write(30);
+  delay(300);
+  int Ult_30 = Ultrasonic();
+  delay(700);
+  EduServo.write(150);
+  delay(300);
+  int Ult_150 = Ultrasonic();
+  delay(700);
+
+  if(Ult_30 &gt; Ult_150){
+     val = 1;
+  }
+  else{
+     val = 0;
+  }
+  EduServo.write(90);
+  return val;
+}
+</code></pre></div></div>
+<div id="inter4-bluetooth" class="bg-white rounded-xl p-6 border border-slate-200 shadow-sm space-y-5 scroll-mt-6"><div class="border-b pb-3 flex items-center justify-between flex-wrap gap-2"><h3 class="text-xl font-bold text-slate-800 flex items-center gap-2"><span class="bg-cyan-600 text-white text-xs px-2.5 py-1 rounded font-black shrink-0">확장 STEP 5</span><span>블루투스 송수신 확인하기</span></h3><span class="text-xs text-slate-500 font-medium">제작사 배포 예제</span></div><p class="text-sm sm:text-base text-slate-600">11번 코드는 PC의 시리얼 모니터와 블루투스 사이에서 수신한 데이터를 그대로 전달합니다. 모터를 구동하기 전에 양방향 통신부터 확인합니다.</p><div class="overflow-x-auto rounded-lg border border-slate-200"><table class="w-full min-w-[560px] text-sm text-left"><thead class="bg-slate-100 text-slate-700"><tr><th scope="col" class="px-4 py-3">원본 설정</th><th scope="col" class="px-4 py-3">아두이노 연결</th><th scope="col" class="px-4 py-3">확인 사항</th></tr></thead><tbody class="divide-y divide-slate-200"><tr><td class="px-4 py-3 align-top"><code>BT_RXD = 3</code></td><td class="px-4 py-3 align-top">D3(RX) ← 블루투스 모듈 TX</td><td class="px-4 py-3 align-top">모듈이 보낸 데이터를 아두이노가 수신</td></tr><tr><td class="px-4 py-3 align-top"><code>BT_TXD = 4</code></td><td class="px-4 py-3 align-top">D4(TX) → 블루투스 모듈 RX</td><td class="px-4 py-3 align-top">아두이노가 보낸 데이터를 모듈이 수신</td></tr><tr><td class="px-4 py-3 align-top">GND</td><td class="px-4 py-3 align-top">아두이노와 블루투스 모듈 공통 GND</td><td class="px-4 py-3 align-top">모듈의 전원·신호 전압은 사용 중인 모듈 규격 확인</td></tr><tr><td class="px-4 py-3 align-top">통신 속도</td><td class="px-4 py-3 align-top">시리얼 모니터 9600 / bluetooth 9600</td><td class="px-4 py-3 align-top">모듈의 UART 속도도 9600인지 확인</td></tr></tbody></table></div><ol class="list-decimal pl-6 space-y-2 text-sm sm:text-base text-slate-600"><li><strong>11_Bluetooth.ino</strong>를 업로드하고 시리얼 모니터를 <strong>9600 baud</strong>로 엽니다.</li><li>사용 중인 블루투스 모듈과 호환되는 앱을 연결한 뒤 짧은 문자를 보냅니다. 모듈별 페어링 방법과 앱은 <a href="#inter4-bt-modules" onclick="event.preventDefault(); document.getElementById('inter4-bt-modules').scrollIntoView({behavior: 'smooth'})" class="text-cyan-700 underline">확장 STEP 6의 HC-06 / HM-10 안내</a>를 참고합니다. 시리얼 모니터에 같은 문자가 나타나는지 확인합니다.</li><li>시리얼 모니터에서도 문자를 보내 앱이 수신하는지 확인합니다. 양방향 통신이 확인되면 12번 주행 코드를 업로드합니다.</li></ol><div class="bg-amber-50 border border-amber-200 rounded-xl p-4 text-sm text-amber-950"><strong>배선은 코드의 숫자를 기준으로 확인하세요.</strong> 12번 원본의 RX/TX 설명 주석은 숫자와 뒤바뀌어 있습니다. 11·12번 모두 실제 선언은 <code>BT_RXD 3</code>, <code>BT_TXD 4</code>이므로 <strong>RX=D3, TX=D4</strong>입니다. 원본 코드는 주석까지 그대로 보존했습니다.</div><div class="rounded-xl overflow-hidden border border-slate-200"><div class="bg-slate-100 p-4 flex flex-wrap items-center justify-between gap-3"><div class="min-w-0"><h4 class="font-bold text-slate-800 break-all">11_Bluetooth.ino</h4><p class="text-xs text-slate-500 mt-1">블루투스 양방향 시리얼 통신 확인 · 제작사 배포 최종 코드</p></div><div class="flex items-center gap-2"><a href="assets/4wd/code/11_Bluetooth.ino" download class="border border-slate-300 bg-white text-slate-700 px-3 py-2 rounded-lg text-xs font-bold">원본 다운로드</a><button type="button" onclick="copyCode('code-inter4-bluetooth')" class="bg-cyan-700 hover:bg-cyan-800 text-white px-3 py-2 rounded-lg text-xs font-bold">코드 복사</button></div></div><pre class="code-block p-4 overflow-auto leading-relaxed max-h-[460px]"><code id="code-inter4-bluetooth">#include &lt;SoftwareSerial.h&gt;
+
+#define BT_RXD 3
+#define BT_TXD 4
+SoftwareSerial bluetooth(BT_RXD, BT_TXD);
+
+void setup(){
+  Serial.begin(9600);
+  bluetooth.begin(9600);
+}
+
+void loop(){
+  if (bluetooth.available()) {
+    Serial.write(bluetooth.read());
+  }
+  if (Serial.available()) {
+    bluetooth.write(Serial.read());
+  }
+}
+</code></pre></div></div><div id="inter4-bluetooth-car" class="bg-white rounded-xl p-6 border border-slate-200 shadow-sm space-y-5 scroll-mt-6"><div class="border-b pb-3 flex items-center justify-between flex-wrap gap-2"><h3 class="text-xl font-bold text-slate-800 flex items-center gap-2"><span class="bg-cyan-600 text-white text-xs px-2.5 py-1 rounded font-black shrink-0">확장 STEP 6</span><span>블루투스 앱으로 RC카 조종하기</span></h3><span class="text-xs text-slate-500 font-medium">제작사 배포 예제</span></div><p class="text-sm sm:text-base text-slate-600">11번 예제로 통신을 확인한 뒤 <strong>12_RC_CAR_Bluetooth.ino</strong>를 업로드합니다. 앱의 조종 버튼이 아래 <strong>소문자 한 글자</strong>를 보내도록 설정하세요. 원본은 수신한 문자를 하나씩 읽어 주행 모드를 결정합니다.</p><div class="overflow-x-auto rounded-lg border border-slate-200"><table class="w-full min-w-[560px] text-sm text-left"><thead class="bg-slate-100 text-slate-700"><tr><th scope="col" class="px-4 py-3">앱에서 전송할 문자</th><th scope="col" class="px-4 py-3">동작</th><th scope="col" class="px-4 py-3">원본 mode</th></tr></thead><tbody class="divide-y divide-slate-200"><tr><td class="px-4 py-3 align-top"><code>g</code></td><td class="px-4 py-3 align-top">전진</td><td class="px-4 py-3 align-top">0</td></tr><tr><td class="px-4 py-3 align-top"><code>b</code></td><td class="px-4 py-3 align-top">후진</td><td class="px-4 py-3 align-top">0</td></tr><tr><td class="px-4 py-3 align-top"><code>l</code></td><td class="px-4 py-3 align-top">좌회전</td><td class="px-4 py-3 align-top">2</td></tr><tr><td class="px-4 py-3 align-top"><code>r</code></td><td class="px-4 py-3 align-top">우회전</td><td class="px-4 py-3 align-top">1</td></tr><tr><td class="px-4 py-3 align-top"><code>s</code></td><td class="px-4 py-3 align-top">정지</td><td class="px-4 py-3 align-top">3</td></tr><tr><td class="px-4 py-3 align-top"><code>q</code></td><td class="px-4 py-3 align-top">제자리 좌회전</td><td class="px-4 py-3 align-top">4</td></tr><tr><td class="px-4 py-3 align-top"><code>w</code></td><td class="px-4 py-3 align-top">제자리 우회전</td><td class="px-4 py-3 align-top">5</td></tr></tbody></table></div><div id="inter4-bt-modules" class="space-y-5 scroll-mt-6"><div class="flex items-center gap-2 flex-wrap border-b border-slate-200 pb-2"><span class="bg-slate-800 text-white text-xs px-2.5 py-1 rounded font-black shrink-0">모듈별 연결</span><h4 class="font-bold text-slate-800 text-base sm:text-lg">HC-06(클래식) / HM-10(BLE) 연결 방법과 실습</h4></div><p class="text-sm sm:text-base text-slate-600">교실에서 쓰는 블루투스 모듈은 <strong>HC-06</strong>과 <strong>HM-10</strong> 두 종류입니다. 아두이노 배선은 둘 다 같지만, <strong>스마트폰과 연결하는 방법과 사용하는 앱이 다릅니다.</strong> 가지고 있는 모듈의 이름을 확인한 뒤, <strong>먼저 모듈 이름을 자기 번호로 바꾸고</strong> 아래 해당 카드의 순서대로 실습하세요.</p><div class="overflow-x-auto rounded-lg border border-slate-200"><table class="w-full min-w-[640px] text-sm text-left"><thead class="bg-slate-100 text-slate-700"><tr><th scope="col" class="px-4 py-3 whitespace-nowrap">구분</th><th scope="col" class="px-4 py-3 whitespace-nowrap">HC-06</th><th scope="col" class="px-4 py-3 whitespace-nowrap">HM-10</th></tr></thead><tbody class="divide-y divide-slate-200"><tr><td class="px-4 py-3 align-top">통신 규격</td><td class="px-4 py-3 align-top">블루투스 2.0 클래식 (SPP 직렬 통신)</td><td class="px-4 py-3 align-top">블루투스 4.0 BLE (서비스 FFE0 / 특성 FFE1)</td></tr><tr><td class="px-4 py-3 align-top">스마트폰 지원</td><td class="px-4 py-3 align-top"><strong>안드로이드만</strong> 가능. 아이폰은 연결 불가</td><td class="px-4 py-3 align-top"><strong>안드로이드 · 아이폰 모두</strong> 가능</td></tr><tr><td class="px-4 py-3 align-top">페어링</td><td class="px-4 py-3 align-top">폰 <strong>설정 → 블루투스</strong>에서 먼저 페어링 (PIN <code>1234</code>, 안 되면 <code>0000</code>)</td><td class="px-4 py-3 align-top">설정 앱에서 페어링하지 않음. <strong>앱 안에서 직접 연결</strong></td></tr><tr><td class="px-4 py-3 align-top">기본 기기 이름</td><td class="px-4 py-3 align-top"><code>HC-06</code></td><td class="px-4 py-3 align-top"><code>HMSoft</code>, <code>BT05</code>, <code>MLT-BT05</code> 등 (모듈 제조사에 따라 다름)</td></tr><tr><td class="px-4 py-3 align-top">모듈 LED</td><td class="px-4 py-3 align-top">연결 전 빠르게 깜빡임 → 연결되면 계속 켜짐</td><td class="px-4 py-3 align-top">연결 전 천천히 깜빡임 → 연결되면 계속 켜짐</td></tr><tr><td class="px-4 py-3 align-top">사용할 앱</td><td class="px-4 py-3 align-top">Arduino Bluetooth Controller (안드로이드)</td><td class="px-4 py-3 align-top">스마트폰 웹 조종기 (안드로이드 Chrome / 아이폰 Bluefy)</td></tr><tr><td class="px-4 py-3 align-top">전송 문자</td><td class="px-4 py-3 align-top">원본 그대로 <code>g b l r s q w</code></td><td class="px-4 py-3 align-top">숫자 <code>1 2 3 4 5</code> → 아래 HM-10용 수정 코드 사용</td></tr></tbody></table></div>
+<div class="bg-slate-50 border border-slate-200 rounded-xl p-4 space-y-3"><h5 class="font-bold text-slate-800 text-sm sm:text-base flex items-center gap-2"><i class="fa-solid fa-plug text-cyan-600"></i> 공통 배선 (센서 쉴드 V5.0 · 두 모듈 동일)</h5><div class="overflow-x-auto rounded-lg border border-slate-200 bg-white"><table class="w-full min-w-[560px] text-sm text-left"><thead class="bg-slate-100 text-slate-700"><tr><th scope="col" class="px-4 py-3 whitespace-nowrap">모듈 핀</th><th scope="col" class="px-4 py-3 whitespace-nowrap">쉴드 연결</th><th scope="col" class="px-4 py-3 whitespace-nowrap">설명</th></tr></thead><tbody class="divide-y divide-slate-200"><tr><td class="px-4 py-3 align-top">VCC</td><td class="px-4 py-3 align-top"><strong>V3</strong> (5V)</td><td class="px-4 py-3 align-top">두 모듈 모두 보드에 레귤레이터가 있어 5V 전원을 그대로 연결합니다</td></tr><tr><td class="px-4 py-3 align-top">GND</td><td class="px-4 py-3 align-top"><strong>G3</strong></td><td class="px-4 py-3 align-top">아두이노와 공통 접지</td></tr><tr><td class="px-4 py-3 align-top">TXD</td><td class="px-4 py-3 align-top"><strong>S3</strong> (D3)</td><td class="px-4 py-3 align-top">모듈이 보내는 신호 → 아두이노 RX (<code>BT_RXD 3</code>)</td></tr><tr><td class="px-4 py-3 align-top">RXD</td><td class="px-4 py-3 align-top"><strong>S4</strong> (D4)</td><td class="px-4 py-3 align-top">아두이노 TX (<code>BT_TXD 4</code>) → 모듈이 받는 신호</td></tr></tbody></table></div><p class="text-xs text-slate-500 leading-relaxed">💡 <strong>TX는 RX에, RX는 TX에</strong> 꽂는 것이 핵심입니다. 모듈 TXD를 S3, RXD를 S4에 연결하세요. 서로 바뀌면 시리얼 모니터에 아무것도 나오지 않습니다. 모듈의 RXD는 3.3V 신호용이지만 실습용 모듈은 아두이노 5V 신호에 직결해도 동작합니다. 장시간 사용하는 완성작에는 1kΩ·2kΩ 분압 저항을 권장합니다.</p></div>
+<div id="inter4-bt-rename" class="rounded-xl border border-amber-300 bg-amber-50/60 p-4 sm:p-5 space-y-4 scroll-mt-6"><div class="flex items-center gap-2 flex-wrap"><span class="bg-amber-600 text-white text-xs px-2.5 py-1 rounded font-black shrink-0">실습 전 필수</span><h5 class="font-bold text-slate-800 text-base">내 모듈 이름 바꾸기 (AT 명령) · 30대가 함께 쓰는 교실</h5></div><p class="text-sm sm:text-base text-slate-700">모듈은 공장 출하 이름(<code>HC-06</code>, <code>HMSoft</code>, <code>BT05</code>)이 모두 같아서 폰 검색 목록에 <strong>같은 이름이 30개</strong> 나타납니다. 실습 A·B를 시작하기 전에 각자 <strong>자기 번호로 이름을 바꾸고</strong>, 모듈에 번호 스티커를 붙여 두세요. 이름 규칙은 <strong><code>JGH01</code> ~ <code>JGH30</code></strong>(영문·숫자, 12자 이내)을 권장합니다.</p><div class="grid grid-cols-1 md:grid-cols-2 gap-4"><div class="bg-white border border-slate-200 rounded-xl p-4 space-y-2"><h6 class="font-bold text-slate-800 text-sm sm:text-base flex items-center gap-2"><i class="fa-solid fa-list-check text-amber-600"></i> 이름 바꾸는 순서</h6><ol class="list-decimal pl-5 space-y-1.5 text-sm text-slate-700"><li>모듈을 공통 배선대로 연결하고 <strong>배터리는 끈 채 USB만</strong> 연결합니다.</li><li><strong>폰과 연결되어 있으면 안 됩니다.</strong> 모듈 LED가 <strong>깜빡이는 상태</strong>(미연결)인지 확인합니다. 연결 중이면 폰의 앱·웹 조종기에서 연결을 끊습니다.</li><li>아래 <strong>BT_rename.ino</strong>의 <code>NEW_NAME</code>을 자기 번호(예: <code>JGH07</code>)로 바꾸고 업로드합니다.</li><li>시리얼 모니터(9600 baud)를 엽니다. <code>&gt;&gt; AT</code> → <code>&lt;&lt; OK</code>, <code>&gt;&gt; AT+NAMEJGH07</code> → <code>&lt;&lt; OK...</code> 가 보이면 성공입니다.</li><li>USB를 뽑았다 다시 꽂아(모듈 전원 재시작) 폰에서 <strong>새 이름</strong>이 검색되는지 확인합니다.</li><li>이름이 바뀌었으면 실습 A 또는 B의 코드를 업로드합니다. 이름은 모듈에 저장되므로 매번 다시 할 필요가 없습니다.</li></ol></div><div class="bg-white border border-slate-200 rounded-xl p-4 space-y-2"><h6 class="font-bold text-slate-800 text-sm sm:text-base flex items-center gap-2"><i class="fa-solid fa-terminal text-amber-600"></i> 직접 입력할 때의 AT 명령표</h6><p class="text-xs text-slate-500">업로드 뒤에는 시리얼 모니터에 입력한 글자가 모듈로 그대로 전달됩니다. 아래 명령을 직접 입력해도 됩니다. <strong>시리얼 모니터 오른쪽 아래의 줄바꿈 설정</strong>이 모듈마다 다른 점에 주의하세요.</p><div class="overflow-x-auto rounded-lg border border-slate-200"><table class="w-full min-w-[520px] text-xs sm:text-sm text-left"><thead class="bg-slate-100 text-slate-700"><tr><th scope="col" class="px-4 py-3 whitespace-nowrap">모듈</th><th scope="col" class="px-4 py-3 whitespace-nowrap">줄바꿈 설정</th><th scope="col" class="px-4 py-3 whitespace-nowrap">이름 변경</th><th scope="col" class="px-4 py-3 whitespace-nowrap">응답 예</th></tr></thead><tbody class="divide-y divide-slate-200"><tr><td class="px-4 py-3 align-top">HC-06 (구형)</td><td class="px-4 py-3 align-top">line ending 없음</td><td class="px-4 py-3 align-top"><code>AT+NAMEJGH07</code></td><td class="px-4 py-3 align-top"><code>OKsetname</code></td></tr><tr><td class="px-4 py-3 align-top">HC-06 (신형)</td><td class="px-4 py-3 align-top">Both NL &amp; CR</td><td class="px-4 py-3 align-top"><code>AT+NAME=JGH07</code></td><td class="px-4 py-3 align-top"><code>OK</code></td></tr><tr><td class="px-4 py-3 align-top">HM-10 (정품 HMSoft)</td><td class="px-4 py-3 align-top">line ending 없음</td><td class="px-4 py-3 align-top"><code>AT+NAMEJGH07</code> 후 <code>AT+RESET</code></td><td class="px-4 py-3 align-top"><code>OK+Set:JGH07</code></td></tr><tr><td class="px-4 py-3 align-top">BT05 / MLT-BT05 (HM-10 호환)</td><td class="px-4 py-3 align-top">Both NL &amp; CR</td><td class="px-4 py-3 align-top"><code>AT+NAMEJGH07</code> 후 <code>AT+RESET</code></td><td class="px-4 py-3 align-top"><code>+NAME=JGH07</code> <code>OK</code></td></tr></tbody></table></div><p class="text-xs text-slate-500">HC-06 페어링 암호는 <code>AT+PIN1234</code>(구형) / <code>AT+PIN=1234</code>(신형)으로 바꿉니다. 암호를 바꾸면 폰에서 기존 페어링을 삭제한 뒤 다시 페어링해야 합니다. 아래 스케치는 줄바꿈 방식과 명령 형식을 자동으로 시도하므로 모듈 종류를 몰라도 됩니다.</p></div></div><div class="rounded-xl overflow-hidden border border-slate-200"><div class="bg-slate-100 p-4 flex flex-wrap items-center justify-between gap-3"><div class="min-w-0"><h4 class="font-bold text-slate-800 break-all">BT_rename.ino</h4><p class="text-xs text-slate-500 mt-1">NEW_NAME만 바꿔 업로드 · AT 응답을 보고 줄바꿈·명령 형식을 자동 선택 · 업로드 후에는 AT 명령 브리지로 동작</p></div><div class="flex items-center gap-2"><a href="assets/4wd/code/BT_rename.ino" download class="border border-slate-300 bg-white text-slate-700 px-3 py-2 rounded-lg text-xs font-bold">다운로드</a><button type="button" onclick="copyCode('code-inter4-bt-rename')" class="bg-amber-600 hover:bg-amber-700 text-white px-3 py-2 rounded-lg text-xs font-bold">코드 복사</button></div></div><pre class="code-block p-4 overflow-auto leading-relaxed max-h-[460px]"><code id="code-inter4-bt-rename">/* BT_rename.ino - 블루투스 모듈 이름 바꾸기 (HC-06 / HM-10 / BT05 공용)
+ *
+ * 한 교실에서 30대가 함께 쓰면 폰에서 같은 이름이 30개 보여 자기 차를 찾을 수 없습니다.
+ * 아래 NEW_NAME 을 자기 번호로 바꾸고 업로드하면 자동으로 AT 명령을 보내 이름을 바꿉니다.
+ *
+ * 사용 순서
+ *   1. 모듈을 쉴드에 연결 (VCC-&gt;V3, GND-&gt;G3, TXD-&gt;S3, RXD-&gt;S4) 하고 배터리는 끕니다.
+ *   2. 폰과 연결되어 있지 않은 상태(모듈 LED 깜빡임)여야 AT 명령이 통합니다.
+ *   3. NEW_NAME 수정 -&gt; 업로드 -&gt; 시리얼 모니터(9600) 를 엽니다.
+ *   4. "OK" 응답이 보이면 모듈 전원을 껐다 켠 뒤 폰에서 새 이름을 검색합니다.
+ *
+ * 업로드 후에는 시리얼 모니터에 입력한 글자가 모듈로 그대로 전달되므로
+ * AT 명령을 직접 입력해 볼 수도 있습니다. (줄바꿈 설정은 아래 표 참고)
+ */
+
+#include &lt;SoftwareSerial.h&gt;
+
+// ===================== 여기만 바꾸세요 =====================
+const char* NEW_NAME = "JGH01";        // 자기 번호로! 예) JGH01 ~ JGH30 (영문/숫자, 12자 이내)
+// ==========================================================
+
+#define BT_RXD 3                        // 아두이노 3번핀 = RX (모듈 TXD 연결)
+#define BT_TXD 4                        // 아두이노 4번핀 = TX (모듈 RXD 연결)
+SoftwareSerial bluetooth(BT_RXD, BT_TXD);
+
+bool useCRLF = false;                   // 모듈이 줄바꿈(\r\n)을 요구하는지 자동 판별 결과
+
+// AT 명령을 보내고 응답을 1.5초 동안 모아서 돌려줍니다
+String sendAT(const char* cmd) {
+  while (bluetooth.available()) bluetooth.read();   // 이전 응답 찌꺼기 비우기
+  Serial.print("&gt;&gt; ");
+  Serial.println(cmd);
+  bluetooth.print(cmd);
+  if (useCRLF) bluetooth.print("\r\n");
+
+  String resp = "";
+  unsigned long t = millis();
+  while (millis() - t &lt; 1500) {
+    while (bluetooth.available()) {
+      char c = bluetooth.read();
+      resp += c;
+    }
+  }
+  resp.trim();
+  Serial.print("&lt;&lt; ");
+  Serial.println(resp.length() ? resp : "(응답 없음)");
+  return resp;
+}
+
+void setup() {
+  Serial.begin(9600);
+  bluetooth.begin(9600);
+  delay(1500);                          // 모듈 부팅 대기
+  Serial.println("===== Bluetooth rename =====");
+  Serial.print("새 이름: ");
+  Serial.println(NEW_NAME);
+
+  // 1) 줄바꿈 없이 AT -&gt; HC-06(구형), 정품 HM-10 은 여기서 OK
+  useCRLF = false;
+  String r = sendAT("AT");
+  if (r.indexOf("OK") &lt; 0) {
+    // 2) 줄바꿈 붙여서 AT -&gt; BT05 등 HM-10 호환품, 신형 HC-06 은 여기서 OK
+    useCRLF = true;
+    r = sendAT("AT");
+  }
+  if (r.indexOf("OK") &lt; 0) {
+    Serial.println("!! 모듈이 응답하지 않습니다. 폰 연결을 끊고(LED 깜빡임), TXD-&gt;S3 / RXD-&gt;S4 배선을 확인한 뒤 리셋 버튼을 누르세요.");
+    return;
+  }
+
+  // 3) 이름 변경: AT+NAMExxx 먼저, 안 되면 AT+NAME=xxx 형식으로 재시도
+  String cmd = String("AT+NAME") + NEW_NAME;
+  r = sendAT(cmd.c_str());
+  if (r.indexOf("OK") &lt; 0) {
+    cmd = String("AT+NAME=") + NEW_NAME;
+    r = sendAT(cmd.c_str());
+  }
+
+  if (r.indexOf("OK") &gt;= 0) {
+    sendAT("AT+RESET");                 // HM-10 계열은 재시작해야 새 이름이 보입니다 (HC-06 은 무시)
+    Serial.println("===== 완료! 모듈 전원을 껐다 켠 뒤 폰에서 새 이름을 검색하세요 =====");
+  } else {
+    Serial.println("!! 이름 변경 실패. 시리얼 모니터에서 AT 명령을 직접 입력해 보세요.");
+  }
+}
+
+// 업로드 후에는 시리얼 모니터 &lt;-&gt; 모듈 브리지로 동작합니다 (11_Bluetooth.ino 와 같음)
+void loop() {
+  if (bluetooth.available()) Serial.write(bluetooth.read());
+  if (Serial.available())    bluetooth.write(Serial.read());
+}</code></pre></div><div class="bg-white border border-slate-200 rounded-lg p-3 text-xs sm:text-sm text-slate-700 space-y-1"><strong class="block text-slate-800">이럴 때는 점검하세요</strong><ul class="list-disc pl-5 space-y-1"><li><strong>AT에 "(응답 없음)"만 나옴:</strong> 폰이 모듈에 연결된 상태(LED 계속 켜짐)이면 AT 명령이 통하지 않습니다. 연결을 끊고 아두이노 리셋 버튼을 누르세요. 그래도 안 되면 TXD→S3, RXD→S4가 바뀌지 않았는지 확인합니다.</li><li><strong>OK는 나오는데 폰에서 옛 이름이 보임:</strong> 모듈 전원을 껐다 켜야 새 이름으로 광고합니다. 안드로이드는 설정의 블루투스 목록에서 기존 HC-06 페어링을 삭제한 뒤 다시 검색합니다.</li><li><strong>이름에 한글·공백을 쓰고 싶음:</strong> 모듈 종류에 따라 깨지거나 거부됩니다. 영문과 숫자만 사용하세요.</li></ul></div></div>
+<div class="grid grid-cols-1 xl:grid-cols-2 gap-5">
+<div class="rounded-xl border border-indigo-200 bg-indigo-50/40 p-4 sm:p-5 space-y-4"><div class="flex items-center gap-2 flex-wrap"><span class="bg-indigo-600 text-white text-xs px-2.5 py-1 rounded font-black shrink-0">실습 A</span><h5 class="font-bold text-slate-800 text-base">HC-06 + 안드로이드 앱으로 조종하기</h5></div><p class="text-sm text-slate-600">HC-06은 클래식 블루투스라서 <strong>안드로이드 폰에서만</strong> 연결됩니다. 아이폰 사용자는 실습 B(HM-10)로 진행하세요. 코드는 제작사 원본 <strong>12_RC_CAR_Bluetooth.ino</strong>를 그대로 사용합니다.</p><ol class="list-decimal pl-5 space-y-2 text-sm text-slate-700"><li><strong>배선 후 11_Bluetooth.ino 업로드:</strong> 업로드 중에는 배터리 스위치를 끄고, 업로드가 끝나면 모듈 LED가 빠르게 깜빡이는지 확인합니다.</li><li><strong>폰에서 페어링:</strong> 안드로이드 <strong>설정 → 블루투스</strong>에서 <code>HC-06</code>을 찾아 PIN <code>1234</code>를 입력합니다. 같은 교실에 모듈이 여러 개면 자기 모듈의 LED가 꺼지지 않고 켜진 채 유지되는 것으로 구분합니다.</li><li><strong>앱 설치와 연결:</strong> Play 스토어에서 <code>Arduino Bluetooth Controller</code>를 설치하고 페어링된 HC-06을 선택합니다. <strong>터미널 모드</strong>에서 아무 글자나 보내 PC 시리얼 모니터(9600 baud)에 같은 글자가 찍히면 통신 성공입니다.</li><li><strong>12_RC_CAR_Bluetooth.ino 업로드:</strong> 아래 원본 코드를 업로드합니다.</li><li><strong>버튼 문자 지정:</strong> 앱의 <strong>컨트롤러(게임패드) 모드</strong>에서 각 버튼에 보낼 문자를 설정합니다. ▲ <code>g</code>, ▼ <code>b</code>, ◀ <code>l</code>, ▶ <code>r</code>, 가운데/정지 <code>s</code>, 추가 버튼에 <code>q</code>·<code>w</code>(제자리 회전).</li><li><strong>바퀴를 띄우고 테스트:</strong> g → s → b → s 순서로 전진·정지·후진을 확인한 뒤 회전을 시험합니다. 시리얼 모니터에 수신 문자가 찍히는지 함께 봅니다.</li></ol><figure data-image-gallery="inter4-bt-hc06-app" class="rounded-xl border border-slate-200 bg-white overflow-hidden max-w-xs mx-auto"><img src="assets/app_android.png" alt="Arduino Bluetooth Controller 앱 화면" class="w-full h-48 object-contain bg-white" loading="lazy" tabindex="0" role="button" aria-label="Arduino Bluetooth Controller 앱 화면 확대 보기"><figcaption class="p-2 text-xs text-slate-600 text-center">안드로이드 Arduino Bluetooth Controller · 클릭하면 확대됩니다</figcaption></figure><div class="bg-white border border-slate-200 rounded-lg p-3 text-xs sm:text-sm text-slate-700 space-y-1"><strong class="block text-slate-800">이럴 때는 점검하세요</strong><ul class="list-disc pl-5 space-y-1"><li><strong>폰에서 HC-06이 검색되지 않음:</strong> 모듈 LED가 깜빡이는지(전원), 다른 폰에 이미 연결돼 있지 않은지 확인합니다.</li><li><strong>연결은 되는데 시리얼 모니터에 글자가 안 나옴:</strong> TXD→S3, RXD→S4 배선이 서로 바뀌었는지, 시리얼 모니터 속도가 9600인지 확인합니다.</li><li><strong>버튼을 눌러도 차가 안 움직임:</strong> 앱 버튼에 지정한 문자가 <strong>소문자</strong>인지, 배터리 스위치가 켜져 있는지 확인합니다.</li></ul></div></div>
+<div class="rounded-xl border border-cyan-200 bg-cyan-50/40 p-4 sm:p-5 space-y-4"><div class="flex items-center gap-2 flex-wrap"><span class="bg-cyan-600 text-white text-xs px-2.5 py-1 rounded font-black shrink-0">실습 B</span><h5 class="font-bold text-slate-800 text-base">HM-10 + 스마트폰 웹 조종기로 조종하기</h5></div><p class="text-sm text-slate-600">HM-10은 BLE라서 <strong>안드로이드와 아이폰 모두</strong> 사용할 수 있고, 앱 설치 없이 중급 2차시에서 쓴 <strong>웹 조종기</strong>로 바로 연결합니다. 웹 조종기는 숫자 명령을 보내므로 아래 <strong>HM-10용 수정 코드</strong>를 사용합니다.</p><ol class="list-decimal pl-5 space-y-2 text-sm text-slate-700"><li><strong>배선 후 11_Bluetooth.ino 업로드:</strong> 폰의 설정 앱에서는 페어링하지 않습니다. BLE는 앱 안에서 직접 연결합니다.</li><li><strong>웹 조종기 열기:</strong> 안드로이드는 <strong>Chrome</strong>, 아이폰은 <strong>Bluefy</strong> 브라우저에서 <a href="https://suguri123.github.io/RCcar_blu_jhg/" target="_blank" rel="noopener noreferrer" class="text-cyan-700 underline break-all">https://suguri123.github.io/RCcar_blu_jhg/</a> (숏.한국/리모콘)에 접속하고 <strong>[연결하기 🔌]</strong>를 눌러 <code>HMSoft</code> 또는 <code>BT05</code>를 선택합니다.</li><li><strong>통신 확인:</strong> 조종기의 ▲ 버튼을 누르면 PC 시리얼 모니터(9600 baud)에 <code>1</code>, 놓으면 <code>5</code>가 찍힙니다. 글자가 보이면 통신 성공입니다.</li><li><strong>12_RC_CAR_Bluetooth_HM10.ino 업로드:</strong> 아래 수정 코드를 업로드합니다. 원본의 문자 명령도 그대로 인식하므로 BLE 터미널 앱에서 <code>g</code>·<code>s</code> 등을 직접 보내도 됩니다.</li><li><strong>바퀴를 띄우고 테스트:</strong> ▲(1) 전진 → 놓기(5) 정지 → ▼(2) 후진 순서로 확인한 뒤 ◀(4) 좌회전, ▶(3) 우회전을 시험합니다.</li></ol><div class="overflow-x-auto rounded-lg border border-slate-200 bg-white"><table class="w-full min-w-[480px] text-sm text-left"><thead class="bg-slate-100 text-slate-700"><tr><th scope="col" class="px-4 py-3 whitespace-nowrap">웹 조종기 버튼</th><th scope="col" class="px-4 py-3 whitespace-nowrap">전송 문자</th><th scope="col" class="px-4 py-3 whitespace-nowrap">수정 코드의 동작</th></tr></thead><tbody class="divide-y divide-slate-200"><tr><td class="px-4 py-3 align-top">▲ 전진</td><td class="px-4 py-3 align-top"><code>1</code></td><td class="px-4 py-3 align-top">전진 (원본 <code>g</code>와 동일)</td></tr><tr><td class="px-4 py-3 align-top">▼ 후진</td><td class="px-4 py-3 align-top"><code>2</code></td><td class="px-4 py-3 align-top">후진 (원본 <code>b</code>와 동일)</td></tr><tr><td class="px-4 py-3 align-top">▶ 우회전</td><td class="px-4 py-3 align-top"><code>3</code></td><td class="px-4 py-3 align-top">전진 방향으로 우회전</td></tr><tr><td class="px-4 py-3 align-top">◀ 좌회전</td><td class="px-4 py-3 align-top"><code>4</code></td><td class="px-4 py-3 align-top">전진 방향으로 좌회전</td></tr><tr><td class="px-4 py-3 align-top">■ 정지 / 버튼 놓기</td><td class="px-4 py-3 align-top"><code>5</code></td><td class="px-4 py-3 align-top">정지 (원본 <code>s</code>와 동일)</td></tr><tr><td class="px-4 py-3 align-top">라인트레이싱 시작·종료</td><td class="px-4 py-3 align-top"><code>6</code> / <code>7</code></td><td class="px-4 py-3 align-top">무시 (이 실습에서는 사용하지 않음)</td></tr></tbody></table></div><div class="bg-white border border-slate-200 rounded-lg p-3 text-xs sm:text-sm text-slate-700 space-y-1"><strong class="block text-slate-800">이럴 때는 점검하세요</strong><ul class="list-disc pl-5 space-y-1"><li><strong>[연결하기]에 모듈이 안 보임:</strong> 아이폰은 Safari가 아닌 <strong>Bluefy</strong>로 열었는지, 모듈 LED가 천천히 깜빡이는지(미연결 상태) 확인합니다. 이미 다른 폰과 연결된 모듈은 목록에 나오지 않습니다.</li><li><strong>연결은 되는데 시리얼 모니터에 숫자가 안 나옴:</strong> TXD→S3, RXD→S4 배선과 9600 baud를 확인합니다.</li><li><strong>버튼을 놓아도 계속 달림:</strong> 웹 조종기는 버튼을 놓을 때 <code>5</code>를 보냅니다. 원본 12번 코드를 올린 경우 숫자를 인식하지 못하므로 수정 코드를 업로드했는지 확인합니다.</li></ul></div><div class="rounded-xl overflow-hidden border border-slate-200"><div class="bg-slate-100 p-4 flex flex-wrap items-center justify-between gap-3"><div class="min-w-0"><h4 class="font-bold text-slate-800 break-all">12_RC_CAR_Bluetooth_HM10.ino</h4><p class="text-xs text-slate-500 mt-1">웹 조종기 숫자(1~5)와 원본 문자(g/b/l/r/s/q/w)를 모두 인식 · 12번 원본을 바탕으로 수정</p></div><div class="flex items-center gap-2"><a href="assets/4wd/code/12_RC_CAR_Bluetooth_HM10.ino" download class="border border-slate-300 bg-white text-slate-700 px-3 py-2 rounded-lg text-xs font-bold">다운로드</a><button type="button" onclick="copyCode('code-inter4-bluetooth-hm10')" class="bg-cyan-700 hover:bg-cyan-800 text-white px-3 py-2 rounded-lg text-xs font-bold">코드 복사</button></div></div><pre class="code-block p-4 overflow-auto leading-relaxed max-h-[460px]"><code id="code-inter4-bluetooth-hm10">/* 12_RC_CAR_Bluetooth.ino (에듀이노 SmartCar 기본예제 8) 를 바탕으로
+ * HM-10(BLE) + 스마트폰 웹 조종기 실습용으로 수정한 버전입니다.
+ *
+ * 웹 조종기(https://suguri123.github.io/RCcar_blu_jhg/)는 숫자 문자를 보냅니다.
+ *   '1' 전진   '2' 후진   '3' 우회전   '4' 좌회전   '5' 정지 (버튼을 놓으면 자동 전송)
+ *   '6' '7' 은 라인트레이싱용 명령이므로 이 코드에서는 무시합니다.
+ *
+ * 원본의 문자 명령도 그대로 동작합니다.
+ *   'g' 전진   'b' 후진   'l' 좌회전   'r' 우회전   's' 정지   'q' 제자리 좌회전   'w' 제자리 우회전
+ *
+ * 배선 (센서 쉴드 V5.0)
+ *   HM-10 VCC -&gt; V3 (5V)      HM-10 GND -&gt; G3
+ *   HM-10 TXD -&gt; S3 (D3, 아두이노 RX)
+ *   HM-10 RXD -&gt; S4 (D4, 아두이노 TX)
+ */
+
+#include &lt;SoftwareSerial.h&gt;                            // 가상 시리얼 통신을 위한 라이브러리 선언
+
+#define BT_RXD 3                                       // 아두이노 3번핀 = RX (모듈 TXD 연결)
+#define BT_TXD 4                                       // 아두이노 4번핀 = TX (모듈 RXD 연결)
+
+SoftwareSerial bluetooth(BT_RXD, BT_TXD);              // 블루투스 통신을 위한 설정
+
+int RightMotor_E_pin = 5;                              // 오른쪽 모터의 Enable &amp; PWM
+int LeftMotor_E_pin = 6;                               // 왼쪽 모터의 Enable &amp; PWM
+int RightMotor_1_pin = 8;                              // 오른쪽 모터 제어선 IN1
+int RightMotor_2_pin = 9;                              // 오른쪽 모터 제어선 IN2
+int LeftMotor_3_pin = 10;                              // 왼쪽 모터 제어선 IN3
+int LeftMotor_4_pin = 11;                              // 왼쪽 모터 제어선 IN4
+
+int L_MotorSpeed = 185;                                // 왼쪽 모터 속도
+int R_MotorSpeed = 160;                                // 오른쪽 모터 속도
+
+int R_Motor = HIGH;                                    // 시작 방향은 전진으로 둡니다
+int L_Motor = HIGH;
+int mode = 3;                                          // 시작 모드 3 = 정지
+
+void setup() {
+  pinMode(RightMotor_E_pin, OUTPUT);                   // 출력모드로 설정
+  pinMode(RightMotor_1_pin, OUTPUT);
+  pinMode(RightMotor_2_pin, OUTPUT);
+  pinMode(LeftMotor_3_pin, OUTPUT);
+  pinMode(LeftMotor_4_pin, OUTPUT);
+  pinMode(LeftMotor_E_pin, OUTPUT);
+
+  Serial.begin(9600);
+  bluetooth.begin(9600);
+
+  Serial.println("HM-10 RC Car Ready (1:Go 2:Back 3:Right 4:Left 5:Stop)");
+}
+
+void loop() {
+  if (bluetooth.available()) {
+    char Blue_Val = bluetooth.read();
+    Serial.print(Blue_Val);                            // 수신 문자를 시리얼 모니터에 표시
+    control_SmartCar(Blue_Val);
+
+    if (mode == 0) {
+      motor_role(R_Motor, L_Motor);
+    }
+    else if (mode == 1) {
+      Right_role(R_Motor, L_Motor);
+    }
+    else if (mode == 2) {
+      Left_role(R_Motor, L_Motor);
+    }
+    else if (mode == 4) {
+      left_rotation(R_Motor, L_Motor);
+    }
+    else if (mode == 5) {
+      right_rotation(R_Motor, L_Motor);
+    }
+    else {
+      analogWrite(RightMotor_E_pin, 0);
+      analogWrite(LeftMotor_E_pin, 0);
+    }
+  }
+}
+
+void control_SmartCar(char Blue_val) {
+  if (Blue_val == 'g' || Blue_val == '1') {            // 전진
+    R_Motor = HIGH; L_Motor = HIGH; mode = 0;
+  }
+  else if (Blue_val == 'b' || Blue_val == '2') {       // 후진
+    R_Motor = LOW; L_Motor = LOW; mode = 0;
+  }
+  else if (Blue_val == '3') {                          // 웹 조종기 우회전 (전진 방향으로 회전)
+    R_Motor = HIGH; L_Motor = HIGH; mode = 1;
+  }
+  else if (Blue_val == '4') {                          // 웹 조종기 좌회전 (전진 방향으로 회전)
+    R_Motor = HIGH; L_Motor = HIGH; mode = 2;
+  }
+  else if (Blue_val == 'r') {                          // 원본 우회전 (직전 전진/후진 방향 유지)
+    mode = 1;
+  }
+  else if (Blue_val == 'l') {                          // 원본 좌회전 (직전 전진/후진 방향 유지)
+    mode = 2;
+  }
+  else if (Blue_val == 's' || Blue_val == '5') {       // 정지
+    R_Motor = HIGH; L_Motor = HIGH; mode = 3;
+  }
+  else if (Blue_val == 'q') {                          // 제자리 좌회전
+    mode = 4;
+  }
+  else if (Blue_val == 'w') {                          // 제자리 우회전
+    mode = 5;
+  }
+  else {                                               // '6', '7', 줄바꿈 등은 무시
+  }
+}
+
+void motor_role(int R_motor, int L_motor) {
+  digitalWrite(RightMotor_1_pin, R_motor);
+  digitalWrite(RightMotor_2_pin, !R_motor);
+  digitalWrite(LeftMotor_3_pin, L_motor);
+  digitalWrite(LeftMotor_4_pin, !L_motor);
+
+  analogWrite(RightMotor_E_pin, R_MotorSpeed);         // 우측 모터 속도값
+  analogWrite(LeftMotor_E_pin, L_MotorSpeed);          // 좌측 모터 속도값
+}
+
+void Right_role(int R_motor, int L_motor) {
+  digitalWrite(RightMotor_1_pin, R_motor);
+  digitalWrite(RightMotor_2_pin, !R_motor);
+  digitalWrite(LeftMotor_3_pin, L_motor);
+  digitalWrite(LeftMotor_4_pin, !L_motor);
+
+  analogWrite(RightMotor_E_pin, max(R_MotorSpeed * 0.4, 90));   // 우측 모터 속도값
+  analogWrite(LeftMotor_E_pin, 255);                             // 좌측 모터 속도값
+}
+
+void Left_role(int R_motor, int L_motor) {
+  digitalWrite(RightMotor_1_pin, R_motor);
+  digitalWrite(RightMotor_2_pin, !R_motor);
+  digitalWrite(LeftMotor_3_pin, L_motor);
+  digitalWrite(LeftMotor_4_pin, !L_motor);
+
+  analogWrite(RightMotor_E_pin, 255);                            // 우측 모터 속도값
+  analogWrite(LeftMotor_E_pin, max(L_MotorSpeed * 0.4, 90));    // 좌측 모터 속도값
+}
+
+void left_rotation(int R_motor, int L_motor) {
+  digitalWrite(RightMotor_1_pin, HIGH);
+  digitalWrite(RightMotor_2_pin, LOW);
+  digitalWrite(LeftMotor_3_pin, LOW);
+  digitalWrite(LeftMotor_4_pin, HIGH);
+
+  analogWrite(RightMotor_E_pin, R_MotorSpeed);         // 우측 모터 속도값
+  analogWrite(LeftMotor_E_pin, L_MotorSpeed);          // 좌측 모터 속도값
+}
+
+void right_rotation(int R_motor, int L_motor) {
+  digitalWrite(RightMotor_1_pin, LOW);
+  digitalWrite(RightMotor_2_pin, HIGH);
+  digitalWrite(LeftMotor_3_pin, HIGH);
+  digitalWrite(LeftMotor_4_pin, LOW);
+
+  analogWrite(RightMotor_E_pin, R_MotorSpeed);         // 우측 모터 속도값
+  analogWrite(LeftMotor_E_pin, L_MotorSpeed);          // 좌측 모터 속도값
+}</code></pre></div></div>
+</div></div>
+<div class="bg-cyan-50 border border-cyan-200 rounded-xl p-4 space-y-2 text-sm text-cyan-950"><h4 class="font-bold">제작사 최종 코드의 기본 설정</h4><p>왼쪽 속도는 <strong>185</strong>, 오른쪽 속도는 <strong>160</strong>이며 시작 모드는 <strong>3(정지)</strong>입니다. 모터 핀은 기존 실습과 동일하게 ENA=D5, ENB=D6, IN1~IN4=D8~D11을 사용합니다.</p><p><code>l / r</code>은 직전 전진·후진 방향을 유지하며 좌우 속도 차이로 회전합니다. <code>q / w</code>는 양쪽 모터를 서로 반대 방향으로 구동해 제자리 회전합니다.</p></div><ol class="list-decimal pl-6 space-y-2 text-sm sm:text-base text-slate-600"><li>바퀴를 띄운 상태에서 <strong>g → s → b → s</strong>를 보내 전진·정지·후진부터 확인합니다.</li><li><strong>g</strong>로 전진 방향을 설정한 뒤 <strong>l / r</strong> 회전을 확인하고 <strong>s</strong>로 멈춥니다.</li><li><strong>q / w</strong>로 제자리 회전을 시험하고 각 동작 뒤 <strong>s</strong>를 보냅니다.</li><li>시리얼 모니터에서 수신 문자와 실제 바퀴 동작을 비교한 뒤 넓고 평평한 바닥에서 주행합니다.</li></ol><div class="bg-rose-50 border border-rose-200 rounded-xl p-4 space-y-2 text-sm text-rose-950"><h4 class="font-bold">앱의 정지 버튼은 반드시 s로 설정하세요</h4><p>이 원본은 명령이 없으면 마지막 주행 상태를 유지합니다. 버튼을 놓거나 블루투스 연결이 끊겨도 자동 정지하지 않습니다. 앱에서 버튼을 놓을 때 정지시키려면 버튼 해제 시 <code>s</code>를 전송하도록 설정하세요.</p></div><div class="rounded-xl overflow-hidden border border-slate-200"><div class="bg-slate-100 p-4 flex flex-wrap items-center justify-between gap-3"><div class="min-w-0"><h4 class="font-bold text-slate-800 break-all">12_RC_CAR_Bluetooth.ino</h4><p class="text-xs text-slate-500 mt-1">스마트폰 앱의 g / b / l / r / s / q / w 명령으로 주행 · 제작사 배포 최종 코드</p></div><div class="flex items-center gap-2"><a href="assets/4wd/code/12_RC_CAR_Bluetooth.ino" download class="border border-slate-300 bg-white text-slate-700 px-3 py-2 rounded-lg text-xs font-bold">원본 다운로드</a><button type="button" onclick="copyCode('code-inter4-bluetooth-car')" class="bg-cyan-700 hover:bg-cyan-800 text-white px-3 py-2 rounded-lg text-xs font-bold">코드 복사</button></div></div><pre class="code-block p-4 overflow-auto leading-relaxed max-h-[460px]"><code id="code-inter4-bluetooth-car">/* 이 소스는 에듀이노(Eduino)에 의해서 번역, 수정, 작성되었고 소유권 또한 에듀이노의 것입니다. 
+ *  소유권자의 허락을 받지 않고 무단으로 수정, 삭제하여 배포할 시 법적인 처벌을 받을 수도 있습니다. 
+ *  
+ *  에듀이노 SmartCar 기본예제 8
+ *  - 스마트폰 어플로 스마트카 제어하기 -
+ *  
+ *  
+ *  스마트폰 어플의 블루투스 통신을 통해 스마트카의 동작을 무선 제어하는 예제입니다.
+ *  
+ *  명령
+ *  1. 블루투스 g
+ *  -&gt; Go 전진 명령
+ *  2. 블루투스 b
+ *  -&gt; Back 후진 명령
+ *  3. 블루투스 l
+ *  -&gt; left 좌회전 명령
+ *  4. 블루투스 r
+ *  -&gt; right 우회전 명령
+ *  5. 블루투스 s
+ *  -&gt; stop 정지 명령
+ *  6. 블루투스 q
+ *  -&gt; left 제자리 좌회전 명령
+ *  7. 블루투스 w
+ *  -&gt; right 제자리 우회전 명령
+ */
+ 
+#include &lt;SoftwareSerial.h&gt;                            //가상 시리얼 통신을 위한 라이브러리 선언
+
+#define BT_RXD 3                                       // 아두이노의 4번핀을 RX(받는 핀)로 설정
+#define BT_TXD 4                                       // 아두이노 3번핀을 TX(보내는 핀)로 설정
+
+SoftwareSerial bluetooth(BT_RXD,BT_TXD);               //블루투스 통신을 위한 설정 
+
+int RightMotor_E_pin = 5;                              // 오른쪽 모터의 Enable &amp; PWM
+int LeftMotor_E_pin = 6;                               // 왼쪽 모터의 Enable &amp; PWM
+int RightMotor_1_pin = 8;                              // 오른쪽 모터 제어선 IN1
+int RightMotor_2_pin = 9;                              // 오른쪽 모터 제어선 IN2
+int LeftMotor_3_pin = 10;                              // 왼쪽 모터 제어선 IN3
+int LeftMotor_4_pin = 11;                              // 왼쪽 모터 제어선 IN4
+
+int L_MotorSpeed = 185;                                // 왼쪽 모터 속도
+int R_MotorSpeed = 160;                                // 오른쪽 모터 속도
+
+int R_Motor = 0;
+int L_Motor = 0;
+int mode = 3;
+
+void setup() {
+  pinMode(RightMotor_E_pin, OUTPUT);                   // 출력모드로 설정
+  pinMode(RightMotor_1_pin, OUTPUT);
+  pinMode(RightMotor_2_pin, OUTPUT);
+  pinMode(LeftMotor_3_pin, OUTPUT);
+  pinMode(LeftMotor_4_pin, OUTPUT);
+  pinMode(LeftMotor_E_pin, OUTPUT);
+
+  Serial.begin(9600);
+  bluetooth.begin(9600); 
+  
+  Serial.println(&quot;Welcome Eduino!&quot;);
+}
+
+void loop() { 
+  if(bluetooth.available()){      
+    char Blue_Val = bluetooth.read();
+    Serial.print(Blue_Val);  
+    control_SmartCar(Blue_Val);
+
+    if(mode == 0){
+      motor_role(R_Motor, L_Motor);
+    }
+    else if(mode == 1){
+      Right_role(R_Motor, L_Motor);
+    }
+    else if(mode == 2){
+      Left_role(R_Motor, L_Motor);
+    }
+    else if(mode == 4){
+      left_rotation(R_Motor, L_Motor);
+    }
+    else if(mode == 5){
+      right_rotation(R_Motor, L_Motor);
+    }
+    else{
+      analogWrite(RightMotor_E_pin, 0);
+      analogWrite(LeftMotor_E_pin, 0);
+    }   
+  } 
+}
+
+void control_SmartCar(char Blue_val){ 
+  if( Blue_val == &#x27;g&#x27; ){                             // &quot;g&quot; 버튼, 명령 : 전진
+    R_Motor = HIGH; L_Motor = HIGH; mode = 0;
+  }  
+  
+  else if( Blue_val == &#x27;r&#x27; ){                        // &quot;r&quot; 버튼, 명령 : 우회전
+    mode = 1;
+  }
+  
+  else if( Blue_val == &#x27;l&#x27; ){                        // &quot;l&quot; 버튼, 명령 : 좌회전
+    mode = 2;
+  }
+  
+  else if( Blue_val == &#x27;b&#x27; ){                        // &quot;b&quot; 버튼, 명령 : 후진
+    R_Motor = LOW; L_Motor = LOW; mode = 0;
+  }
+
+  else if( Blue_val == &#x27;s&#x27; ){                        // &quot;s&quot; 버튼, 명령 : 정지
+    R_Motor = HIGH; L_Motor = HIGH; mode = 3;
+  }
+  
+  else if( Blue_val == &#x27;q&#x27; ){                        // &quot;q&quot; 버튼, 명령 : 제자리 좌회전
+    mode = 4;
+  }
+  
+  else if( Blue_val == &#x27;w&#x27; ){                        // &quot;w&quot; 버튼, 명령 : 제자리 우회전
+    mode = 5;
+  }
+  
+  else{                                              // 지정하지 않은 주소입력.
+  }
+}
+
+void motor_role(int R_motor, int L_motor){
+   digitalWrite(RightMotor_1_pin, R_motor);
+   digitalWrite(RightMotor_2_pin, !R_motor);
+   digitalWrite(LeftMotor_3_pin, L_motor);
+   digitalWrite(LeftMotor_4_pin, !L_motor);
+   
+   analogWrite(RightMotor_E_pin, R_MotorSpeed);                          // 우측 모터 속도값
+   analogWrite(LeftMotor_E_pin, L_MotorSpeed);                           // 좌측 모터 속도값  
+}
+
+void Right_role(int R_motor, int L_motor){
+   digitalWrite(RightMotor_1_pin, R_motor);
+   digitalWrite(RightMotor_2_pin, !R_motor);
+   digitalWrite(LeftMotor_3_pin, L_motor);
+   digitalWrite(LeftMotor_4_pin, !L_motor);
+   
+   analogWrite(RightMotor_E_pin, max(R_MotorSpeed*0.4,90));             // 우측 모터 속도값
+   analogWrite(LeftMotor_E_pin, 255);                                   // 좌측 모터 속도값
+}
+
+void Left_role(int R_motor, int L_motor){
+   digitalWrite(RightMotor_1_pin, R_motor);
+   digitalWrite(RightMotor_2_pin, !R_motor);
+   digitalWrite(LeftMotor_3_pin, L_motor);
+   digitalWrite(LeftMotor_4_pin, !L_motor);
+   
+   analogWrite(RightMotor_E_pin, 255);                                  // 우측 모터 속도값
+   analogWrite(LeftMotor_E_pin, max(L_MotorSpeed*0.4,90));              // 좌측 모터 속도값   
+}
+
+void left_rotation(int R_motor, int L_motor){
+   digitalWrite(RightMotor_1_pin, HIGH);
+   digitalWrite(RightMotor_2_pin, LOW);
+   digitalWrite(LeftMotor_3_pin, LOW);
+   digitalWrite(LeftMotor_4_pin, HIGH);
+   
+   analogWrite(RightMotor_E_pin, R_MotorSpeed);                         // 우측 모터 속도값
+   analogWrite(LeftMotor_E_pin, L_MotorSpeed);                          // 좌측 모터 속도값
+}
+
+void right_rotation(int R_motor, int L_motor){
+   digitalWrite(RightMotor_1_pin, LOW);
+   digitalWrite(RightMotor_2_pin, HIGH);
+   digitalWrite(LeftMotor_3_pin, HIGH);
+   digitalWrite(LeftMotor_4_pin, LOW);
+   
+   analogWrite(RightMotor_E_pin, R_MotorSpeed);                         // 우측 모터 속도값
+   analogWrite(LeftMotor_E_pin, L_MotorSpeed);                          // 좌측 모터 속도값
+}
+</code></pre></div></div>
+<div  class="bg-white rounded-xl p-6 border border-slate-200 shadow-sm space-y-5 scroll-mt-6">
+      <div class="border-b pb-3 flex items-center justify-between flex-wrap gap-2"><h3 class="text-xl font-bold text-slate-800 flex items-center gap-2"><span class="bg-cyan-600 text-white text-xs px-2.5 py-1 rounded font-black">마무리</span><span>주행 테스트 & 완료 체크리스트</span></h3><span class="text-xs text-slate-500 font-medium"></span></div><div class="overflow-x-auto rounded-lg border border-slate-200"><table class="w-full min-w-[560px] text-sm text-left"><thead class="bg-slate-100 text-slate-700"><tr><th scope="col" class="px-4 py-3 whitespace-nowrap">실습</th><th scope="col" class="px-4 py-3 whitespace-nowrap">완료 확인</th><th scope="col" class="px-4 py-3 whitespace-nowrap">기록할 내용</th></tr></thead><tbody class="divide-y divide-slate-200"><tr><td class="px-4 py-3 align-top">시리얼</td><td class="px-4 py-3 align-top">g / b / s가 전진·후진·정지와 일치</td><td class="px-4 py-3 align-top">좌우 속도와 직진 편향</td></tr><tr><td class="px-4 py-3 align-top">IR 리모컨</td><td class="px-4 py-3 align-top">2·8·4·6·5 및 + / − 동작 확인</td><td class="px-4 py-3 align-top">실제 수신 코드와 회전 반경</td></tr><tr><td class="px-4 py-3 align-top">라인트레이싱</td><td class="px-4 py-3 align-top">직선·완만한 곡선·정지 조건 확인</td><td class="px-4 py-3 align-top">검정/흰색 센서값과 선 이탈 시 동작</td></tr><tr><td class="px-4 py-3 align-top">장애물 회피</td><td class="px-4 py-3 align-top">15 cm / 25 cm 구간과 좌우 탐색 확인</td><td class="px-4 py-3 align-top">전방 거리, 두 방향 거리, 회전 결과</td></tr><tr><td class="px-4 py-3 align-top">블루투스 송수신</td><td class="px-4 py-3 align-top">PC ↔ 앱 양방향 문자 수신</td><td class="px-4 py-3 align-top">RX=D3 / TX=D4, 9600 baud</td></tr><tr><td class="px-4 py-3 align-top">블루투스 앱 조종</td><td class="px-4 py-3 align-top">g / b / l / r / s / q / w 확인</td><td class="px-4 py-3 align-top">왼쪽 185 / 오른쪽 160, 정지 문자 s</td></tr></tbody></table></div><div class="bg-rose-50 border border-rose-200 rounded-xl p-5 space-y-2"><h4 class="font-bold text-rose-900">주행 테스트 필수 수칙</h4><ul class="list-disc pl-5 text-sm text-rose-950 space-y-1"><li>전원을 끈 상태에서 배선을 바꾸고, 바퀴를 띄워 첫 구동을 확인합니다.</li><li>책상 가장자리 대신 넓고 평평한 바닥에서 시험합니다.</li><li>리모컨을 놓거나 라인을 놓쳐도 정지하지 않을 수 있습니다. 전원 스위치로 즉시 멈출 준비를 합니다.</li><li>실습을 마치면 배터리 전원을 끄고 분리합니다.</li></ul></div></div>
+<div  class="bg-white rounded-xl p-6 border border-slate-200 shadow-sm space-y-5 scroll-mt-6">
+      <div class="border-b pb-3 flex items-center justify-between flex-wrap gap-2"><h3 class="text-xl font-bold text-slate-800 flex items-center gap-2"><span>실습 중 자주 묻는 질문</span></h3><span class="text-xs text-slate-500 font-medium"></span></div><div class="space-y-2"><h4 class="font-bold text-slate-800">Q. 리모컨 코드에서 IRrecv 또는 decode_results 관련 오류가 나요.</h4><p class="text-sm text-slate-600 leading-relaxed">최신 버전이 있어도 이 수업에서는 IRremote 2.6.0을 선택해 설치하고 다시 컴파일하세요. IRremote.h: No such file or directory 오류는 필요한 헤더를 찾지 못한 상태입니다. 설치 후에도 오류가 남으면 IRremote의 설치 버전과 IDE가 선택한 라이브러리 경로를 확인하세요.</p></div><div class="space-y-2"><h4 class="font-bold text-slate-800">Q. 시리얼에서 Wrong command가 함께 출력돼요.</h4><p class="text-sm text-slate-600 leading-relaxed">소문자 g / b / s를 한 글자씩 보내고 줄바꿈을 없음으로 설정하세요. 줄바꿈 문자도 입력으로 처리될 수 있습니다.</p></div><div class="space-y-2"><h4 class="font-bold text-slate-800">Q. 라인을 따라가지 않고 반대로 돌아요.</h4><p class="text-sm text-slate-600 leading-relaxed">차량 전방 기준 L=A5, C=A4, R=A3인지 확인하세요. 검정·흰색에서 읽은 실제 값을 조건표와 비교한 뒤, 바퀴 방향과 모터 배선을 점검합니다.</p></div><div class="space-y-2"><h4 class="font-bold text-slate-800">Q. 장애물이 있는데도 회피 방향이 이상해요.</h4><p class="text-sm text-slate-600 leading-relaxed">서보 90° 정면, 30°·150°에서 바라보는 방향, 바퀴 전후진을 각각 확인하세요. 원본은 Ult_30이 더 크면 좌회전을 선택하므로 브라켓 방향이 예제와 맞아야 합니다.</p></div><div class="space-y-2"><h4 class="font-bold text-slate-800">Q. 회전이 너무 크거나 속도가 빨라요.</h4><p class="text-sm text-slate-600 leading-relaxed">좌우 기본 속도 153에서 시작해 동일한 조건으로 비교하세요. 장애물 회피의 0.8초 회전 시간과 모터 속도를 한 번에 하나씩 바꾸고 결과를 기록합니다.</p></div></div>
+<div class="text-xs text-slate-500 leading-relaxed border-t border-slate-200 pt-4"><p>자료 출처: 에듀이노 「4휠 RC카 강의자료」 5~7강(155~201p), 공통 배선도(131~139p), 제작사 배포 최종 예제코드 7~12번. 페이지 이미지는 교재에서 발췌했으며 코드의 원본 주석과 저작권 표기를 유지했습니다.</p><p class="mt-1">명령값·센서 조건·거리 경계값 설명은 제공된 .ino 원본을 기준으로 정리했습니다. 블루투스 통신·앱 조종은 제작사 11·12번 코드를 기준으로 추가했습니다.</p></div></section>
 
                 <!-- SECTION 6: QUIZ -->
                 <section id="sect-quiz" class="section-content hidden space-y-6">
@@ -4144,57 +5217,124 @@ void SmartCar_Back() {
             const modalCaption = document.getElementById('lightbox-caption');
             const closeBtn = document.getElementById('lightbox-close-btn');
 
-            function openLightbox(src, alt) {
-                if (!modal || !modalImg) return;
-                modalImg.src = src;
-                modalCaption.textContent = alt || '이미지 확대 보기';
+            const prevBtn = document.getElementById('lightbox-prev-btn');
+            const nextBtn = document.getElementById('lightbox-next-btn');
+            const counter = document.getElementById('lightbox-counter');
+            let images = [];
+            let currentIndex = 0;
+            let returnFocus = null;
+            let previousOverflow = '';
+            let closeTimer;
+            let touchStart = null;
+
+            function showImage(direction = 0) {
+                const img = images[currentIndex];
+                modalImg.src = img.src;
+                modalImg.alt = img.alt || '확대 이미지';
+                modalCaption.textContent = img.alt || '이미지 확대 보기';
+                counter.textContent = (currentIndex + 1) + ' / ' + images.length;
+                prevBtn.hidden = nextBtn.hidden = images.length < 2;
+                if (direction && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                    modalImg.animate([
+                        { opacity: 0.3, transform: 'translateX(' + (direction * 45) + 'px)' },
+                        { opacity: 1, transform: 'translateX(0)' }
+                    ], { duration: 200, easing: 'ease-out' });
+                }
+            }
+
+            function moveImage(direction) {
+                if (images.length < 2) return;
+                currentIndex = (currentIndex + direction + images.length) % images.length;
+                showImage(direction);
+            }
+
+            function openLightbox(img) {
+                clearTimeout(closeTimer);
+                const gallery = img.closest('[data-image-gallery]');
+                const section = img.closest('.section-content');
+                images = gallery ? Array.from(gallery.querySelectorAll('img[src]'))
+                    : section ? Array.from(section.querySelectorAll('img[src]')).filter(item => item.getAttribute('src')) : [img];
+                currentIndex = images.indexOf(img);
+                returnFocus = img.hasAttribute('tabindex') ? img : document.activeElement;
+                previousOverflow = document.body.style.overflow;
+                showImage();
                 modal.classList.remove('hidden');
-                setTimeout(() => modal.classList.add('active'), 10);
+                modal.classList.add('active');
                 document.body.style.overflow = 'hidden';
+                closeBtn.focus();
             }
 
             function closeLightbox() {
-                if (!modal) return;
                 modal.classList.remove('active');
-                setTimeout(() => {
+                closeTimer = setTimeout(() => {
                     modal.classList.add('hidden');
-                    if (modalImg) modalImg.src = '';
+                    modalImg.removeAttribute('src');
                 }, 250);
-                document.body.style.overflow = '';
+                document.body.style.overflow = previousOverflow;
+                touchStart = null;
+                returnFocus?.focus({ preventScroll: true });
             }
 
-            // 모든 컨텐츠 내 이미지 클릭 시 모달 열기 (이벤트 위임)
             document.addEventListener('click', (e) => {
-                const img = e.target.closest('img');
-                if (img && !img.closest('#image-lightbox-modal')) {
-                    // 작은 아이콘/썸네일 제외 (너비 40px 초과 대상)
-                    if (img.naturalWidth > 40 || img.clientWidth > 40) {
-                        openLightbox(img.src, img.alt);
-                    }
+                const img = e.target.closest('.section-content img');
+                if (img && (img.naturalWidth > 40 || img.clientWidth > 40)) {
+                    e.preventDefault();
+                    openLightbox(img);
                 }
             });
-
-            if (closeBtn) closeBtn.addEventListener('click', closeLightbox);
-            if (modal) modal.addEventListener('click', closeLightbox);
+            closeBtn.addEventListener('click', (e) => { e.stopPropagation(); closeLightbox(); });
+            prevBtn.addEventListener('click', (e) => { e.stopPropagation(); moveImage(-1); });
+            nextBtn.addEventListener('click', (e) => { e.stopPropagation(); moveImage(1); });
+            modal.addEventListener('click', (e) => { if (e.target === modal) closeLightbox(); });
+            modalImg.addEventListener('dragstart', (e) => e.preventDefault());
+            modalImg.addEventListener('touchstart', (e) => {
+                touchStart = e.touches.length === 1 ? { x: e.touches[0].clientX, y: e.touches[0].clientY } : null;
+            }, { passive: true });
+            modalImg.addEventListener('touchend', (e) => {
+                if (!touchStart) return;
+                const dx = e.changedTouches[0].clientX - touchStart.x;
+                const dy = e.changedTouches[0].clientY - touchStart.y;
+                touchStart = null;
+                if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy) * 1.5) moveImage(dx < 0 ? 1 : -1);
+            }, { passive: true });
+            modalImg.addEventListener('touchcancel', () => { touchStart = null; });
 
             document.addEventListener('keydown', (e) => {
-                if (e.key === 'Escape' && modal && modal.classList.contains('active')) {
-                    closeLightbox();
+                if (!modal.classList.contains('active')) {
+                    if ((e.key === 'Enter' || e.key === ' ') && e.target.matches('[data-image-gallery] img')) {
+                        e.preventDefault();
+                        openLightbox(e.target);
+                    }
+                    return;
+                }
+                if (e.key === 'Escape') { e.preventDefault(); closeLightbox(); }
+                if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') {
+                    e.preventDefault();
+                    moveImage(e.key === 'ArrowLeft' ? -1 : 1);
+                }
+                if (e.key === 'Tab') {
+                    const buttons = [closeBtn, prevBtn, nextBtn].filter(button => !button.hidden);
+                    const index = buttons.indexOf(document.activeElement);
+                    e.preventDefault();
+                    buttons[(index + (e.shiftKey ? -1 : 1) + buttons.length) % buttons.length].focus();
                 }
             });
         });
     </script>
 
     <!-- Image Lightbox Modal for Fullscreen Image View -->
-    <div id="image-lightbox-modal" class="fixed inset-0 z-50 bg-black/85 backdrop-blur-sm hidden flex items-center justify-center p-4 transition-opacity duration-300 opacity-0 pointer-events-none" style="z-index: 9999;">
-        <button id="lightbox-close-btn" class="absolute top-4 right-5 text-white/80 hover:text-white text-3xl font-bold p-3 z-10 transition-transform hover:scale-125 focus:outline-none" title="닫기 (ESC 또는 배경 클릭)">
+    <div id="image-lightbox-modal" role="dialog" aria-modal="true" aria-label="이미지 확대 보기" class="fixed inset-0 z-50 bg-black/85 backdrop-blur-sm hidden flex items-center justify-center p-4 transition-opacity duration-300 opacity-0 pointer-events-none" style="z-index: 9999;">
+        <button id="lightbox-close-btn" aria-label="확대 이미지 닫기" class="absolute top-4 right-5 text-white/80 hover:text-white text-3xl font-bold p-3 z-10 transition-transform hover:scale-125 focus:outline-none" title="닫기 (ESC 또는 배경 클릭)">
             <i class="fa-solid fa-xmark"></i>
         </button>
-        <div class="relative max-w-5xl max-h-[92vh] flex flex-col items-center justify-center" onclick="event.stopPropagation();">
-            <img id="lightbox-img" src="" alt="" class="max-w-full max-h-[82vh] object-contain rounded-xl shadow-2xl transition-all duration-300 select-none border border-slate-700/50 bg-slate-950/50">
-            <div id="lightbox-caption" class="mt-3 text-center text-slate-200 text-sm sm:text-base font-semibold bg-slate-900/90 px-4 py-1.5 rounded-full border border-slate-700/60 max-w-2xl truncate shadow-lg"></div>
+        <button id="lightbox-prev-btn" type="button" aria-label="이전 이미지" class="absolute left-1 sm:left-5 top-1/2 -translate-y-1/2 z-20 w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-slate-900/85 border border-white/30 text-white text-3xl hover:bg-slate-700 focus-visible:ring-2 focus-visible:ring-white">&#8249;</button>
+        <button id="lightbox-next-btn" type="button" aria-label="다음 이미지" class="absolute right-1 sm:right-5 top-1/2 -translate-y-1/2 z-20 w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-slate-900/85 border border-white/30 text-white text-3xl hover:bg-slate-700 focus-visible:ring-2 focus-visible:ring-white">&#8250;</button>
+        <div class="relative w-full max-w-5xl max-h-[92vh] flex flex-col items-center justify-center" onclick="event.stopPropagation();">
+            <img id="lightbox-img" alt="" style="touch-action: pan-y pinch-zoom;" draggable="false" class="max-w-full max-h-[72vh] object-contain rounded-xl shadow-2xl transition-all duration-300 select-none border border-slate-700/50 bg-slate-950/50">
+            <div id="lightbox-counter" aria-live="polite" class="mt-3 text-sm text-white font-bold"></div>
+            <div id="lightbox-caption" class="mt-3 text-center text-slate-200 text-sm sm:text-base font-semibold bg-slate-900/90 px-4 py-1.5 rounded-full border border-slate-700/60 max-w-full whitespace-normal shadow-lg"></div>
             <p class="text-xs text-slate-400 mt-1.5 flex items-center gap-1 select-none">
-                <i class="fa-solid fa-circle-info"></i> 배경 클릭 또는 ESC 키를 누르면 닫힙니다.
+                <i class="fa-solid fa-circle-info"></i> 좌우 버튼 · 방향키 · 스와이프로 이동 / ESC 또는 배경 클릭으로 닫기
             </p>
         </div>
     </div>
